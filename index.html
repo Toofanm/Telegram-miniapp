@@ -3,324 +3,392 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>مکمل ورزشی | فروشگاه آنلاین</title>
+<title>فروشگاه آنلاین مکمل و استروئید</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg-primary:#0c0c14;--bg-secondary:#12121c;--bg-card:#1a1a28;--accent:#ff6b35;--accent-glow:rgba(255,107,53,0.15);--accent-glow-strong:rgba(255,107,53,0.3);--text-primary:#fff;--text-secondary:#a0a0b8;--text-muted:#606070;--danger:#ff4757;--warning:#ffa502;--success:#2ed573;--border:#2a2a3e;--g1:#ff6b35;--g2:#ff4757}
+:root {
+  --bg-primary: #0a0a12;
+  --bg-secondary: #121220;
+  --bg-card: rgba(22, 22, 38, 0.8);
+  --accent: #ff6b35;
+  --accent-secondary: #ff3366;
+  --accent-glow: rgba(255, 107, 53, 0.25);
+  --accent-glow-strong: rgba(255, 107, 53, 0.5);
+  --text-primary: #ffffff;
+  --text-secondary: #a2a2c2;
+  --text-muted: #626280;
+  --danger: #ff4757;
+  --success: #2ed573;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(255, 107, 53, 0.4);
+}
+
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{font-family:'Vazirmatn',sans-serif;background:var(--bg-primary);color:var(--text-primary);min-height:100vh;overflow-x:hidden}
-.header{background:linear-gradient(180deg,var(--bg-secondary) 0%,rgba(18,18,28,0.95) 100%);padding:14px 16px;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border);backdrop-filter:blur(20px)}
+body{font-family:'Vazirmatn',sans-serif;background:var(--bg-primary);color:var(--text-primary);min-height:100vh;overflow-x:hidden;padding-bottom:90px}
+
+/* Header & Search */
+.header{background:rgba(18,18,32,0.85);padding:14px 16px;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border);backdrop-filter:blur(16px)}
 .header-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.header-brand{display:flex;align-items:center;gap:10px}
-.header-logo{width:42px;height:42px;background:linear-gradient(135deg,var(--g1),var(--g2));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 4px 20px var(--accent-glow)}
-.header-title{font-size:17px;font-weight:900;background:linear-gradient(135deg,var(--g1),var(--g2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.header-subtitle{font-size:11px;color:var(--text-muted);margin-top:-1px}
-.cart-btn{background:var(--bg-card);border:1px solid var(--border);color:var(--text-primary);padding:10px 14px;border-radius:14px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px;transition:all .3s}
-.cart-btn:hover{border-color:var(--accent);box-shadow:0 0 20px var(--accent-glow)}
-.cart-badge{background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
+.header-brand{display:flex;align-items:center;gap:12px}
+.header-logo{width:44px;height:44px;background:linear-gradient(135deg,var(--accent),var(--accent-secondary));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 4px 20px var(--accent-glow)}
+.header-title{font-size:18px;font-weight:900;background:linear-gradient(135deg,#fff,var(--text-secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.header-subtitle{font-size:11px;color:var(--accent);font-weight:700}
+
 .search-wrap{position:relative}
-.search-input{width:100%;padding:12px 44px 12px 16px;border:1px solid var(--border);border-radius:14px;background:var(--bg-card);color:var(--text-primary);font-family:inherit;font-size:14px;transition:all .3s}
-.search-input::placeholder{color:var(--text-muted)}
-.search-input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
-.search-icon{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:18px;color:var(--text-muted);pointer-events:none}
-.search-clear{position:absolute;left:12px;top:50%;transform:translateY(-50%);background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-secondary);width:26px;height:26px;border-radius:8px;cursor:pointer;font-size:14px;display:none;align-items:center;justify-content:center}
-.search-clear.visible{display:flex}
-.hero{margin:16px;padding:22px 18px;background:linear-gradient(135deg,rgba(255,107,53,0.08) 0%,rgba(255,71,87,0.03) 100%);border:1px solid rgba(255,107,53,0.12);border-radius:20px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-40%;right:-15%;width:180px;height:180px;background:radial-gradient(circle,var(--accent-glow),transparent 70%);pointer-events:none}
-.hero-title{font-size:20px;font-weight:900;margin-bottom:8px;line-height:1.3}
-.hero-title span{background:linear-gradient(135deg,var(--g1),var(--g2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-desc{font-size:13px;color:var(--text-secondary);line-height:1.6}
-.hero-tags{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
-.hero-tag{background:rgba(255,107,53,0.1);border:1px solid rgba(255,107,53,0.2);color:var(--accent);padding:5px 12px;border-radius:20px;font-size:11px;font-weight:600}
-.categories{display:flex;gap:8px;padding:0 16px;margin:16px 0 12px;overflow-x:auto;scrollbar-width:none}
+.search-input{width:100%;padding:12px 42px 12px 16px;border:1px solid var(--border);border-radius:14px;background:var(--bg-primary);color:var(--text-primary);font-family:inherit;font-size:13px;transition:all .3s}
+.search-input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 15px var(--accent-glow)}
+.search-icon{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:16px;opacity:.6}
+
+/* Hero Section */
+.hero{margin:16px;padding:20px;background:linear-gradient(135deg,rgba(255,107,53,0.12) 0%,rgba(255,51,102,0.05) 100%);border:1px solid var(--border-active);border-radius:20px;position:relative;overflow:hidden}
+.hero-title{font-size:19px;font-weight:900;margin-bottom:6px}
+.hero-title span{color:var(--accent)}
+.hero-desc{font-size:12px;color:var(--text-secondary);line-height:1.6}
+
+/* Categories Bar */
+.categories{display:flex;gap:8px;padding:0 16px;margin:16px 0;overflow-x:auto;scrollbar-width:none}
 .categories::-webkit-scrollbar{display:none}
-.cat-btn{flex-shrink:0;padding:9px 16px;border-radius:12px;border:1px solid var(--border);background:var(--bg-card);color:var(--text-secondary);font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;transition:all .3s;white-space:nowrap}
-.cat-btn.active{background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;border-color:transparent;box-shadow:0 4px 15px var(--accent-glow)}
-.cat-btn:hover:not(.active){border-color:var(--accent);color:var(--accent)}
-.products-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:0 16px 100px}
-.product-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .3s;cursor:pointer;position:relative}
-.product-card:hover{border-color:rgba(255,107,53,0.3);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.4)}
-.product-badge{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:6px;font-size:9px;font-weight:800;z-index:2;letter-spacing:.5px}
+.cat-btn{flex-shrink:0;padding:8px 16px;border-radius:12px;border:1px solid var(--border);background:var(--bg-card);color:var(--text-secondary);font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;transition:all .25s}
+.cat-btn.active{background:linear-gradient(135deg,var(--accent),var(--accent-secondary));color:#fff;border-color:transparent;box-shadow:0 4px 15px var(--accent-glow)}
+
+/* Grid & Cards */
+.products-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:0 16px}
+.product-card{background:var(--bg-card);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:all .25s;display:flex;flex-direction:column;justify-content:space-between;position:relative;backdrop-filter:blur(10px)}
+.product-card:active{transform:scale(0.98)}
+.product-badge{position:absolute;top:10px;right:10px;padding:3px 8px;border-radius:8px;font-size:10px;font-weight:800;z-index:2}
 .badge-new{background:var(--accent);color:#fff}
 .badge-sale{background:var(--danger);color:#fff}
-.badge-popular{background:var(--warning);color:var(--bg-primary)}
-.product-img-wrap{width:100%;height:140px;background:linear-gradient(135deg,#1a1a2e 0%,#1e1e32 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.product-img-wrap::after{content:'';position:absolute;bottom:0;left:0;right:0;height:50%;background:linear-gradient(to top,var(--bg-card),transparent)}
-.product-img{width:80px;height:80px;object-fit:contain;z-index:1;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.3))}
-.product-icon{font-size:48px;z-index:1;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.3))}
-.product-info{padding:12px}
-.product-brand{font-size:9px;color:var(--accent);font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px}
-.product-name{font-size:12px;font-weight:700;color:var(--text-primary);margin-bottom:2px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:34px}
-.product-weight{font-size:11px;color:var(--text-muted);margin-bottom:8px}
-.product-footer{display:flex;justify-content:space-between;align-items:center}
-.product-price{font-size:14px;font-weight:800;color:var(--accent)}
-.add-btn{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--g1),var(--g2));border:none;color:#fff;font-size:18px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;box-shadow:0 4px 15px var(--accent-glow)}
-.add-btn:hover{transform:scale(1.1)}
-.add-btn:active{transform:scale(0.95)}
-.no-results{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-muted)}
-.no-results-icon{font-size:48px;margin-bottom:12px}
-.no-results-text{font-size:15px;font-weight:600;color:var(--text-secondary)}
-.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(10px);z-index:200;display:none;align-items:flex-end;justify-content:center;animation:fadeIn .2s}
+.badge-popular{background:#ffb703;color:#000}
+
+.product-img-wrap{width:100%;height:130px;background:rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center;padding:10px;position:relative}
+.product-img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 6px 12px rgba(0,0,0,0.5));transition:transform .3s}
+.product-card:hover .product-img{transform:scale(1.05)}
+.product-icon{font-size:52px}
+
+.product-info{padding:12px;display:flex;flex-direction:column;flex-grow:1}
+.product-brand{font-size:10px;color:var(--accent);font-weight:800;text-transform:uppercase;margin-bottom:2px}
+.product-name{font-size:12px;font-weight:700;color:var(--text-primary);line-height:1.4;margin-bottom:6px;height:34px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.product-weight{font-size:11px;color:var(--text-muted);margin-bottom:10px}
+.product-footer{display:flex;justify-content:space-between;align-items:center;margin-top:auto}
+.product-price{font-size:13px;font-weight:900;color:#fff}
+.add-btn{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-secondary));border:none;color:#fff;font-size:18px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px var(--accent-glow)}
+
+/* Floating Bottom Cart Bar */
+.floating-cart-bar{position:fixed;bottom:16px;left:16px;right:16px;background:linear-gradient(135deg,var(--accent),var(--accent-secondary));border-radius:16px;padding:12px 20px;display:none;justify-content:space-between;align-items:center;box-shadow:0 10px 30px var(--accent-glow-strong);z-index:99;cursor:pointer;animation:slideUp .3s ease}
+.floating-cart-bar.active{display:flex}
+.floating-info{display:flex;align-items:center;gap:12px}
+.floating-badge{background:#fff;color:#000;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px}
+.floating-price{font-weight:900;font-size:15px}
+
+/* Modal UI */
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);z-index:200;display:none;align-items:flex-end}
 .modal-overlay.active{display:flex}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.modal{background:var(--bg-secondary);width:100%;max-height:85vh;border-radius:28px 28px 0 0;padding:22px 18px 28px;animation:slideUp .35s cubic-bezier(0.16,1,0.3,1);overflow-y:auto;border-top:1px solid var(--border)}
+.modal{background:var(--bg-secondary);width:100%;max-height:85vh;border-radius:24px 24px 0 0;padding:20px;overflow-y:auto;border-top:1px solid var(--border);animation:slideUp .3s ease}
 @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
-.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
-.modal-title{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px}
-.modal-title-icon{width:34px;height:34px;background:linear-gradient(135deg,var(--g1),var(--g2));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px}
-.close-btn{background:var(--bg-card);border:1px solid var(--border);width:38px;height:38px;border-radius:12px;cursor:pointer;color:var(--text-secondary);font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .2s}
-.close-btn:hover{border-color:var(--danger);color:var(--danger)}
+
 .cart-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
-.cart-item-img{width:56px;height:56px;background:linear-gradient(135deg,#1a1a2e,#1e1e32);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;border:1px solid var(--border);overflow:hidden}
-.cart-item-img img{width:40px;height:40px;object-fit:contain}
-.cart-item-info{flex:1;min-width:0}
-.cart-item-name{font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cart-item-brand{font-size:10px;color:var(--accent);font-weight:700;margin-bottom:3px}
-.cart-item-price{font-size:12px;color:var(--text-secondary);font-weight:600}
-.qty-controls{display:flex;align-items:center;gap:8px;background:var(--bg-card);border-radius:10px;padding:3px;border:1px solid var(--border);flex-shrink:0}
-.qty-btn{width:28px;height:28px;border-radius:8px;border:none;background:var(--bg-secondary);color:var(--text-primary);cursor:pointer;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;transition:all .2s}
-.qty-btn:hover{background:var(--accent);color:#fff}
-.qty-value{font-size:14px;font-weight:800;min-width:20px;text-align:center;color:var(--text-primary)}
-.cart-footer{margin-top:18px;padding-top:18px}
-.cart-summary{background:var(--bg-card);border-radius:16px;padding:14px;margin-bottom:14px;border:1px solid var(--border)}
-.summary-row{display:flex;justify-content:space-between;padding:5px 0;font-size:13px}
-.summary-row span:first-child{color:var(--text-secondary)}
-.summary-row span:last-child{color:var(--text-primary);font-weight:600}
-.summary-row.total{margin-top:8px;padding-top:10px;border-top:1px solid var(--border);font-size:16px;font-weight:800}
-.summary-row.total span:first-child{color:var(--text-primary)}
-.summary-row.total span:last-child{background:linear-gradient(135deg,var(--g1),var(--g2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.checkout-btn{width:100%;padding:15px;background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;border:none;border-radius:16px;font-size:15px;font-weight:800;font-family:inherit;cursor:pointer;transition:all .3s;box-shadow:0 4px 20px var(--accent-glow);display:flex;align-items:center;justify-content:center;gap:8px}
-.checkout-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px var(--accent-glow-strong)}
-.checkout-btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
-.empty-cart{text-align:center;padding:40px 20px;color:var(--text-muted)}
-.empty-cart-icon{font-size:56px;margin-bottom:14px;opacity:.5}
-.empty-cart-text{font-size:15px;font-weight:700;margin-bottom:6px;color:var(--text-secondary)}
-.empty-cart-sub{font-size:12px}
-.checkout-container{padding:16px 16px 100px}
-.back-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;font-family:inherit;font-size:13px;font-weight:600;color:var(--text-secondary);cursor:pointer;margin-bottom:20px;transition:all .2s}
-.back-btn:hover{border-color:var(--accent);color:var(--accent)}
-.section-title{font-size:17px;font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:10px}
-.section-title-icon{width:30px;height:30px;background:linear-gradient(135deg,var(--g1),var(--g2));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px}
-.order-summary-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:16px;margin-bottom:22px}
-.summary-item{display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:12px}
-.summary-item-name{display:flex;align-items:center;gap:8px;color:var(--text-secondary)}
-.summary-item-price{font-weight:700;color:var(--text-primary)}
-.summary-divider{height:1px;background:var(--border);margin:8px 0}
-.summary-grand-total{display:flex;justify-content:space-between;font-size:15px;font-weight:800}
-.summary-grand-total span:last-child{background:linear-gradient(135deg,var(--g1),var(--g2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.form-group{margin-bottom:16px}
-.form-label{display:block;font-size:12px;font-weight:600;color:var(--text-secondary);margin-bottom:7px}
-.form-label .required{color:var(--danger)}
-.form-input,.form-textarea,.form-select{width:100%;padding:13px 15px;border:1px solid var(--border);border-radius:14px;font-family:inherit;font-size:14px;transition:all .3s;background:var(--bg-card);color:var(--text-primary)}
-.form-input::placeholder,.form-textarea::placeholder{color:var(--text-muted)}
-.form-input:focus,.form-textarea:focus,.form-select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
-.form-textarea{min-height:80px;resize:vertical}
-.form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23606070' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:left 14px center;padding-left:40px}
-.form-select option{background:var(--bg-card);color:var(--text-primary)}
-.payment-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
-.payment-option{background:var(--bg-card);border:2px solid var(--border);border-radius:14px;padding:14px;cursor:pointer;text-align:center;transition:all .3s}
-.payment-option:hover{border-color:rgba(255,107,53,0.3)}
-.payment-option.selected{border-color:var(--accent);background:rgba(255,107,53,0.05);box-shadow:0 0 20px var(--accent-glow)}
-.payment-option-icon{font-size:26px;margin-bottom:6px}
-.payment-option-title{font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:3px}
-.payment-option-desc{font-size:11px;color:var(--text-muted)}
-.submit-btn{width:100%;padding:16px;background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;border:none;border-radius:16px;font-size:15px;font-weight:800;font-family:inherit;cursor:pointer;transition:all .3s;box-shadow:0 4px 20px var(--accent-glow);margin-top:8px}
-.submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px var(--accent-glow-strong)}
-.success-container{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:40px 24px;text-align:center}
-.success-animation{width:90px;height:90px;background:linear-gradient(135deg,var(--g1),var(--g2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:42px;margin-bottom:22px;box-shadow:0 8px 40px var(--accent-glow-strong);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
-.success-title{font-size:22px;font-weight:900;margin-bottom:10px}
-.success-desc{font-size:13px;color:var(--text-secondary);line-height:1.8;margin-bottom:28px}
-.success-order-id{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:14px 24px;margin-bottom:24px;font-family:monospace;font-size:17px;font-weight:800;color:var(--accent);letter-spacing:2px}
-.success-btn{padding:14px 36px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;font-family:inherit;font-size:14px;font-weight:700;color:var(--text-primary);cursor:pointer;transition:all .3s}
-.success-btn:hover{border-color:var(--accent);color:var(--accent)}
+.cart-item-img{width:50px;height:50px;background:rgba(255,255,255,0.05);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;overflow:hidden}
+.cart-item-img img{width:100%;height:100%;object-fit:contain}
+.qty-controls{display:flex;align-items:center;gap:8px;background:var(--bg-primary);padding:4px 8px;border-radius:10px;border:1px solid var(--border)}
+.qty-btn{width:24px;height:24px;border:none;background:var(--bg-card);color:#fff;border-radius:6px;cursor:pointer;font-weight:bold}
+
+/* Inputs & Forms */
+.form-group{margin-bottom:14px}
+.form-label{display:block;font-size:12px;color:var(--text-secondary);margin-bottom:6px;font-weight:600}
+.form-input,.form-textarea{width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg-primary);color:#fff;font-family:inherit;font-size:13px}
+.form-input:focus,.form-textarea:focus{outline:none;border-color:var(--accent)}
+.submit-btn{width:100%;padding:14px;background:linear-gradient(135deg,var(--accent),var(--accent-secondary));color:#fff;border:none;border-radius:14px;font-size:15px;font-weight:800;font-family:inherit;cursor:pointer;margin-top:10px;box-shadow:0 4px 20px var(--accent-glow)}
+
 .view{display:none}
 .view.active{display:block}
-::-webkit-scrollbar{width:4px}
-::-webkit-scrollbar-track{background:var(--bg-primary)}
-::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
-::-webkit-scrollbar-thumb:hover{background:var(--accent)}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-.float{animation:float 3s ease-in-out infinite}
 </style>
 </head>
 <body>
+
+<!-- Products Main View -->
 <div id="productsView" class="view active">
-<div class="header">
-<div class="header-top">
-<div class="header-brand">
-<div class="header-logo">💪</div>
-<div>
-<div class="header-title">مکمل ورزشی</div>
-<div class="header-subtitle">فروشگاه آنلاین مکمل</div>
+  <div class="header">
+    <div class="header-top">
+      <div class="header-brand">
+        <div class="header-logo">⚡</div>
+        <div>
+          <div class="header-title">فروشگاه تخصصی</div>
+          <div class="header-subtitle">مکمل‌های اورجینال و استروئید</div>
+        </div>
+      </div>
+    </div>
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" class="search-input" id="searchInput" placeholder="جستجوی محصول یا برند..." oninput="handleSearch(this.value)">
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-title">تضمین <span>اصالت و کیفیت</span> 🏆</div>
+    <div class="hero-desc">ارسال سریع به سراسر کشور | مشاوره و پشتیبانی مستقیم</div>
+  </div>
+
+  <div class="categories" id="categories">
+    <button class="cat-btn active" data-cat="all" onclick="filterCategory('all')">همه</button>
+    <button class="cat-btn" data-cat="gainer" onclick="filterCategory('gainer')">گینر</button>
+    <button class="cat-btn" data-cat="protein" onclick="filterCategory('protein')">پروتئین</button>
+    <button class="cat-btn" data-cat="creatine" onclick="filterCategory('creatine')">کراتین</button>
+    <button class="cat-btn" data-cat="bcaa" onclick="filterCategory('bcaa')">بی سی ای ای</button>
+    <button class="cat-btn" data-cat="glutamine" onclick="filterCategory('glutamine')">گلوتامین</button>
+    <button class="cat-btn" data-cat="amino" onclick="filterCategory('amino')">آمینو</button>
+    <button class="cat-btn" data-cat="fatburner" onclick="filterCategory('fatburner')">چربی سوز</button>
+    <button class="cat-btn" data-cat="preworkout" onclick="filterCategory('preworkout')">پمپ</button>
+    <button class="cat-btn" data-cat="testbooster" onclick="filterCategory('testbooster')">تست بوستر</button>
+    <button class="cat-btn" data-cat="vitamin" onclick="filterCategory('vitamin')">ویتامین</button>
+    <button class="cat-btn" data-cat="other" onclick="filterCategory('other')">متفرقه</button>
+  </div>
+
+  <div class="products-grid" id="productsGrid"></div>
 </div>
+
+<!-- Floating Cart Bar -->
+<div class="floating-cart-bar" id="floatingCartBar" onclick="openCart()">
+  <div class="floating-info">
+    <div class="floating-badge" id="cartBadge">0</div>
+    <div>
+      <div style="font-size:11px;opacity:.8">سبد خرید شما</div>
+      <div class="floating-price" id="floatingTotalPrice">0 تومان</div>
+    </div>
+  </div>
+  <div style="font-weight:900;font-size:13px">مشاهده سبد ←</div>
 </div>
-<button class="cart-btn" onclick="openCart()">
-<span>سبد</span>
-<span class="cart-badge" id="cartCount">0</span>
-</button>
-</div>
-<div class="search-wrap">
-<span class="search-icon">🔍</span>
-<input type="text" class="search-input" id="searchInput" placeholder="جستجو در محصولات..." oninput="handleSearch(this.value)">
-<button class="search-clear" id="searchClear" onclick="clearSearch()">✕</button>
-</div>
-</div>
-<div class="hero">
-<div class="hero-title">بهترین مکمل‌های <span>ورزشی</span></div>
-<div class="hero-desc">مکمل‌های اورجینال با ضمانت اصالت. ارسال سریع به سراسر کشور.</div>
-<div class="hero-tags">
-<span class="hero-tag">✓ اصالت تضمینی</span>
-<span class="hero-tag">🚚 ارسال رایگان</span>
-<span class="hero-tag">💯 ضمانت بازگشت</span>
-</div>
-</div>
-<div class="categories" id="categories">
-<button class="cat-btn active" data-cat="all" onclick="filterCategory('all')">همه</button>
-<button class="cat-btn" data-cat="gainer" onclick="filterCategory('gainer')">گینر</button>
-<button class="cat-btn" data-cat="protein" onclick="filterCategory('protein')">پروتئین</button>
-<button class="cat-btn" data-cat="bcaa" onclick="filterCategory('bcaa')">بی سی اا</button>
-<button class="cat-btn" data-cat="glutamine" onclick="filterCategory('glutamine')">گلوتامین</button>
-<button class="cat-btn" data-cat="amino" onclick="filterCategory('amino')">امینو</button>
-<button class="cat-btn" data-cat="creatine" onclick="filterCategory('creatine')">کراتین</button>
-<button class="cat-btn" data-cat="fatburner" onclick="filterCategory('fatburner')">چربی سوز</button>
-<button class="cat-btn" data-cat="preworkout" onclick="filterCategory('preworkout')">پمپ</button>
-<button class="cat-btn" data-cat="testbooster" onclick="filterCategory('testbooster')">تست بوستر</button>
-<button class="cat-btn" data-cat="vitamin" onclick="filterCategory('vitamin')">مولتی ویتامین</button>
-<button class="cat-btn" data-cat="other" onclick="filterCategory('other')">سایر</button>
-</div>
-<div class="products-grid" id="productsGrid"></div>
-</div>
+
+<!-- Cart Modal -->
 <div class="modal-overlay" id="cartModal">
-<div class="modal">
-<div class="modal-header">
-<div class="modal-title">
-<div class="modal-title-icon">🛒</div>
-سبد خرید
+  <div class="modal">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)">
+      <div style="font-size:16px;font-weight:800">🛒 سبد خرید شما</div>
+      <button onclick="closeCart()" style="background:none;border:none;color:#fff;font-size:18px;cursor:pointer">✕</button>
+    </div>
+    <div id="cartItems"></div>
+    <div id="cartFooter" style="margin-top:16px;display:none">
+      <div style="display:flex;justify-content:space-between;font-size:15px;font-weight:900;margin-bottom:14px">
+        <span>مبلغ قابل پرداخت:</span>
+        <span id="modalTotalPrice" style="color:var(--accent)">0 تومان</span>
+      </div>
+      <button class="submit-btn" onclick="goToCheckout()">ادامه و ثبت سفارش →</button>
+    </div>
+  </div>
 </div>
-<button class="close-btn" onclick="closeCart()">✕</button>
-</div>
-<div id="cartItems"></div>
-<div class="cart-footer" id="cartFooter" style="display:none">
-<div class="cart-summary">
-<div class="summary-row">
-<span>جمع محصولات</span>
-<span id="subtotalPrice">۰ تومان</span>
-</div>
-<div class="summary-row">
-<span>هزینه ارسال</span>
-<span style="color:var(--success)">رایگان 🎉</span>
-</div>
-<div class="summary-row total">
-<span>مبلغ قابل پرداخت</span>
-<span id="totalPrice">۰ تومان</span>
-</div>
-</div>
-<button class="checkout-btn" onclick="goToCheckout()">ادامه و تکمیل سفارش →</button>
-</div>
-</div>
-</div>
+
+<!-- Checkout View -->
 <div id="checkoutView" class="view">
-<div class="header">
-<div class="header-top">
-<div class="header-brand">
-<div class="header-logo">💪</div>
-<div>
-<div class="header-title">مکمل ورزشی</div>
-<div class="header-subtitle">تکمیل سفارش</div>
+  <div class="header">
+    <div class="header-title">تکمیل فرم سفارش</div>
+  </div>
+  <div style="padding:16px">
+    <button onclick="backToProducts()" style="background:var(--bg-card);border:1px solid var(--border);color:var(--text-secondary);padding:8px 14px;border-radius:10px;font-family:inherit;font-size:12px;margin-bottom:16px">← بازگشت به فروشگاه</button>
+    <div class="form-group">
+      <label class="form-label">نام و نام خانوادگی *</label>
+      <input type="text" class="form-input" id="customerName" placeholder="مثال: علی محمدی">
+    </div>
+    <div class="form-group">
+      <label class="form-label">شماره همراه *</label>
+      <input type="tel" class="form-input" id="customerPhone" placeholder="09123456789">
+    </div>
+    <div class="form-group">
+      <label class="form-label">آدرس کامل پستی *</label>
+      <textarea class="form-textarea" id="customerAddress" rows="3" placeholder="استان، شهر، خیابان..."></textarea>
+    </div>
+    <button class="submit-btn" onclick="submitOrder()">✅ ارسال و تایید نهایی سفارش</button>
+  </div>
 </div>
-</div>
-</div>
-</div>
-<div class="checkout-container">
-<button class="back-btn" onclick="backToProducts()">← بازگشت به فروشگاه</button>
-<div class="section-title">
-<div class="section-title-icon">📦</div>
-خلاصه سفارش
-</div>
-<div class="order-summary-card" id="orderSummary"></div>
-<div class="section-title">
-<div class="section-title-icon">👤</div>
-اطلاعات شما
-</div>
-<div class="form-group">
-<label class="form-label">نام و نام خانوادگی <span class="required">*</span></label>
-<input type="text" class="form-input" id="customerName" placeholder="مثال: محمد رضایی">
-</div>
-<div class="form-group">
-<label class="form-label">شماره موبایل <span class="required">*</span></label>
-<input type="tel" class="form-input" id="customerPhone" placeholder="مثال: 09123456789">
-</div>
-<div class="form-group">
-<label class="form-label">آدرس کامل تحویل <span class="required">*</span></label>
-<textarea class="form-textarea" id="customerAddress" placeholder="استان، شهر، خیابان، کوچه، پلاک، واحد..."></textarea>
-</div>
-<div class="section-title">
-<div class="section-title-icon">💳</div>
-روش پرداخت
-</div>
-<div class="payment-options">
-<div class="payment-option selected" onclick="selectPayment(this,'cash')">
-<div class="payment-option-icon">💵</div>
-<div class="payment-option-title">پرداخت در محل</div>
-<div class="payment-option-desc">پرداخت هنگام تحویل</div>
-</div>
-<div class="payment-option" onclick="selectPayment(this,'card')">
-<div class="payment-option-icon">💳</div>
-<div class="payment-option-title">کارت به کارت</div>
-<div class="payment-option-desc">انتقال آنلاین</div>
-</div>
-</div>
-<div class="form-group">
-<label class="form-label">📝 توضیحات سفارش</label>
-<textarea class="form-textarea" id="orderNote" placeholder="ساعت تحویل، نکات خاص و..."></textarea>
-</div>
-<button class="submit-btn" onclick="submitOrder()">✅ ثبت نهایی سفارش</button>
-</div>
-</div>
-<div id="successView" class="view">
-<div class="success-container">
-<div class="success-animation float">🎉</div>
-<div class="success-title">سفارش شما ثبت شد!</div>
-<div class="success-desc">
-سفارش شما با موفقیت ثبت و به تیم ما ارسال شد.<br>
-کارشناسان ما به زودی با شما تماس می‌گیرند.
-</div>
-<div class="success-order-id" id="orderId">#ORD-0000</div>
-<button class="success-btn" onclick="resetAndBack()">🛍️ خرید جدید</button>
-</div>
-</div>
+
 <script>
-let products=[];let cart={};let currentCategory='all';let currentSearch='';let selectedPayment='cash';let orderCounter=1001;
-function formatPrice(price){return price.toLocaleString('fa-IR')+' تومان'}
-function loadProducts(){return fetch('products.json').then(r=>r.json()).then(data=>{products=data;renderProducts()})}
-function getProductImage(p){return p.image&&p.image.trim()?`<img src="${p.image}" alt="${p.name}" class="product-img" onerror="this.style.display='none';this.parentNode.innerHTML='<div class=\'product-icon\'>${p.icon}</div>'">`:`<div class="product-icon">${p.icon}</div>`}
-function renderProducts(){
-let filtered=products;
-if(currentCategory!=='all'){filtered=filtered.filter(p=>p.category===currentCategory)}
-if(currentSearch.trim()){const q=currentSearch.trim().toLowerCase();filtered=filtered.filter(p=>p.name.toLowerCase().includes(q)||p.brand.toLowerCase().includes(q)||p.category.toLowerCase().includes(q))}
-const grid=document.getElementById('productsGrid');
-if(filtered.length===0){grid.innerHTML=`<div class="no-results"><div class="no-results-icon">🔍</div><div class="no-results-text">محصولی یافت نشد</div><div style="font-size:12px;color:var(--text-muted);margin-top:4px">لطفاً عبارت دیگری جستجو کنید</div></div>`;return}
-grid.innerHTML=filtered.map(p=>{let badgeHTML='';if(p.badge==='new')badgeHTML='<span class="product-badge badge-new">جدید</span>';else if(p.badge==='sale')badgeHTML='<span class="product-badge badge-sale">%تخفیف</span>';else if(p.badge==='popular')badgeHTML='<span class="product-badge badge-popular">پرفروش</span>';const imgHTML=getProductImage(p);return`<div class="product-card" onclick="addToCart(${p.id})">${badgeHTML}<div class="product-img-wrap">${imgHTML}</div><div class="product-info"><div class="product-brand">${p.brand}</div><div class="product-name">${p.name}</div><div class="product-weight">${p.weight}</div><div class="product-footer"><span class="product-price">${formatPrice(p.price)}</span><button class="add-btn">+</button></div></div></div>`}).join('')}
-function handleSearch(value){currentSearch=value;document.getElementById('searchClear').classList.toggle('visible',value.length>0);renderProducts()}
-function clearSearch(){document.getElementById('searchInput').value='';currentSearch='';document.getElementById('searchClear').classList.remove('visible');renderProducts()}
-function filterCategory(cat){currentCategory=cat;document.querySelectorAll('.cat-btn').forEach(btn=>{btn.classList.toggle('active',btn.dataset.cat===cat)});renderProducts()}
-function addToCart(id){if(cart[id]){cart[id].qty++}else{const p=products.find(x=>x.id===id);cart[id]={...p,qty:1}}updateCartUI();openCart()}
-function updateQty(id,delta){if(!cart[id])return;cart[id].qty+=delta;if(cart[id].qty<=0)delete cart[id];updateCartUI()}
-function updateCartUI(){const count=Object.values(cart).reduce((s,i)=>s+i.qty,0);const badge=document.getElementById('cartCount');badge.textContent=count;badge.style.display=count>0?'flex':'none';const itemsDiv=document.getElementById('cartItems');const footer=document.getElementById('cartFooter');const cartItems=Object.values(cart);if(cartItems.length===0){itemsDiv.innerHTML=`<div class="empty-cart"><div class="empty-cart-icon">🛒</div><div class="empty-cart-text">سبد خرید خالی است</div><div class="empty-cart-sub">محصولات مورد نظر خود را اضافه کنید</div></div>`;footer.style.display='none';return}footer.style.display='block';itemsDiv.innerHTML=cartItems.map(item=>{const img=item.image&&item.image.trim()?`<img src="${item.image}" alt="">`:item.icon;return`<div class="cart-item"><div class="cart-item-img">${img}</div><div class="cart-item-info"><div class="cart-item-brand">${item.brand}</div><div class="cart-item-name">${item.name}</div><div class="cart-item-price">${formatPrice(item.price)}</div></div><div class="qty-controls"><button class="qty-btn" onclick="event.stopPropagation();updateQty(${item.id},-1)">−</button><span class="qty-value">${item.qty}</span><button class="qty-btn" onclick="event.stopPropagation();updateQty(${item.id},1)">+</button></div></div>`}).join('');const subtotal=cartItems.reduce((s,i)=>s+i.price*i.qty,0);document.getElementById('subtotalPrice').textContent=formatPrice(subtotal);document.getElementById('totalPrice').textContent=formatPrice(subtotal)}
-function openCart(){document.getElementById('cartModal').classList.add('active');document.body.style.overflow='hidden'}
-function closeCart(){document.getElementById('cartModal').classList.remove('active');document.body.style.overflow=''}
-function showView(viewId){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(viewId).classList.add('active');window.scrollTo(0,0)}
-function goToCheckout(){closeCart();const cartItems=Object.values(cart);const total=cartItems.reduce((s,i)=>s+i.price*i.qty,0);document.getElementById('orderSummary').innerHTML=`${cartItems.map(i=>`<div class="summary-item"><span class="summary-item-name">${i.icon} ${i.name} <span style="color:var(--accent)">×${i.qty}</span></span><span class="summary-item-price">${formatPrice(i.price*i.qty)}</span></div>`).join('')}<div class="summary-divider"></div><div class="summary-grand-total"><span>جمع کل</span><span>${formatPrice(total)}</span></div>`;showView('checkoutView')}
-function backToProducts(){showView('productsView')}
-function selectPayment(el,method){selectedPayment=method;document.querySelectorAll('.payment-option').forEach(opt=>opt.classList.remove('selected'));el.classList.add('selected')}
-function submitOrder(){const name=document.getElementById('customerName').value.trim();const phone=document.getElementById('customerPhone').value.trim();const address=document.getElementById('customerAddress').value.trim();const note=document.getElementById('orderNote').value.trim();if(!name||!phone||!address){alert('لطفاً تمام فیلدهای ستاره‌دار را پر کنید!');return}const cartItems=Object.values(cart);const total=cartItems.reduce((s,i)=>s+i.price*i.qty,0);const orderId='#ORD-'+orderCounter++;const orderData={orderId:orderId,customer:{name,phone,address},payment:selectedPayment==='cash'?'پرداخت در محل':'کارت به کارت',note,items:cartItems.map(i=>({name:i.name,brand:i.brand,qty:i.qty,price:i.price})),total};sendToTelegram(orderData);document.getElementById('orderId').textContent=orderId;showView('successView')}
-function sendToTelegram(orderData){if(window.Telegram&&window.Telegram.WebApp){const tg=window.Telegram.WebApp;tg.sendData(JSON.stringify(orderData));tg.MainButton.setText('✅ سفارش ثبت شد');tg.MainButton.show();tg.close()}else{console.log('سفارش ارسال شد:',orderData)}}
-function resetAndBack(){cart={};updateCartUI();document.getElementById('customerName').value='';document.getElementById('customerPhone').value='';document.getElementById('customerAddress').value='';document.getElementById('orderNote').value='';showView('productsView')}
-function initTelegram(){if(window.Telegram&&window.Telegram.WebApp){const tg=window.Telegram.WebApp;tg.expand();tg.ready();tg.setHeaderColor('#0c0c14');tg.setBackgroundColor('#0c0c14')}}
-document.getElementById('cartModal').addEventListener('click',function(e){if(e.target===this)closeCart()});
-loadProducts().then(()=>{updateCartUI();initTelegram()});
+let products = [];
+let cart = {};
+let currentCategory = 'all';
+let currentSearch = '';
+
+function formatPrice(price) {
+  return price.toLocaleString('fa-IR') + ' تومان';
+}
+
+function loadProducts() {
+  fetch('products.json')
+    .then(r => r.json())
+    .then(data => {
+      products = data;
+      renderProducts();
+    })
+    .catch(err => console.error("Error loading products:", err));
+}
+
+function getProductImageHTML(p) {
+  if (p.image && p.image.trim() !== "") {
+    return `<img src="${p.image}" class="product-img" alt="${p.name}" onerror="this.onerror=null; this.parentNode.innerHTML='<div class=\'product-icon\'>${p.icon || '💊'}</div>';">`;
+  }
+  return `<div class="product-icon">${p.icon || '🏋️'}</div>`;
+}
+
+function renderProducts() {
+  let filtered = products;
+  if (currentCategory !== 'all') {
+    filtered = filtered.filter(p => p.category === currentCategory);
+  }
+  if (currentSearch.trim()) {
+    const q = currentSearch.trim().toLowerCase();
+    filtered = filtered.filter(p => p.name.toLowerCase().includes(q) || (p.brand && p.brand.toLowerCase().includes(q)));
+  }
+
+  const grid = document.getElementById('productsGrid');
+  if (filtered.length === 0) {
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted)">محصولی یافت نشد.</div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(p => {
+    let badgeHTML = '';
+    if (p.badge === 'new') badgeHTML = '<span class="product-badge badge-new">جدید</span>';
+    else if (p.badge === 'sale') badgeHTML = '<span class="product-badge badge-sale">تخفیف</span>';
+    else if (p.badge === 'popular') badgeHTML = '<span class="product-badge badge-popular">پرفروش</span>';
+
+    return `
+      <div class="product-card" onclick="addToCart(${p.id})">
+        ${badgeHTML}
+        <div class="product-img-wrap">
+          ${getProductImageHTML(p)}
+        </div>
+        <div class="product-info">
+          <div class="product-brand">${p.brand || ''}</div>
+          <div class="product-name">${p.name}</div>
+          <div class="product-weight">${p.weight || ''}</div>
+          <div class="product-footer">
+            <span class="product-price">${formatPrice(p.price)}</span>
+            <button class="add-btn" onclick="event.stopPropagation(); addToCart(${p.id})">+</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function handleSearch(val) { currentSearch = val; renderProducts(); }
+function filterCategory(cat) {
+  currentCategory = cat;
+  document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.cat === cat));
+  renderProducts();
+}
+
+function addToCart(id) {
+  if (cart[id]) { cart[id].qty++; } 
+  else {
+    const p = products.find(x => x.id === id);
+    if(p) cart[id] = { ...p, qty: 1 };
+  }
+  updateCartUI();
+}
+
+function updateQty(id, delta) {
+  if (!cart[id]) return;
+  cart[id].qty += delta;
+  if (cart[id].qty <= 0) delete cart[id];
+  updateCartUI();
+}
+
+function updateCartUI() {
+  const items = Object.values(cart);
+  const totalCount = items.reduce((s, i) => s + i.qty, 0);
+  const totalPrice = items.reduce((s, i) => s + (i.price * i.qty), 0);
+
+  const bar = document.getElementById('floatingCartBar');
+  if (totalCount > 0) {
+    bar.classList.add('active');
+    document.getElementById('cartBadge').textContent = totalCount;
+    document.getElementById('floatingTotalPrice').textContent = formatPrice(totalPrice);
+  } else {
+    bar.classList.remove('active');
+    closeCart();
+  }
+
+  const itemsDiv = document.getElementById('cartItems');
+  const footer = document.getElementById('cartFooter');
+  if (items.length === 0) {
+    itemsDiv.innerHTML = `<div style="text-align:center;padding:20px;color:var(--text-muted)">سبد خرید خالی است.</div>`;
+    footer.style.display = 'none';
+    return;
+  }
+  footer.style.display = 'block';
+  document.getElementById('modalTotalPrice').textContent = formatPrice(totalPrice);
+
+  itemsDiv.innerHTML = items.map(item => `
+    <div class="cart-item">
+      <div class="cart-item-img">
+        ${item.image ? `<img src="${item.image}">` : item.icon || '📦'}
+      </div>
+      <div style="flex:1">
+        <div style="font-size:12px;font-weight:700">${item.name}</div>
+        <div style="font-size:11px;color:var(--accent);margin-top:2px">${formatPrice(item.price)}</div>
+      </div>
+      <div class="qty-controls">
+        <button class="qty-btn" onclick="updateQty(${item.id}, -1)">-</button>
+        <span style="font-size:13px;font-weight:bold">${item.qty}</span>
+        <button class="qty-btn" onclick="updateQty(${item.id}, 1)">+</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openCart() { document.getElementById('cartModal').classList.add('active'); }
+function closeCart() { document.getElementById('cartModal').classList.remove('active'); }
+
+function goToCheckout() {
+  closeCart();
+  document.getElementById('productsView').classList.remove('active');
+  document.getElementById('checkoutView').classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function backToProducts() {
+  document.getElementById('checkoutView').classList.remove('active');
+  document.getElementById('productsView').classList.add('active');
+}
+
+function submitOrder() {
+  const name = document.getElementById('customerName').value.trim();
+  const phone = document.getElementById('customerPhone').value.trim();
+  const address = document.getElementById('customerAddress').value.trim();
+
+  if (!name || !phone || !address) {
+    alert('لطفاً فرم را کاملاً پر کنید.');
+    return;
+  }
+
+  const items = Object.values(cart);
+  const total = items.reduce((s, i) => s + (i.price * i.qty), 0);
+  const orderData = {
+    customer: { name, phone, address },
+    items: items.map(i => ({ name: i.name, qty: i.qty, price: i.price })),
+    total: total
+  };
+
+  if (window.Telegram && window.Telegram.WebApp) {
+    window.Telegram.WebApp.sendData(JSON.stringify(orderData));
+    window.Telegram.WebApp.close();
+  } else {
+    alert('سفارش با موفقیت ثبت شد!');
+  }
+}
+
+function initTelegram() {
+  if (window.Telegram && window.Telegram.WebApp) {
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+    tg.ready();
+    tg.setHeaderColor('#0a0a12');
+    tg.setBackgroundColor('#0a0a12');
+  }
+}
+
+loadProducts();
+initTelegram();
 </script>
 </body>
-</html>
+  </html>
+      
