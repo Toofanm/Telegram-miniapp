@@ -452,3 +452,13 @@ initTelegram();
 </script>
 </body>
 </html>
+
+if (currentCategory === 'new') {
+  filtered = filtered.filter(p => p.isNew === true || p.badge === 'new');
+}
+
+if (window.Telegram?.WebApp) {
+  const tg = window.Telegram.WebApp;
+  tg.BackButton.show();
+  tg.BackButton.onClick(() => closeProductDetail());
+}
