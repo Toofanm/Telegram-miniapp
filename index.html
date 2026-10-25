@@ -8,24 +8,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg-primary: #f5f7fa;
-  --bg-secondary: #ffffff;
-  --bg-card: rgba(255, 255, 255, 0.95);
-  --accent: #e85d04;
-  --accent-secondary: #d00000;
-  --accent-glow: rgba(232, 93, 4, 0.15);
-  --accent-glow-strong: rgba(232, 93, 4, 0.3);
-  --text-primary: #1a1a2e;
-  --text-secondary: #4a4a6a;
-  --text-muted: #8a8aaa;
-  --danger: #dc2626;
-  --success: #16a34a;
-  --warning: #d97706;
-  --border: rgba(0, 0, 0, 0.08);
-  --border-active: rgba(232, 93, 4, 0.4);
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
-  --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+  --bg-primary: #202735;
+  --bg-secondary: #293241;
+  --bg-card: #2b3342;
+  --accent: #d6a84f;
+  --accent-secondary: #9d2733;
+  --accent-glow: rgba(214,168,79,.16);
+  --accent-glow-strong: rgba(214,168,79,.3);
+  --text-primary: #f4f0e8;
+  --text-secondary: #c3c9d2;
+  --text-muted: #9ba5b4;
+  --danger: #d94b53;
+  --success: #51b88a;
+  --warning: #d6a84f;
+  --border: rgba(255,255,255,.10);
+  --border-active: rgba(214,168,79,.42);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,.18);
+  --shadow-md: 0 8px 22px rgba(0,0,0,.22);
+  --shadow-lg: 0 18px 48px rgba(0,0,0,.36);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -143,6 +143,52 @@ body{font-family:'Vazirmatn',sans-serif;background:var(--bg-primary);color:var(-
 @media(min-width:600px){
   .products-grid{grid-template-columns:repeat(3,1fr);gap:16px;max-width:900px;margin:0 auto}
 }
+
+/* Supplement Energy website visual system: static mobile storefront */
+body{background:#202735;color:#f4f0e8}
+.header{background:rgba(32,39,53,.97);backdrop-filter:none;box-shadow:none;border-bottom-color:rgba(255,255,255,.09)}
+.header-logo{background:#b58b43;border-radius:12px;box-shadow:none}
+.header-title{letter-spacing:.2px}
+.header-subtitle{color:#d6a84f}
+.search-input{background:#293241;border-color:#465061;box-shadow:none}
+.search-input:focus{box-shadow:none}
+.hero{margin:14px 16px 16px;padding:0;border:1px solid rgba(214,168,79,.28);border-radius:20px;background:#11151d;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.22)}
+.hero-static{position:relative;min-height:290px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:2px;padding:18px 15px 58px;background:radial-gradient(ellipse at 72% 43%,rgba(147,31,42,.28),transparent 52%),linear-gradient(135deg,#0e1117 0%,#202735 65%,#12161e 100%);overflow:hidden}
+.hero-static:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(214,168,79,.08),transparent 70%);pointer-events:none}
+.hero-copy{position:relative;z-index:2;text-align:right}
+.hero-eyebrow{font-size:9px;letter-spacing:1.5px;color:#d6a84f;font-weight:800;margin-bottom:10px}
+.hero-title{font-size:clamp(18px,5.4vw,25px);font-weight:900;line-height:1.25;color:#fff;margin-bottom:9px}
+.hero-title span{color:#d6a84f}
+.hero-desc{font-size:10px;line-height:1.8;color:#c7cbd2}
+.hero-claims{display:flex;gap:6px;flex-wrap:wrap;margin-top:13px}
+.hero-claim{border:1px solid rgba(214,168,79,.38);background:rgba(214,168,79,.08);border-radius:8px;padding:6px 7px;color:#f4e7c7;font-size:9px;font-weight:800;white-space:nowrap}
+.hero-product{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;min-width:0}
+.hero-product img{display:block;width:100%;max-width:205px;height:225px;object-fit:contain;filter:drop-shadow(0 12px 15px rgba(0,0,0,.4))}
+.hero-caption{position:absolute;right:16px;left:16px;bottom:13px;border-top:1px solid rgba(255,255,255,.13);padding-top:9px;display:flex;flex-direction:column;gap:3px;text-align:right}
+.hero-caption b{font-size:10px;letter-spacing:.7px;color:#f6f2e8}
+.hero-caption small{font-size:8px;color:#c0a66d;letter-spacing:.7px}
+.support-banner{background:#2b3342;border:1px solid rgba(255,255,255,.1);box-shadow:none}
+.support-banner::before{display:none}
+.support-btn{background:#b58b43;box-shadow:none;color:#10141b}
+.categories{scroll-behavior:auto}
+.cat-btn{background:#293241;border-color:#414b5d;color:#d0d5dc;box-shadow:none}
+.cat-btn.active{background:#b58b43;color:#151922;border-color:#b58b43;box-shadow:none}
+.products-grid{gap:10px}
+.product-card{background:#2b3342;border-color:rgba(255,255,255,.09);box-shadow:none;backdrop-filter:none}
+.product-card:hover{box-shadow:none;transform:none}
+.product-img-wrap{height:145px;background:#252d3b;padding:12px}
+.product-img{filter:none;transition:none}
+.product-card:hover .product-img{transform:none}
+.product-brand{color:#d6a84f}
+.product-price{color:#f4f0e8}
+.detail-modal{background:#293241;border-color:#465061;box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.detail-img-wrap{background:#252d3b}
+.detail-order-btn{background:#b58b43;color:#141821;box-shadow:none}
+.detail-order-btn:hover{transform:none;box-shadow:none}
+.toast{background:#293241;color:#f4f0e8}
+.toast-text{color:#f4f0e8}
+@media(max-width:370px){.hero-static{padding:15px 10px 58px;min-height:270px}.hero-product img{height:195px}.hero-title{font-size:17px}.hero-claim{font-size:8px;padding:5px}}
+
 </style>
 </head>
 <body>
@@ -155,10 +201,10 @@ body{font-family:'Vazirmatn',sans-serif;background:var(--bg-primary);color:var(-
   <div class="header">
     <div class="header-top">
       <div class="header-brand">
-        <div class="header-logo">⚡</div>
+        <div class="header-logo">SE</div>
         <div>
-          <div class="header-title">فروشگاه تخصصی</div>
-          <div class="header-subtitle">مکمل‌های اورجینال و استروئید</div>
+          <div class="header-title">SUPPLEMENT ENERGY</div>
+          <div class="header-subtitle">مکمل‌های ورزشی و تغذیه</div>
         </div>
       </div>
     </div>
@@ -169,12 +215,20 @@ body{font-family:'Vazirmatn',sans-serif;background:var(--bg-primary);color:var(-
     </div>
   </div>
 
-  <div class="hero">
-    <div class="hero-title">تضمین <span>اصالت و کیفیت</span> 🏆</div>
-    <div class="hero-desc">ارسال سریع به سراسر کشور | مشاوره و پشتیبانی مستقیم</div>
+  <section class="hero" aria-label="محصول ویژه اپتیمم نوتریشن">
+  <div class="hero-static">
+    <div class="hero-copy">
+      <div class="hero-eyebrow">SUPPLEMENT ENERGY • FEATURED</div>
+      <div class="hero-title">GOLD STANDARD<br><span>100% WHEY</span></div>
+      <div class="hero-desc">پروتئین وی اپتیمم نوتریشن<br>طعم Double Rich Chocolate</div>
+      <div class="hero-claims"><span class="hero-claim">24g PROTEIN</span><span class="hero-claim">5.5g BCAA</span></div>
+    </div>
+    <div class="hero-product"><img src="https://www.optimumnutrition.com/cdn/shop/files/GSW_DRC_5lb_FOP.png?v=1776173227&width=2500" alt="Optimum Nutrition Gold Standard 100% Whey Double Rich Chocolate" fetchpriority="high"></div>
+    <div class="hero-caption"><b>OPTIMUM NUTRITION · GOLD STANDARD 100% WHEY</b><small>DOUBLE RICH CHOCOLATE · 5 LB / 2.27 KG</small></div>
   </div>
+</section>
 
-  <!-- Support Banner -->
+<!-- Support Banner -->
   <div class="support-banner">
     <div class="support-info">
       <div class="support-label">📞 تماس با پشتیبانی</div>
@@ -442,8 +496,8 @@ function initTelegram() {
   const tg = window.Telegram.WebApp;
   tg.expand();
   tg.ready();
-  tg.setHeaderColor('#f5f7fa');
-  tg.setBackgroundColor('#f5f7fa');
+  tg.setHeaderColor('#202735');
+  tg.setBackgroundColor('#202735');
 }
 
 // ==================== INIT ====================
