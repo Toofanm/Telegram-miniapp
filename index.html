@@ -70,7 +70,7 @@ header{position:relative;z-index:20;background:rgba(3,9,20,.96);border-bottom:1p
       <button class="quick-cat" data-category="protein"><span class="quick-icon">◈</span><span><b>پروتئین و ایزوله</b><small>ساخت عضله و تأمین پروتئین</small></span></button>
       <button class="quick-cat" data-category="gainer"><span class="quick-icon">▤</span><span><b>گینر و افزایش وزن</b><small>افزایش کالری دریافتی</small></span></button>
       <button class="quick-cat" data-category="creatine"><span class="quick-icon">ϟ</span><span><b>کراتین و قدرت</b><small>قدرت و عملکرد تمرین</small></span></button>
-      <button class="quick-cat" data-category="pump"><span class="quick-icon">ϟ</span><span><b>پیش‌تمرین و پمپ</b><small>آمادگی پیش از تمرین</small></span></button>
+      <button class="quick-cat" data-category="preworkout"><span class="quick-icon">ϟ</span><span><b>پیش‌تمرین و پمپ</b><small>آمادگی پیش از تمرین</small></span></button>
     </div>
   </section>
   <section id="categories" class="section">
@@ -99,9 +99,9 @@ var tg=window.Telegram&&window.Telegram.WebApp;
 if(tg){try{tg.ready();tg.expand();tg.setHeaderColor("#030914");tg.setBackgroundColor("#030914");}catch(e){}}
 var products=[],category="all",query="",sort="default",cart={},activeSheetProduct=null;
 var categoryNames={
-gainer:"گینر و افزایش وزن",protein:"پروتئین",bcaa:"بی سی ای ای",glutamine:"گلوتامین",amino:"آمینو",creatine:"کراتین",fatburner:"چربی‌سوز",pump:"پیش‌تمرین و پمپ",testbooster:"تست بوستر",multivitamin:"ویتامین و مینرال",recovery:"ریکاوری",other:"سایر مکمل‌ها",st_injectable:"استروئید تزریقی",st_oral:"استروئید خوراکی",st_peptide:"پپتاید",discount:"تخفیف‌ها"
+gainer:"گینر و افزایش وزن",protein:"پروتئین",bcaa:"بی سی ای ای",glutamine:"گلوتامین",amino:"آمینو",creatine:"کراتین",fatburner:"چربی‌سوز",pump:"پیش‌تمرین و پمپ",preworkout:"پیش‌تمرین و پمپ",vitamin:"ویتامین و مینرال",steroid:"استروئیدها",testbooster:"تست بوستر",multivitamin:"ویتامین و مینرال",recovery:"ریکاوری",other:"سایر مکمل‌ها",st_injectable:"استروئید تزریقی",st_oral:"استروئید خوراکی",st_peptide:"پپتاید",discount:"تخفیف‌ها"
 };
-var categoryIcons={gainer:"▤",protein:"◈",bcaa:"◎",glutamine:"✣",amino:"◉",creatine:"ϟ",fatburner:"↘",pump:"ϟ",testbooster:"✦",multivitamin:"✚",recovery:"↗",other:"◇",st_injectable:"▥",st_oral:"▤",st_peptide:"✧",discount:"٪"};
+var categoryIcons={gainer:"▤",protein:"◈",bcaa:"◎",glutamine:"✣",amino:"◉",creatine:"ϟ",fatburner:"↘",pump:"ϟ",preworkout:"ϟ",vitamin:"✚",steroid:"◇",testbooster:"✦",multivitamin:"✚",recovery:"↗",other:"◇",st_injectable:"▥",st_oral:"▤",st_peptide:"✧",discount:"٪"};
 function fmt(n){return Number(n||0).toLocaleString("fa-IR");}
 function money(n){return fmt(n)+" تومان";}
 function safe(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
