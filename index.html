@@ -261,6 +261,7 @@ body{background:#202735;color:#f4f0e8}
     <button class="cat-btn" data-cat="testbooster">تست بوستر</button>
     <button class="cat-btn" data-cat="vitamin">ویتامین</button>
     <button class="cat-btn" data-cat="other">سایر</button>
+    <button class="cat-btn" data-cat="discount">🏷️ تخفیف‌ها</button>
     <button class="cat-btn" data-cat="steroid">💉 استروئید</button>
     <button class="cat-btn active" data-cat="all">همه</button>
   </div>
@@ -360,9 +361,13 @@ async function loadProducts() {
       name: p.name || 'محصول بدون نام',
       brand: p.brand || '',
       price: p.price === 'out' ? 'out' : (Number(p.price) || 0),
+      basePrice: Number(p.basePrice) || 0,
+      subcategory: p.subcategory || p.category || 'other',
       category: p.category || 'other',
       weight: p.weight || '',
       image: p.image || '',
+      image2: p.image2 || '',
+      image3: p.image3 || '',
       icon: p.icon || '💊',
       badge: p.badge || '',
       description: p.description || '',
@@ -396,7 +401,7 @@ function renderProducts() {
   const grid = document.getElementById('productsGrid');
   if (isLoading) return;
 
-  let filtered = products;
+  let filtered = currentCategory === 'all' ? products.filter(p => p.category !== 'discount') : products;
   if (currentCategory === 'new') {
     filtered = filtered.filter(p => p.isNew === true);
   } else if (currentCategory !== 'all') {
