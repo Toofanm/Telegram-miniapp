@@ -238,7 +238,7 @@ body{background:#202735;color:#f4f0e8}
   </div>
 
   <div class="categories" id="categories">
-    <button class="cat-btn active" data-cat="new">جدید</button>
+    <button class="cat-btn" data-cat="new">جدید</button>
     <button class="cat-btn" data-cat="gainer">گینر</button>
     <button class="cat-btn" data-cat="protein">پروتئین</button>
     <button class="cat-btn" data-cat="creatine">کراتین</button>
@@ -251,7 +251,7 @@ body{background:#202735;color:#f4f0e8}
     <button class="cat-btn" data-cat="vitamin">ویتامین</button>
     <button class="cat-btn" data-cat="other">سایر</button>
     <button class="cat-btn" data-cat="steroid">💉 استروئید</button>
-    <button class="cat-btn" data-cat="all">همه</button>
+    <button class="cat-btn active" data-cat="all">همه</button>
   </div>
 
   <div class="products-grid" id="productsGrid">
@@ -281,7 +281,7 @@ body{background:#202735;color:#f4f0e8}
 <script>
 // ==================== STATE ====================
 let products = [];
-let currentCategory = 'new';
+let currentCategory = 'all';
 let currentSearch = '';
 let searchDebounceTimer = null;
 let isLoading = false;
@@ -506,13 +506,3 @@ initTelegram();
 </script>
 </body>
 </html>
-
-if (currentCategory === 'new') {
-  filtered = filtered.filter(p => p.isNew === true || p.badge === 'new');
-}
-
-if (window.Telegram?.WebApp) {
-  const tg = window.Telegram.WebApp;
-  tg.BackButton.show();
-  tg.BackButton.onClick(() => closeProductDetail());
-}
