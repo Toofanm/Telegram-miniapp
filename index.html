@@ -34,6 +34,27 @@ header{position:relative;z-index:20;background:rgba(3,9,20,.96);border-bottom:1p
 /* Align the mini-app hero and service cards with the live ENERGY storefront. */
 @media(min-width:601px){.hero-copy{padding-left:clamp(4px,2vw,24px)}.hero-visual{min-height:360px}.hero-product{width:min(64%,300px);height:310px;margin-left:0}.hero-foot{left:14px;right:14px}}
 @media(max-width:600px){.promo{gap:7px;font-size:8px;padding-inline:6px}.promo-separator{height:11px}.hero h1{font-size:clamp(35px,9.8vw,47px)}.benefits{grid-template-columns:repeat(3,minmax(0,1fr))}.benefit-icon{width:39px;height:39px}.benefit{padding:10px 5px;min-height:128px}.benefit b{font-size:8.5px}.benefit small{font-size:7.5px}}
+
+/* Mini-app polish: always-visible, responsive bottom navigation and a unified premium hero. */
+.hero{position:relative;isolation:isolate;padding:clamp(18px,3vw,34px);margin:12px 0 22px;border:1px solid rgba(89,151,220,.22);border-radius:26px;background:radial-gradient(ellipse at 76% 18%,rgba(48,126,220,.13),transparent 43%),linear-gradient(125deg,rgba(7,19,33,.97),rgba(5,13,24,.98));box-shadow:0 20px 55px rgba(0,0,0,.18)}
+.hero-copy{position:relative;z-index:2}
+.hero .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 10px;border:1px solid rgba(75,156,255,.24);border-radius:999px;background:rgba(75,156,255,.07);letter-spacing:.7px}
+.hero h1{font-size:clamp(34px,4.4vw,60px);line-height:1.02;letter-spacing:-1.8px;margin:17px 0 14px}
+.hero h1 span{text-shadow:0 0 30px rgba(75,156,255,.18)}
+.hero p{max-width:440px}
+.hero-visual{height:330px;border-color:rgba(103,169,240,.28);background:radial-gradient(ellipse at 50% 48%,rgba(42,119,216,.28),transparent 58%),linear-gradient(145deg,#0b1e34,#030914 78%);box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}
+.hero-visual:after{content:"";position:absolute;width:190px;height:190px;border-radius:50%;background:rgba(61,143,247,.12);filter:blur(38px);top:18%;left:25%;pointer-events:none}
+.hero-product{width:min(60%,285px);height:290px;margin-left:-21%;transform:translateY(-4px);filter:drop-shadow(0 24px 26px rgba(0,0,0,.58))}
+.hero-tag{border-color:rgba(75,156,255,.4);letter-spacing:.7px}
+.hero-spec{backdrop-filter:blur(8px);box-shadow:0 6px 18px rgba(0,0,0,.12)}
+.hero-foot{padding-top:9px;border-top:1px solid rgba(115,158,206,.15)}
+.bottom-nav{position:fixed!important;display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;bottom:calc(8px + env(safe-area-inset-bottom));left:50%;right:auto;width:min(520px,calc(100% - 20px));transform:translateX(-50%);z-index:150;padding:7px;border:1px solid rgba(115,158,206,.28);border-radius:18px;background:rgba(5,15,27,.96);backdrop-filter:blur(20px);box-shadow:0 12px 35px rgba(0,0,0,.48)}
+.nav-item{min-width:0;min-height:48px;font-family:Vazirmatn,system-ui,sans-serif;font-weight:700;font-size:9px;transition:background .18s ease,color .18s ease}
+.nav-item span:first-child{font-size:19px}
+body{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
+@media(min-width:601px){.hero{grid-template-columns:.92fr 1.08fr;min-height:390px}.hero-visual{height:340px}.hero-product{height:300px}.bottom-nav{bottom:16px}}
+@media(max-width:600px){.hero{padding:14px;margin:8px 0 18px;gap:12px;border-radius:20px}.hero h1{font-size:clamp(33px,9.2vw,45px);margin:11px 0 9px}.hero .eyebrow{font-size:8px}.hero-visual{height:236px;border-radius:16px}.hero-product{height:205px;width:59%;margin-left:-33%}.hero-specs{left:8px;width:43%}.hero-specs>small{font-size:6.5px}.hero-spec{padding:6px 5px}.hero-spec b{font-size:15px}.hero-foot b{font-size:9px}.hero-foot small{font-size:7px}.hero-proof{gap:12px}.hero-proof b{font-size:9px}.hero-proof small{font-size:7px}.nav-item{min-height:45px}}
+
 </style>
 </head>
 <body>
@@ -92,7 +113,7 @@ header{position:relative;z-index:20;background:rgba(3,9,20,.96);border-bottom:1p
 <nav class="bottom-nav" aria-label="ناوبری اصلی موبایل">
   <button class="nav-item active" data-target="home"><span>⌂</span><b>خانه</b></button>
   <button class="nav-item" data-target="categories"><span>▦</span><b>دسته‌ها</b></button>
-  <button class="nav-item" data-target="products"><span>⌕</span><b>محصولات</b></button>
+  <button class="nav-item" data-target="products" data-action="search"><span>⌕</span><b>جستجو</b></button>
   <button class="nav-item" id="mobile-cart"><span>▣ <i id="mobile-cart-count" style="font-style:normal;font-size:9px"></i></span><b>سبد خرید</b></button>
 </nav>
 <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="جزئیات محصول"><div class="sheet"><div class="sheet-top"><h3 id="sheet-title">جزئیات محصول</h3><button class="close-btn" id="close-sheet" aria-label="بستن">×</button></div><div id="sheet-content"></div></div></div>
@@ -206,7 +227,7 @@ document.getElementById("mobile-cart").addEventListener("click",openCart);
 document.getElementById("close-sheet").addEventListener("click",closeSheet);
 document.getElementById("overlay").addEventListener("click",function(e){if(e.target===this)closeSheet();});
 document.addEventListener("keydown",function(e){if(e.key==="Escape")closeSheet();});
-document.querySelectorAll(".nav-item[data-target]").forEach(function(el){el.addEventListener("click",function(){var target=document.getElementById(el.dataset.target);if(target)target.scrollIntoView({behavior:"smooth",block:"start"});document.querySelectorAll(".nav-item").forEach(function(n){n.classList.remove("active");});el.classList.add("active");});});
+document.querySelectorAll(".nav-item[data-target]").forEach(function(el){el.addEventListener("click",function(){var target=document.getElementById(el.dataset.target);if(el.dataset.action==="search"){var input=document.getElementById("search");if(input){input.scrollIntoView({behavior:"smooth",block:"center"});window.setTimeout(function(){input.focus();},220);}}else if(target){target.scrollIntoView({behavior:"smooth",block:"start"});}document.querySelectorAll(".nav-item").forEach(function(n){n.classList.remove("active");});el.classList.add("active");});});
 fetch("./products.json",{cache:"no-cache"}).then(function(r){if(!r.ok)throw new Error("products.json HTTP "+r.status);return r.json();}).then(function(data){
 products=Array.isArray(data)?data.map(function(p){return Object.assign({},p,{price:p.price==="out"?"out":Number(p.price)||0,basePrice:Number(p.basePrice)||0});}):[];
 makeCategoryChips();render();
