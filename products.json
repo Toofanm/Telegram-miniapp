@@ -1,4 +1,3 @@
-```json
 [
   {"id":1,"name":"گینر لابرادا","brand":"لابرادا","price":18100,"category":"gainer","weight":"۵.۴ کیلو","image":"","icon":"🥛","badge":"","description":"گینر لابرادا | برند: لابرادا | ۵.۴ کیلو","isNew":false},
   {"id":2,"name":"مس شاک گیر","brand":"شاک گیر","price":18720,"category":"gainer","weight":"۷ کیلو","image":"","icon":"🥛","badge":"","description":"مس شاک گیر | برند: شاک گیر | ۷ کیلو","isNew":false},
@@ -197,4 +196,3 @@
   {"id":195,"name":"سیتومل (۲۵)","brand":"بادی تک","price":2370,"category":"steroid","weight":"۱۰۰ عدد","image":"","icon":"💊","badge":"","description":"سیتومل (۲۵) | برند: بادی تک | ۱۰۰ عدد","isNew":false},
   {"id":196,"name":"افدرین (۵۰)","brand":"دلفیس فارما","price":2500,"category":"steroid","weight":"۵۰ عدد","image":"","icon":"💊","badge":"","description":"افدرین (۵۰) | برند: دلفیس فارما | ۵۰ عدد","isNew":false}
 ]
-```
