@@ -257,6 +257,8 @@ openSheet("جزئیات محصول",'<div class="detail"><div class="detail-art"
 var a=document.getElementById("detail-add");if(a)a.addEventListener("click",function(){addToCart(p.id);closeSheet();});
 document.getElementById("detail-close").addEventListener("click",closeSheet);
 }
+function productWeightKg(p){var s=String(p.weight||"").toLowerCase().replace(/,/g,".");var m=s.match(/([0-9]+(?:\.[0-9]+)?)\s*(kg|کیلوگرم|کیلو|gr|g|گرم)/i);if(!m)return 0;var n=Number(m[1]);return /^(gr|g|گرم)$/i.test(m[2])?n/1000:n;}
+function getShipping(ids){var count=0,weight=0,missing=false;ids.forEach(function(id){var p=findProduct(id);if(!p)return;count+=cart[id];var w=productWeightKg(p);if(!w)missing=true;weight+=w*cart[id];});if(count>=3)return {fee:0,free:true,missing:missing};if(missing||weight<=0)return {fee:null,free:false,missing:true};return {fee:150000+Math.max(0,Math.ceil(weight)-1)*50000,free:false,missing:false};}
 function openCart(){
 var ids=Object.keys(cart).filter(function(id){return cart[id]>0;});
 if(!ids.length){openSheet("سبد خرید",'<div class="empty">سبد خریدت هنوز خالیه.<br><br><button class="btn primary" id="browse-products">مشاهده محصولات</button></div><div class="notice">ثبت سفارش و پرداخت آنلاین در این نسخه آزمایشی فعال نیست؛ فعلاً می‌توانی کاتالوگ و سبد خرید را بررسی کنی.</div>');document.getElementById("browse-products").addEventListener("click",function(){closeSheet();document.getElementById("products").scrollIntoView({behavior:"smooth"});});return;}
