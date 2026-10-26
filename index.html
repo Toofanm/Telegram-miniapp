@@ -246,7 +246,7 @@ cart[id]=(cart[id]||0)+1;updateCart();document.querySelectorAll("[data-add]").fo
 function updateCart(){
 var count=Object.keys(cart).reduce(function(n,id){return n+cart[id];},0);
 document.getElementById("cart-count").textContent=fmt(count);
-document.getElementById("mobile-cart-count").textContent=count?fmt(count):"";document.getElementById("mobile-cart-count").style.display=count?"block":"none";
+document.getElementById("mobile-cart-count").textContent=count?fmt(count):"";document.getElementById("mobile-cart-count").style.display=count?"block":"none";document.querySelectorAll("[data-add]").forEach(function(b){var q=cart[b.dataset.add]||0;b.textContent=q?"+"+fmt(q):"+";b.classList.toggle("has-qty",q>0);});document.querySelectorAll("[data-qty-note]").forEach(function(n){var q=cart[n.dataset.qtyNote]||0;n.textContent=q?"در سبد خرید: "+fmt(q)+" عدد":"";});
 }
 function openSheet(title,content){document.getElementById("sheet-title").textContent=title;document.getElementById("sheet-content").innerHTML=content;document.getElementById("overlay").classList.add("open");document.body.style.overflow="hidden";}
 function closeSheet(){document.getElementById("overlay").classList.remove("open");document.body.style.overflow="";}
