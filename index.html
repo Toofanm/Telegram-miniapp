@@ -241,7 +241,7 @@ function findProduct(id){return products.find(function(p){return String(p.id)===
 function addToCart(id){
 var p=findProduct(id);if(!p)return;
 if(p.price==="out"||p.stock==="ناموجود"||p.available===false){notify("این محصول در حال حاضر ناموجود است.");return;}
-cart[id]=(cart[id]||0)+1;updateCart();document.querySelectorAll("[data-add=\\\""+CSS.escape(String(id))+"\\\"]").forEach(function(b){b.textContent="+"+fmt(cart[id]);b.classList.add("has-qty");});document.querySelectorAll("[data-qty-note=\\\""+CSS.escape(String(id))+"\\\"]").forEach(function(n){n.textContent="در سبد خرید: "+fmt(cart[id])+" عدد";});notify("به سبد خرید اضافه شد.");
+cart[id]=(cart[id]||0)+1;updateCart();document.querySelectorAll("[data-add]").forEach(function(b){if(b.dataset.add===String(id)){b.textContent="+"+fmt(cart[id]);b.classList.add("has-qty");}});document.querySelectorAll("[data-qty-note]").forEach(function(n){if(n.dataset.qtyNote===String(id))n.textContent="در سبد خرید: "+fmt(cart[id])+" عدد";});notify("به سبد خرید اضافه شد.");
 }
 function updateCart(){
 var count=Object.keys(cart).reduce(function(n,id){return n+cart[id];},0);
