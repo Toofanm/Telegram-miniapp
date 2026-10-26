@@ -55,6 +55,45 @@ body{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
 @media(min-width:601px){.hero{grid-template-columns:.92fr 1.08fr;min-height:390px}.hero-visual{height:340px}.hero-product{height:300px}.bottom-nav{bottom:16px}}
 @media(max-width:600px){.hero{padding:14px;margin:8px 0 18px;gap:12px;border-radius:20px}.hero h1{font-size:clamp(33px,9.2vw,45px);margin:11px 0 9px}.hero .eyebrow{font-size:8px}.hero-visual{height:236px;border-radius:16px}.hero-product{height:205px;width:59%;margin-left:-33%}.hero-specs{left:8px;width:43%}.hero-specs>small{font-size:6.5px}.hero-spec{padding:6px 5px}.hero-spec b{font-size:15px}.hero-foot b{font-size:9px}.hero-foot small{font-size:7px}.hero-proof{gap:12px}.hero-proof b{font-size:9px}.hero-proof small{font-size:7px}.nav-item{min-height:45px}}
 
+
+/* Final mobile-first corrections requested from screenshot review. */
+.dot{background:#d9ecff;box-shadow:0 0 0 0 rgba(217,236,255,.3);animation:promo-dot-pulse 2.8s ease-in-out infinite}
+@keyframes promo-dot-pulse{0%,100%{opacity:.55;box-shadow:0 0 0 0 rgba(217,236,255,0)}50%{opacity:1;box-shadow:0 0 0 4px rgba(217,236,255,.09)}}
+.hero p{max-width:470px}
+.bottom-nav{background:rgba(4,13,25,.94);border-color:rgba(106,164,226,.3);box-shadow:0 14px 38px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.035)}
+.nav-item{position:relative;overflow:hidden;border-radius:13px}
+.nav-item.active{background:linear-gradient(145deg,rgba(75,156,255,.22),rgba(25,74,128,.15));color:#86bdff;box-shadow:inset 0 0 0 1px rgba(104,174,255,.26)}
+.nav-item.active:before{content:"";position:absolute;top:0;left:30%;right:30%;height:2px;border-radius:0 0 4px 4px;background:#78b7ff;box-shadow:0 0 12px rgba(120,183,255,.45)}
+@media(max-width:600px){
+ .promo{min-height:34px;font-size:8.5px}
+ .hero{grid-template-columns:1fr;gap:14px;padding:13px;margin:8px 0 16px;border-radius:19px}
+ .hero-visual{grid-row:1;height:218px;min-height:0;border-radius:15px}
+ .hero-tag{top:10px;right:10px;padding:6px 8px;font-size:8px}
+ .hero-product{width:48%;height:174px;object-fit:contain;margin:0 0 0 30%;transform:none}
+ .hero-specs{left:10px;top:49%;transform:translateY(-50%);width:39%}
+ .hero-specs>small{font-size:6px;line-height:1.5;letter-spacing:.4px;margin-bottom:6px}
+ .hero-spec-grid{gap:4px}
+ .hero-spec{padding:5px 6px;border-radius:8px}
+ .hero-spec b{font-size:14px}
+ .hero-spec span{font-size:6.5px;margin-top:2px}
+ .hero-foot{left:10px;right:10px;bottom:8px;padding-top:6px;gap:5px}
+ .hero-foot b{font-size:8px}
+ .hero-foot small{font-size:6px}
+ .hero-foot .featured{font-size:6.5px}
+ .hero-copy{padding:2px 1px 3px}
+ .hero .eyebrow{font-size:7px;padding:6px 8px}
+ .hero h1{font-size:clamp(31px,8.5vw,41px);line-height:1.02;letter-spacing:-1.2px;margin:10px 0 10px}
+ .hero p{font-size:11px;line-height:2.05;max-width:none;margin:0}
+ .hero-actions{margin-top:12px;gap:7px}
+ .hero-proof{margin-top:15px;gap:14px}
+ .hero-proof b{font-size:9px}
+ .hero-proof small{font-size:7px}
+ .bottom-nav{width:calc(100% - 24px);left:12px;transform:none;bottom:calc(8px + env(safe-area-inset-bottom));grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;padding:6px;border-radius:18px}
+ .nav-item{min-height:48px;gap:4px;font-size:9px}
+ .nav-item span:first-child{font-size:19px}
+}
+@media(prefers-reduced-motion:reduce){.dot{animation:none;opacity:.8;box-shadow:none}}
+
 </style>
 </head>
 <body>
@@ -74,7 +113,7 @@ body{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
     <div class="hero-copy">
       <span class="eyebrow">SUPPLEMENT ENERGY · PERFORMANCE SERIES</span>
       <h1>BETTER<br>SUPPLEMENTS<br><span>BIGGER RESULTS</span></h1>
-      <p>مکمل مناسب هدفت رو پیدا کن؛ از پروتئین و افزایش حجم تا قدرت، پمپ و ریکاوری.</p>
+      <p>مکمل مناسب فقط یک محصول نیست؛ بخشی از مسیر عملکرد، ریکاوری و رسیدن به هدف توست.</p>
       <div class="hero-actions"><a class="btn primary" href="#products">مشاهده محصولات <b>←</b></a><a class="btn secondary" href="#categories">دسته‌بندی‌ها</a></div>
       <div class="hero-proof"><span><b>محصولات تخصصی</b><small>انتخاب براساس نوع مکمل</small></span><span><b>قیمت شفاف</b><small>نمایش به تومان</small></span><span><b>ارسال سراسری</b><small>از فروشگاه انرژی</small></span></div>
     </div>
