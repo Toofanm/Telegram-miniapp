@@ -2215,8 +2215,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "دیگر محصولات — 90 عدد | اهداف: مکمل عمومی | منبع تصویر: https://www.walmart.com/ip/336662530",
-    "isNew": false
+    "description": "MuscleMeds Feast Mode، مکمل ۹۰ کپسولی با ترکیب گیاهی محرک اشتها و آنزیم‌های گوارشی. هر وعده ۳ کپسول است؛ برای افزایش وزن باید در کنار برنامه غذایی و مازاد کالری استفاده شود. اطلاعات ترکیبات و هشدارها را با برچسب همان بسته تطبیق دهید.",
+    "isNew": false,
+    "imageSource": "https://musclemedsrx.com/products/feast-mode"
   },
   {
     "id": "p125",
@@ -2232,8 +2233,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "دیگر محصولات — 90 عدد | اهداف: مکمل عمومی | منبع تصویر: https://us.myprotein.com/p/sports-nutrition/essential-omega-3-softgels/10852582/",
-    "isNew": false
+    "description": "Myprotein Essential Omega-3، بسته ۹۰ سافت‌ژل. صفحه رسمی محصول EPA و DHA را در هر کپسول به‌ترتیب ۱۸۰ و ۱۲۰ میلی‌گرم اعلام می‌کند؛ حاوی روغن ماهی است. مقدار و دستور مصرف نهایی را از برچسب بسته بررسی کنید.",
+    "isNew": false,
+    "imageSource": "https://us.myprotein.com/p/sports-nutrition/essential-omega-3-softgels/10852582/"
   },
   {
     "id": "p126",
@@ -2249,8 +2251,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "دیگر محصولات — 120 عدد | اهداف: مکمل عمومی | منبع تصویر: https://www.dafit.cz/produkt/usn-omega-3-ultra-sport-120-cps-399812/",
-    "isNew": false
+    "description": "USN Omega-3 Ultra 2000، بسته ۱۲۰ کپسولی. عنوان محصول به فرمول امگا ۳ با دوز بالا اشاره دارد، اما مقدار EPA و DHA در این فهرست بدون تطبیق با برچسب رسمی قطعی تلقی نشود. تصویر فعلی از فروشنده ثالث است.",
+    "isNew": false,
+    "imageSource": "https://www.dafit.cz/produkt/usn-omega-3-ultra-sport-120-cps-399812/"
   },
   {
     "id": "p127",
@@ -2266,8 +2269,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "عصاره آشواگاندا KSM-66 — 90 کپسول | اهداف: سلامت عمومی، مدیریت استرس | منبع تصویر: https://www.islenutrition.com/products/ashwagandha-ksm-66-90-cap",
-    "isNew": false
+    "description": "Bigman Ashwagandha KSM-66، بسته ۹۰ کپسولی. صفحه رسمی Bigman برای این محصول عصاره ریشه KSM-66 را معرفی می‌کند؛ مقدار ماده مؤثره ثبت‌شده در صفحه رسمی با برچسب نسخه موجود تطبیق داده شود. تصویر فعلی از فروشنده ثالث است.",
+    "isNew": false,
+    "imageSource": "https://www.bigman.es/product-page/ashwagandha-ksm-66-90-c%C3%A1p"
   },
   {
     "id": "p128",
@@ -2283,8 +2287,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "دیگر محصولات — 90 عدد | اهداف: مکمل عمومی | منبع تصویر: https://naturestruth.com/products/ashwagandha-root-920-mg-nt2903",
-    "isNew": false
+    "description": "Nature’s Truth Ashwagandha Root، بسته ۹۰ کپسولی. توجه: صفحه رسمی محصول مربوط به ریشه آشواگاندا ۹۲۰ میلی‌گرم معادل در هر وعده دو کپسولی است و لزوماً KSM-66 نیست؛ نام محصول و ادعای مقدار را مطابق بسته‌بندی نگه دارید.",
+    "isNew": false,
+    "imageSource": "https://naturestruth.com/products/ashwagandha-root-920-mg-nt2903"
   },
   {
     "id": "p129",
@@ -2300,8 +2305,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "عصاره آشواگاندا KSM-66 — 30 کپسول | اهداف: سلامت عمومی، مدیریت استرس | منبع تصویر: https://www.myprotein.com/p/sports-nutrition/ashwagandha-ksm66-capsules/12335319/",
-    "isNew": false
+    "description": "Myvitamins Ashwagandha KSM-66، بسته ۳۰ کپسولی. صفحه رسمی سازنده ۵۰۰ میلی‌گرم عصاره KSM-66 در هر کپسول را ذکر می‌کند. پیش از مصرف، ترکیبات و دستور مصرف روی بسته را بررسی کنید.",
+    "isNew": false,
+    "imageSource": "https://www.myvitamins.com/p/myvitamins-ashwagandha-ksm66-capsules/12335319/"
   },
   {
     "id": "p130",
@@ -2317,8 +2323,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "ال تیروزین — 500 mg — 50 کپسول | اهداف: مکمل عمومی | منبع تصویر: https://www.hollandandbarrett.com/shop/product/l-tyrosine-500mg-50-capsules-6100004699",
-    "isNew": false
+    "description": "Holland & Barrett L-Tyrosine، بسته ۵۰ کپسولی؛ محصول رسمی این نام با دوز ۵۰۰ میلی‌گرم عرضه می‌شود. تصویر از کتابخانه تصویری H&B است؛ دوز و تعداد کپسول با برچسب بسته تطبیق داده شود.",
+    "isNew": false,
+    "imageSource": "https://www.hollandandbarrett.com/shop/product/l-tyrosine-500mg-50-capsules-6100004699"
   },
   {
     "id": "p131",
@@ -2334,8 +2341,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "دیگر محصولات — 60 عدد | اهداف: مکمل عمومی | منبع تصویر: https://xpnworld.com/products/cortistab",
-    "isNew": false
+    "description": "XPN CortiStab، بسته ۶۰ عددی. مکمل ترکیبی با هدف پشتیبانی تغذیه‌ای؛ از ادعای تنظیم قطعی کورتیزول یا درمان اختلالات هورمونی خودداری شود. ترکیبات و دوز هر وعده را از برچسب رسمی بررسی کنید.",
+    "isNew": false,
+    "imageSource": "https://xpnworld.com/products/cortistab"
   },
   {
     "id": "p132",
@@ -2351,8 +2359,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "دیگر محصولات — 90 عدد | اهداف: مکمل عمومی | منبع تصویر: https://xpnworld.com/collections/improve-health/products/zm-x",
-    "isNew": false
+    "description": "XPN ZM-X، بسته ۹۰ کپسولی؛ ترکیب شامل منیزیم گلیسینات، روی، تورین، ال‌تیانین، ویتامین B6 و مس است. صفحه رسمی دوز پیشنهادی سه کپسول در روز را درج می‌کند؛ برچسب محصول موجود ملاک نهایی است.",
+    "isNew": false,
+    "imageSource": "https://xpnworld.com/collections/improve-health/products/zm-x"
   },
   {
     "id": "p133",
@@ -2368,7 +2377,7 @@
     "image3": "",
     "icon": "💊",
     "badge": "",
-    "description": "Optimum Nutrition ZMA، ترکیب روی، منیزیم و ویتامین B6؛ بسته ۹۰ کپسولی برای پشتیبانی از دریافت ریزمغذی‌ها.",
+    "description": "Optimum Nutrition ZMA، بسته ۹۰ کپسولی؛ ترکیب روی، منیزیم و ویتامین B6. این محصول مکمل ریزمغذی است و نباید به‌عنوان درمان قطعی اختلال خواب یا هورمونی معرفی شود. اطلاعات دقیق برچسب بسته را بررسی کنید.",
     "isNew": false,
     "imageSource": "https://www.optimumnutrition.com/en-us/products/zma-zinc-magnesium-aspartate-supplement"
   },
