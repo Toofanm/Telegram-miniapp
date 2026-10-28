@@ -418,7 +418,7 @@
     "image3": "",
     "icon": "💪",
     "badge": "",
-    "description": "پروتئین وی Whey-X برند XPN، بسته ۲ کیلوگرمی؛ پروتئین کنسانتره وی با ۲۳ گرم پروتئین در هر سروینگ و بدون قند افزوده، طبق اطلاعات سازنده.",
+    "description": "XPN Whey-X، پروتئین وی کنسانتره برای تکمیل پروتئین روزانه. مشخصات فعلی کاتالوگ ۲ کیلوگرم و ۲۳ گرم پروتئین در هر سروینگ را درج می‌کند؛ مقدار دقیق باید با برچسب طعم و بسته موجود تطبیق داده شود.",
     "isNew": false,
     "imageSource": "https://xpnworld.com/products/whey-x"
   },
@@ -436,8 +436,9 @@
     "image3": "",
     "icon": "💪",
     "badge": "",
-    "description": "وی  راش اکس پی ان رژیمی ۱.۸کیلو | دسته: protein | منبع تصویر: https://xpnworld.com/products/protein-rush",
-    "isNew": false
+    "description": "XPN Protein Rush رژیمی، مکمل پروتئین وی در بسته ثبت‌شده ۱٫۸ کیلوگرمی. تصویر به صفحه محصول سازنده ارجاع داده شده است؛ مقادیر کالری، قند و پروتئین به‌صورت عددی اضافه نشد چون باید با طعم و برچسب بسته موجود تطبیق داده شود.",
+    "isNew": false,
+    "imageSource": "https://xpnworld.com/products/protein-rush"
   },
   {
     "id": "p026",
@@ -453,8 +454,9 @@
     "image3": "",
     "icon": "🥛",
     "badge": "",
-    "description": "پروتئین ترکیبی — بسته مرجع تصویر 1.78 کیلوگرمی | اهداف: تأمین پروتئین روزانه، ریکاوری عضلات | منبع تصویر: https://www.koerper-kult.com/BSN-Syntha-6-Edge-1870g",
-    "isNew": false
+    "description": "BSN Syntha-6 Edge، پروتئین ترکیبی برای تکمیل دریافت پروتئین و حمایت از ریکاوری؛ سازنده ۲۴ گرم پروتئین در هر وعده اعلام می‌کند. تصویر مرجع برای بسته حدود ۱٫۷۸ کیلوگرمی است؛ وزن دقیق موجودی با برچسب بسته تأیید شود.",
+    "isNew": false,
+    "imageSource": "https://www.bsn.co.kr/products/syntha-6-r-edge"
   },
   {
     "id": "p027",
@@ -470,8 +472,9 @@
     "image3": "",
     "icon": "🥛",
     "badge": "",
-    "description": "پروتئین — 1.8 kg | اهداف: تأمین پروتئین روزانه | منبع تصویر: https://ke.usn.global/products/usn%C2%AE-hydrotech-whey-900-g-1-8-kg",
-    "isNew": false
+    "description": "USN Hydrotech Whey، محصول پروتئینی مبتنی بر وی در بسته‌های ۹۰۰ گرم و ۱٫۸ کیلوگرم طبق صفحه سازنده. وزن ثبت‌شده کاتالوگ ۱٫۸ کیلوگرم است؛ تصویر باید با همان اندازه و طعم موجود تطبیق داده شود.",
+    "isNew": false,
+    "imageSource": "https://ke.usn.global/products/usn%C2%AE-hydrotech-whey-900-g-1-8-kg"
   },
   {
     "id": "p028",
@@ -487,8 +490,9 @@
     "image3": "",
     "icon": "🥛",
     "badge": "",
-    "description": "پروتئین — 2 kg | اهداف: تأمین پروتئین روزانه | منبع تصویر: https://usn.global/products/usn%C2%AE-100-percent-premium-whey-protein",
-    "isNew": false
+    "description": "USN 100% Premium Whey Protein، ترکیبی از وی کنسانتره و ایزوله برای تکمیل دریافت پروتئین روزانه. صفحه رسمی ترکیب محصول و اطلاعات تغذیه‌ای را ارائه می‌کند؛ مقادیر ممکن است بر اساس طعم متفاوت باشد.",
+    "isNew": false,
+    "imageSource": "https://usn.global/products/usn%C2%AE-100-percent-premium-whey-protein"
   },
   {
     "id": "p029",
@@ -504,8 +508,9 @@
     "image3": "",
     "icon": "🥛",
     "badge": "",
-    "description": "پروتئین ترکیبی همراه کراتین — 2 کیلوگرم | اهداف: افزایش وزن، ریکاوری، تأمین پروتئین | منبع تصویر: https://usn.global/products/hardcore-whey-gh",
-    "isNew": false
+    "description": "USN Hardcore Whey gH، فرمول ترکیبی شامل پروتئین وی، کراتین و ترکیبات افزوده؛ طبق سازنده هر وعده ۳۳ گرمی حدود ۲۷ گرم پروتئین و ۳ گرم کراتین فراهم می‌کند. وزن ۲ کیلوگرمی کاتالوگ باید با بسته موجود تأیید شود.",
+    "isNew": false,
+    "imageSource": "https://usn.global/products/hardcore-whey-gh"
   },
   {
     "id": "p030",
@@ -521,8 +526,9 @@
     "image3": "",
     "icon": "🥛",
     "badge": "",
-    "description": "پروتئین — 2 kg | اهداف: تأمین پروتئین روزانه | منبع تصویر: https://usn.global/products/blue-lab-whey-protein",
-    "isNew": false
+    "description": "USN BlueLab Whey، ترکیبی از وی ایزوله، هیدرولیزه و کنسانتره؛ سازنده تا ۲۵ گرم پروتئین در هر پیمانه اعلام می‌کند. اندازه بسته و مقادیر تغذیه‌ای بر اساس طعم و نسخه بازار می‌تواند متفاوت باشد.",
+    "isNew": false,
+    "imageSource": "https://usn.global/products/blue-lab-whey-protein"
   },
   {
     "id": "p031",
@@ -538,8 +544,9 @@
     "image3": "",
     "icon": "🥛",
     "badge": "",
-    "description": "پروتئین — 2 kg | اهداف: تأمین پروتئین روزانه | منبع تصویر: https://usn.global/products/iso-gro-whey",
-    "isNew": false
+    "description": "USN ISO-GRO Whey، فرمول ترکیبی شامل وی کنسانتره، پروتئین شیر، پپتید گوشت هیدرولیزشده، کراتین و گلوتامین؛ سازنده برای نسخه شکلات حدود ۲۸ گرم پروتئین در هر وعده ۳۵ گرمی اعلام می‌کند. نام «ایزوله» در عنوان کاتالوگ با ترکیبات صفحه رسمی نیازمند بازبینی است.",
+    "isNew": false,
+    "imageSource": "https://usn.global/products/iso-gro-whey"
   },
   {
     "id": "p032",
@@ -555,8 +562,9 @@
     "image3": "",
     "icon": "🥛",
     "badge": "",
-    "description": "پروتئین — 2.3 kg | اهداف: تأمین پروتئین روزانه | منبع تصویر: https://www.ruleoneproteins.com/products/r1-protein-whey-isolate",
-    "isNew": false
+    "description": "Rule One R1 Whey Isolate، پروتئین ایزوله وی؛ سازنده ۲۵ گرم پروتئین در هر وعده و دست‌کم ۶ گرم BCAA اعلام می‌کند. تصویر مرجع بسته ۵ پوندی است و با وزن ثبت‌شده حدود ۲٫۳ کیلوگرم هم‌خوانی دارد.",
+    "isNew": false,
+    "imageSource": "https://www.ruleoneproteins.com/products/r1-protein-whey-isolate"
   },
   {
     "id": "p033",
@@ -572,8 +580,9 @@
     "image3": "",
     "icon": "🥛",
     "badge": "",
-    "description": "پروتئین — 2.3 kg | اهداف: تأمین پروتئین روزانه | منبع تصویر: https://www.allmaxnutrition.com/products/allmax-isoflex-whey-protein-isolate",
-    "isNew": false
+    "description": "ALLMAX Isoflex، پروتئین وی ایزوله؛ طبق صفحه رسمی هر پیمانه ۳۰ گرمی ۲۷ گرم پروتئین دارد و بدون شکر افزوده و چربی معرفی شده است. تصویر و وزن مرجع ۵ پوندی با وزن ثبت‌شده حدود ۲٫۳ کیلوگرم تطبیق دارد.",
+    "isNew": false,
+    "imageSource": "https://www.allmaxnutrition.com/products/allmax-isoflex-whey-protein-isolate"
   },
   {
     "id": "p034",
