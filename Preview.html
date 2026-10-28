@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>پیش‌نمایش مرحله ۱ — بازطراحی هدر و Hero Section</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #202a39;
+      --surface: #293545;
+      --surface2: #303d4e;
+      --elevated: #39495d;
+      --line: rgba(190, 210, 235, 0.18);
+      --text: #f4f4f1;
+      --muted: #bdc7d3;
+      --blue: #72b6ff;
+      --blue2: #a8d2ff;
+      --accent-green: #10b981;
+      --accent-lime: #34d399;
+      --blue-soft: rgba(114, 182, 255, 0.15);
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background-color: #202a39;
+      background-image:
+        radial-gradient(ellipse at 75% 0%, rgba(91, 153, 221, 0.22), transparent 42%),
+        radial-gradient(ellipse at 15% 35%, rgba(16, 185, 129, 0.08), transparent 36%);
+      color: var(--text);
+      font-family: Vazirmatn, system-ui, sans-serif;
+      overflow-x: clip;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    .shell { width: min(1280px, calc(100% - 56px)); margin: auto; }
+
+    /* نوار اعلان بالای صفحه */
+    .store-promo-bar {
+      min-height: 36px;
+      padding: 7px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: linear-gradient(90deg, #0f2942 0%, #15456b 50%, #0f2942 100%);
+      border-bottom: 1px solid rgba(143, 197, 255, 0.2);
+      color: #f4f8ff;
+      font-size: 11.5px;
+      font-weight: 500;
+    }
+    .store-promo-bar b {
+      color: #6ee7b7;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.14);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .store-promo-bar a {
+      color: #a8d2ff;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .promo-pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #34d399;
+      box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.2), 0 0 12px #10b981;
+      animation: pulseGlow 2s infinite;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.75; }
+    }
+
+    /* هدر شیشه‌ای شناور */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(26, 35, 48, 0.78);
+      backdrop-filter: blur(22px) saturate(180%);
+      -webkit-backdrop-filter: blur(22px) saturate(180%);
+      border-bottom: 1px solid rgba(190, 210, 235, 0.14);
+      box-shadow: 0 12px 36px rgba(6, 12, 20, 0.28);
+    }
+    .site-header .header-inner {
+      width: min(1280px, calc(100% - 56px));
+      margin-inline: auto;
+      padding: 12px 0 14px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 11px;
+    }
+    .header-top-row {
+      direction: ltr;
+      width: 100%;
+      min-height: 52px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, auto) minmax(0, 1fr);
+      align-items: center;
+      gap: clamp(12px, 2vw, 28px);
+    }
+    .header-top-row > .header-actions {
+      grid-column: 1;
+      justify-self: start;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      direction: rtl;
+    }
+    .header-top-row > .desktop-nav {
+      grid-column: 2;
+      justify-self: center;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      direction: rtl;
+      padding: 5px 7px;
+      border-radius: 999px;
+      background: rgba(15, 23, 34, 0.55);
+      border: 1px solid rgba(190, 210, 235, 0.14);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+    .header-top-row > .desktop-nav a,
+    .header-top-row > .desktop-nav button {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #dbe7f5;
+      background: transparent;
+      border: 0;
+      padding: 7px 16px;
+      border-radius: 999px;
+      transition: all 0.2s ease;
+    }
+    .header-top-row > .desktop-nav a:hover,
+    .header-top-row > .desktop-nav button:hover {
+      color: #fff;
+      background: rgba(114, 182, 255, 0.16);
+    }
+    .header-top-row > .brand {
+      grid-column: 3;
+      justify-self: end;
+      direction: rtl;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(114, 182, 255, 0.65);
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      transform: skew(-8deg);
+      background: linear-gradient(145deg, rgba(75, 156, 255, 0.2), rgba(16, 185, 129, 0.12));
+      box-shadow: 0 0 24px rgba(75, 156, 255, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    .brand-mark i {
+      font-style: normal;
+      font-weight: 800;
+      color: #93caff;
+      letter-spacing: 0.5px;
+    }
+    .brand-word b { display: block; font-size: 15px; letter-spacing: 1.6px; color: #fff; }
+    .brand-word small { display: block; font-size: 9px; color: #6ee7b7; letter-spacing: 4px; margin-top: 5px; font-weight: 700; }
+    .cart-button {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      border: 1px solid rgba(143, 197, 255, 0.28);
+      border-radius: 12px;
+      padding: 8px 13px;
+      background: linear-gradient(145deg, rgba(41, 55, 73, 0.85), rgba(27, 37, 50, 0.9));
+      color: #eef5ff;
+      font-size: 12px;
+      font-weight: 600;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+    }
+    .cart-button b {
+      min-width: 23px;
+      height: 23px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #34d399, #10b981);
+      color: #041f17;
+      font-size: 11.5px;
+      font-weight: 800;
+    }
+    .site-header .header-search {
+      width: 100%;
+      min-height: 46px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 14px;
+      background: rgba(17, 25, 36, 0.72);
+      border: 1px solid rgba(190, 210, 235, 0.16);
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.22);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .site-header .header-search:focus-within {
+      border-color: rgba(114, 182, 255, 0.7);
+      box-shadow: 0 0 0 3px rgba(114, 182, 255, 0.18), inset 0 2px 6px rgba(0, 0, 0, 0.22);
+    }
+    .site-header .header-search input {
+      flex: 1;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: var(--text);
+      font-size: 12.5px;
+    }
+    .site-header .header-search button {
+      border: 1px solid rgba(143, 197, 255, 0.22);
+      background: rgba(114, 182, 255, 0.12);
+      color: #a8d2ff;
+      border-radius: 9px;
+      padding: 4px 10px;
+      font-size: 12px;
+    }
+
+    /* بخش آغازین (Cinematic Hero Section) */
+    .cinematic-hero {
+      width: min(1500px, 100%);
+      min-height: clamp(520px, 48vw, 640px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      align-items: stretch;
+      position: relative;
+      overflow: hidden;
+      background-color: #2b3545;
+      background-image:
+        radial-gradient(circle at 18% 25%, rgba(75, 156, 255, 0.14), transparent 38%),
+        radial-gradient(circle at 75% 50%, rgba(16, 185, 129, 0.1), transparent 42%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+    }
+    .cinematic-copy {
+      position: relative;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(28px, 4vw, 54px) clamp(24px, 4.8vw, 76px);
+      direction: ltr;
+      text-align: left;
+    }
+    .editorial-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      color: #9cb2ca;
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      border-bottom: 1px solid rgba(190, 210, 235, 0.16);
+      padding-bottom: 13px;
+    }
+    .hero-kicker {
+      align-self: flex-start;
+      margin-top: 26px;
+      direction: rtl;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: #e6f1ff;
+      border: 1px solid rgba(110, 231, 183, 0.32);
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.16), rgba(15, 31, 48, 0.75));
+      backdrop-filter: blur(12px);
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 11.5px;
+      font-weight: 600;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    }
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #34d399;
+      box-shadow: 0 0 12px #34d399;
+    }
+    .cinematic-copy h1 {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: clamp(46px, 5.8vw, 84px);
+      font-weight: 900;
+      letter-spacing: -0.045em;
+      line-height: 0.94;
+      margin: 16px 0 0;
+      color: #ffffff;
+      text-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
+    }
+    .cinematic-copy h1 span {
+      display: inline-block;
+      background: linear-gradient(95deg, #8fc5ff 0%, #6ee7b7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: #8fc5ff;
+    }
+    .cinematic-copy p {
+      direction: rtl;
+      text-align: right;
+      max-width: 460px;
+      color: #d0dae5;
+      font-size: 13.5px;
+      line-height: 2.05;
+      margin: 18px 0 0;
+      align-self: flex-start;
+    }
+    .hero-actions {
+      direction: rtl;
+      align-self: flex-start;
+      display: flex;
+      gap: 12px;
+      margin-top: 22px;
+    }
+    .btn {
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      padding: 13px 22px;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.03);
+      font-weight: 700;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.22s ease;
+    }
+    .btn.primary {
+      background: linear-gradient(135deg, #3b9eff 0%, #1d6fe8 55%, #10b981 100%);
+      border-color: rgba(168, 210, 255, 0.4);
+      color: #fff;
+      box-shadow: 0 14px 34px rgba(29, 111, 232, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+    .btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px rgba(29, 111, 232, 0.46);
+    }
+    .btn.ghost {
+      background: rgba(17, 27, 40, 0.55);
+      border-color: rgba(190, 210, 235, 0.25);
+      backdrop-filter: blur(10px);
+    }
+    .btn.ghost:hover {
+      border-color: #8fc5ff;
+      background: rgba(114, 182, 255, 0.14);
+    }
+    .hero-quick-stats {
+      direction: rtl;
+      align-self: flex-start;
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      gap: 18px;
+      margin-top: 24px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: rgba(15, 24, 36, 0.46);
+      border: 1px solid rgba(190, 210, 235, 0.14);
+      backdrop-filter: blur(12px);
+    }
+    .hero-quick-stats div {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding-left: 14px;
+      border-left: 1px solid rgba(190, 210, 235, 0.14);
+    }
+    .hero-quick-stats div:last-child { border-left: 0; padding-left: 0; }
+    .hero-quick-stats b { font-size: 13px; color: #fff; }
+    .hero-quick-stats small { font-size: 10px; color: #9cb2ca; }
+    .editorial-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      color: #8da3bc;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      border-top: 1px solid rgba(190, 210, 235, 0.16);
+      padding-top: 13px;
+      margin-top: 22px;
+    }
+
+    /* بخش بصری محصول شاخص با Rim Lighting و بج‌های شیشه‌ای */
+    .cinematic-hero-visual {
+      position: relative;
+      min-height: 520px;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 52% 45%, rgba(111, 173, 240, 0.26), transparent 46%),
+        radial-gradient(circle at 50% 55%, rgba(16, 185, 129, 0.14), transparent 36%),
+        linear-gradient(140deg, #303c4e, #1e2837);
+      cursor: crosshair;
+    }
+    .hero-atmosphere {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(168, 210, 255, 0.18) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: radial-gradient(circle at 50% 48%, #000 30%, transparent 75%);
+      opacity: 0.55;
+      pointer-events: none;
+    }
+    .hero-rings {
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      left: 50%;
+      top: 47%;
+      transform: translate(-50%, -50%);
+      border: 1px solid rgba(143, 197, 255, 0.18);
+      border-radius: 50%;
+      box-shadow: 0 0 0 65px rgba(114, 182, 255, 0.03), 0 0 90px rgba(16, 185, 129, 0.08);
+      pointer-events: none;
+    }
+    .hero-rings::after {
+      content: "";
+      position: absolute;
+      inset: 68px;
+      border: 1px dashed rgba(110, 231, 183, 0.22);
+      border-radius: 50%;
+    }
+    .hero-rim-glow {
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      left: 50%;
+      top: 46%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(114, 182, 255, 0.34) 0%, rgba(16, 185, 129, 0.18) 45%, transparent 72%);
+      filter: blur(22px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-stage-pedestal {
+      position: absolute;
+      width: 260px;
+      height: 44px;
+      left: 50%;
+      bottom: 66px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(4, 9, 16, 0.85) 0%, rgba(4, 9, 16, 0.4) 55%, transparent 76%);
+      box-shadow: 0 0 35px rgba(75, 156, 255, 0.22);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero-product-stage {
+      position: absolute;
+      left: 50%;
+      top: 47%;
+      width: min(460px, 78%);
+      height: 520px;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      display: grid;
+      place-items: center;
+    }
+    .hero-whey {
+      position: absolute;
+      width: 390px;
+      max-width: 92%;
+      height: auto;
+      object-fit: contain;
+      user-select: none;
+      filter: drop-shadow(0 36px 48px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 22px rgba(114, 182, 255, 0.18));
+      transition: transform 0.35s ease, filter 0.35s ease;
+    }
+    .cinematic-hero-visual:hover .hero-whey.closed {
+      transform: translateY(-4px) scale(1.015);
+    }
+    .hero-product-reveal {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      opacity: var(--reveal-opacity, 0);
+      transition: opacity 0.35s ease-out;
+      pointer-events: none;
+      mask-image: radial-gradient(closest-side, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+      -webkit-mask-image: radial-gradient(closest-side, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+      mask-size: 165px 195px;
+      -webkit-mask-size: 165px 195px;
+      mask-position: calc(var(--mx, 50%) - 82px) calc(var(--my, 50%) - 97px);
+      -webkit-mask-position: calc(var(--mx, 50%) - 82px) calc(var(--my, 50%) - 97px);
+      mask-repeat: no-repeat;
+      -webkit-mask-repeat: no-repeat;
+    }
+    .open-whey { position: absolute; inset: 0; display: grid; place-items: center; }
+    .open-body {
+      width: 390px;
+      max-width: 92%;
+      transform: translateY(20px);
+      clip-path: inset(11% 0 0 0);
+      filter: brightness(0.75) contrast(1.08) drop-shadow(0 40px 50px rgba(0,0,0,0.75));
+    }
+    .open-rim {
+      position: absolute;
+      z-index: 4;
+      width: 240px;
+      height: 78px;
+      top: calc(50% - 215px);
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: radial-gradient(ellipse at 50% 56%, #bba47a 0 18%, #6e604a 19% 26%, #0b0e12 27% 55%, #020406 56% 100%);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.65), inset 0 0 0 3px rgba(143, 197, 255, 0.28);
+    }
+    .powder-bed {
+      position: absolute;
+      left: 18%; right: 18%; bottom: 18%; height: 48%;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, #e2d9c6 0 38%, #b7aa91 62%, #655d4e 100%);
+    }
+    .scoop {
+      position: absolute;
+      width: 82px; height: 46px; left: 50%; top: 20%;
+      transform: translateX(-18%) rotate(-8deg);
+      border-radius: 50%;
+      background: radial-gradient(ellipse at 50% 45%, #f1e9da 0 50%, #b9ad98 65%, #5b5549 100%);
+    }
+
+    /* بج‌های شیشه‌ای ماکرو (Floating Glassmorphic Badges) */
+    .hero-spec {
+      position: absolute;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      background: linear-gradient(145deg, rgba(22, 34, 49, 0.82), rgba(12, 20, 31, 0.68));
+      border: 1px solid rgba(168, 210, 255, 0.28);
+      border-left: 3px solid #6ee7b7;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+      color: #f5f8ff;
+      direction: ltr;
+    }
+    .hero-spec b { font-size: 20px; font-weight: 800; line-height: 1.05; color: #fff; }
+    .hero-spec small { font-size: 8.5px; font-weight: 700; color: #93caff; letter-spacing: 0.13em; }
+    .hero-spec em { font-style: normal; font-size: 9px; color: #6ee7b7; margin-top: 2px; }
+    .spec-one { left: 26px; top: 22%; }
+    .spec-two { left: 26px; top: 52%; border-left-color: #72b6ff; }
+    .spec-three { right: 26px; top: 26%; border-left-color: #fbbf24; }
+    .hero-auth-pill {
+      position: absolute;
+      right: 26px;
+      bottom: 72px;
+      z-index: 4;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(14, 25, 38, 0.8);
+      border: 1px solid rgba(110, 231, 183, 0.35);
+      backdrop-filter: blur(16px);
+      color: #e6f7f0;
+      font-size: 11px;
+      font-weight: 700;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+    }
+    .hero-auth-pill i {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(16, 185, 129, 0.22);
+      color: #34d399;
+      font-style: normal;
+      font-size: 12px;
+    }
+    .hero-product-caption {
+      position: absolute;
+      z-index: 5;
+      left: 26px;
+      right: 26px;
+      bottom: 18px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3px 18px;
+      padding-top: 11px;
+      border-top: 1px solid rgba(190, 218, 249, 0.24);
+      direction: ltr;
+    }
+    .hero-product-caption span,
+    .hero-product-caption small { font-size: 8.5px; color: #9cb2ca; letter-spacing: 0.13em; }
+    .hero-product-caption b { font-size: 11.5px; font-weight: 700; letter-spacing: 0.08em; grid-column: 2; text-align: right; color: #fff; }
+    .hero-product-caption small { grid-column: 2; text-align: right; color: #6ee7b7; }
+
+    @media (max-width: 900px) {
+      .cinematic-hero { grid-template-columns: 1fr; }
+      .cinematic-hero-visual { order: 1; min-height: 420px; }
+      .cinematic-copy { order: 2; padding: 24px 20px 30px; }
+      .spec-three, .hero-auth-pill { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="store-promo-bar">
+    <span class="promo-pulse"></span>
+    مکمل موردنظرت رو سریع پیدا کن
+    <b>ارسال سفارش به سراسر کشور</b>
+    <a href="#products">مشاهده محصولات ←</a>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner shell">
+      <div class="header-top-row">
+        <div class="header-actions">
+          <a href="#cart" class="cart-button"><span>سبد خرید</span><b>۲</b></a>
+        </div>
+        <nav class="desktop-nav" aria-label="ناوبری اصلی">
+          <a href="#quick-access">دسترسی سریع</a>
+          <a href="#categories">دسته‌بندی‌ها</a>
+          <button type="button">همه محصولات</button>
+        </nav>
+        <a href="#" class="brand">
+          <span class="brand-mark"><i>SE</i></span>
+          <span class="brand-word"><b>SUPPLEMENT</b><small>ENERGY</small></span>
+        </a>
+      </div>
+      <div class="header-search search-box">
+        <span aria-hidden="true">⌕</span>
+        <input type="text" placeholder="جست‌وجوی نام محصول، برند یا مکمل (مثلاً وی گلد، کراتین، موتانت)..." />
+        <button type="button">جست‌وجو</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="cinematic-hero shell" aria-label="بنر اصلی فروشگاه">
+    <div class="cinematic-copy">
+      <div class="editorial-top">
+        <span>SUPPLEMENT ENERGY®</span>
+        <span>CLINICAL &amp; SPORTS NUTRITION</span>
+      </div>
+      <div class="hero-kicker">
+        <span class="pulse-dot"></span>
+        انتخاب حرفه‌ای، اصالت تضمین‌شده آزمایشگاهی
+      </div>
+      <h1>BETTER<br/>SUPPLEMENTS<br/><span>BIGGER RESULTS</span></h1>
+      <p>مکمل مناسب فقط یک محصول نیست؛ سوخت دقیق عضله‌سازی، ریکاوری سریع‌تر و عبور از مرز رکوردهای قبلی توست.</p>
+      <div class="hero-actions">
+        <a href="#products" class="btn primary">مشاهده محصولات <b>←</b></a>
+        <a href="#ai" class="btn ghost">مشاور هوشمند انتخاب مکمل</a>
+      </div>
+      <div class="hero-quick-stats">
+        <div><b>+۸۰ محصول</b><small>موجودی کاتالوگ</small></div>
+        <div><b>۱۰۰٪ اورجینال</b><small>تضمین بچ‌نامبر</small></div>
+        <div><b>ارسال سریع</b><small>سراسر ایران</small></div>
+      </div>
+      <div class="editorial-bottom">
+        <span>PERFORMANCE / NUTRITION</span>
+        <span>SCROLL ↓</span>
+      </div>
+    </div>
+
+    <div class="cinematic-hero-visual" id="heroVisual" role="button" tabindex="0" aria-pressed="false">
+      <div class="hero-atmosphere"></div>
+      <div class="hero-rings"></div>
+      <div class="hero-rim-glow"></div>
+      <div class="hero-stage-pedestal"></div>
+
+      <div class="hero-product-stage">
+        <img class="hero-whey closed" src="https://www.optimumnutrition.com/cdn/shop/files/GSW_DRC_5lb_FOP.png?v=1776173227&width=2500" alt="Optimum Nutrition Gold Standard 100% Whey" draggable="false" />
+        <div class="hero-product-reveal" id="heroReveal" aria-hidden="true">
+          <div class="open-whey">
+            <div class="open-rim"><span class="powder-bed"></span><span class="scoop"></span></div>
+            <img class="hero-whey open-body" src="https://www.optimumnutrition.com/cdn/shop/files/GSW_DRC_5lb_FOP.png?v=1776173227&width=2500" alt="" draggable="false" />
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-spec spec-one">
+        <b>24g</b>
+        <small>PURE PROTEIN</small>
+        <em>Whey Isolate Primary</em>
+      </div>
+      <div class="hero-spec spec-two">
+        <b>5.5g</b>
+        <small>NATURALLY OCCURRING BCAA</small>
+        <em>Muscle Recovery</em>
+      </div>
+      <div class="hero-spec spec-three">
+        <b>4g</b>
+        <small>GLUTAMINE &amp; PRECURSORS</small>
+        <em>Anti-Catabolic</em>
+      </div>
+      <div class="hero-auth-pill">
+        <i>✓</i>
+        <span>تضمین اصالت و پلمپ اصلی</span>
+      </div>
+
+      <div class="hero-product-caption">
+        <span>01 / FEATURED FORMULA</span>
+        <b>GOLD STANDARD 100% WHEY</b>
+        <small>DOUBLE RICH CHOCOLATE · 2.27 KG (74 SERVINGS)</small>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const visual = document.getElementById('heroVisual');
+    const reveal = document.getElementById('heroReveal');
+    visual.addEventListener('mousemove', (e) => {
+      const rect = visual.getBoundingClientRect();
+      reveal.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+      reveal.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+      reveal.style.setProperty('--reveal-opacity', '1');
+    });
+    visual.addEventListener('mouseleave', () => {
+      reveal.style.setProperty('--reveal-opacity', '0');
+    });
+    visual.addEventListener('click', (e) => {
+      const rect = visual.getBoundingClientRect();
+      const current = visual.getAttribute('aria-pressed') === 'true';
+      visual.setAttribute('aria-pressed', String(!current));
+      reveal.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+      reveal.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+      reveal.style.setProperty('--reveal-opacity', !current ? '1' : '0');
+    });
+  </script>
+</body>
+</html>
