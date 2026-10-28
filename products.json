@@ -2036,7 +2036,7 @@
     "image3": "",
     "icon": "🌿",
     "badge": "",
-    "description": "USN Liv Smart Marine Collagen، پودر کلاژن دریایی ۳۳۰ گرمی؛ برای تکمیل دریافت کلاژن در رژیم غذایی.",
+    "description": "USN Liv Smart Marine Collagen، پودر کلاژن دریایی ۳۳۰ گرمی. تصویر فعلی از فروشنده ثالث است و صفحه فروشنده به‌عنوان مرجع ثبت شده؛ گونه، طعم و اطلاعات دقیق هر سروینگ باید با برچسب بسته موجودی تطبیق داده شود. این محصول مکمل غذایی است و نباید ادعای درمانی برای مفاصل یا پوست به آن نسبت داده شود.",
     "isNew": false,
     "imageSource": "https://www.proteini.si/hr/kolagen/usn-liv-smart-marine-collagen-330g"
   },
@@ -2054,7 +2054,7 @@
     "image3": "",
     "icon": "🌿",
     "badge": "",
-    "description": "کلاژن پیور XPN، بسته ۳۰۰ گرم با طعم لیموناد توت‌فرنگی؛ پودر کلاژن هیدرولیزشده با ۱۰ گرم کلاژن در هر سروینگ، طبق اطلاعات سازنده.",
+    "description": "XPN Pure Collagen، بسته ۳۰۰ گرمی با طعم لیموناد توت‌فرنگی. تصویر با صفحه رسمی محصول تطبیق داده شده است؛ طبق معرفی سازنده، هر سروینگ حاوی ۱۰ گرم کلاژن هیدرولیزشده است. طعم و مشخصات نهایی را با بسته موجودی فروشگاه تطبیق دهید.",
     "isNew": false,
     "imageSource": "https://xpnworld.com/products/pure-collagen"
   },
@@ -2072,8 +2072,9 @@
     "image3": "",
     "icon": "🌿",
     "badge": "",
-    "description": "کلاژن اکسترا اکتیولب ۳۰۰گرم | دسته: multivitamin | منبع تصویر: https://en.activlab.pl/products/fr-083-ws",
-    "isNew": false
+    "description": "Activlab Collagen Extra، پودر کلاژن ۳۰۰ گرمی با طعم توت‌فرنگی و تمشک طبق تصویر سازنده. تصویر با منبع رسمی Activlab ثبت شده است؛ ترکیبات، مقدار کلاژن هر سروینگ و دستور مصرف باید با برچسب بسته موجودی تطبیق داده شود.",
+    "isNew": false,
+    "imageSource": "https://en.activlab.pl/products/fr-083-ws"
   },
   {
     "id": "p117",
@@ -2089,8 +2090,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "گلوکوزامین — 500 mg — 60 عدد | اهداف: ویتامین و مینرال | منبع تصویر: https://www.hollandandbarrett.com/shop/product/holland-barrett-glucosamine-sulphate-500mg-60-tablets-6100024692",
-    "isNew": false
+    "description": "Holland & Barrett Glucosamine Sulphate، بسته ۶۰ قرصی، هر قرص حاوی ۵۰۰ میلی‌گرم گلوکزامین سولفات و ۱۲ میلی‌گرم ویتامین C طبق صفحه رسمی محصول. اطلاعات روی بسته و توصیه‌های هشدار سازنده را پیش از مصرف بررسی کنید.",
+    "isNew": false,
+    "imageSource": "https://www.hollandandbarrett.com/shop/product/holland-barrett-glucosamine-sulphate-500mg-60-tablets-6100024692"
   },
   {
     "id": "p118",
@@ -2106,8 +2108,9 @@
     "image3": "",
     "icon": "💊",
     "badge": "",
-    "description": "مولتی‌ویتامین — 90 عدد | اهداف: ویتامین و مینرال | منبع تصویر: https://xpnworld.com/products/mag-4-plus-2-0",
-    "isNew": false
+    "description": "XPN Mag-4 Plus 2.0، بسته ۹۰ کپسولی با ترکیبی از چند فرم منیزیم، تورین، گلیسین و ویتامین B6. اطلاعات محصول از صفحه مرجع ثبت شده است؛ مقدار مواد مؤثره و دستور مصرف را با برچسب همان نسخه تطبیق دهید.",
+    "isNew": false,
+    "imageSource": "https://xpnworld.com/products/mag-4-plus-2-0"
   },
   {
     "id": "p119",
@@ -2123,8 +2126,9 @@
     "image3": "",
     "icon": "💊",
     "badge": "",
-    "description": "مولتی‌ویتامین — 90 عدد | اهداف: ویتامین و مینرال | منبع تصویر: https://xpnworld.com/products/pro-zinc",
-    "isNew": false
+    "description": "XPN Pro Zinc، بسته ۹۰ کپسولی. صفحه رسمی سازنده مقدار بیش از ۳۳٫۸ میلی‌گرم زینک عنصری در هر کپسول را ذکر می‌کند و مصرف هم‌زمان با برخی مکمل‌ها یا داروها می‌تواند نیازمند فاصله زمانی باشد. از مصرف بیش‌ازحد زینک به‌دلیل احتمال اختلال در وضعیت مس بدن پرهیز شود.",
+    "isNew": false,
+    "imageSource": "https://xpnworld.com/collections/improve-health/products/pro-zinc"
   },
   {
     "id": "p120",
@@ -2140,8 +2144,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "دیگر محصولات — 180 g | اهداف: مکمل عمومی | منبع تصویر: https://en.activlab.pl/products/activ-2019-ws",
-    "isNew": false
+    "description": "Activlab Taurine، محصول پودری تورین. تصویر فعلی صفحه سازنده مربوط به Taurine 3000 است، اما وزن ثبت‌شده در کاتالوگ ۱۸۰ گرم است؛ تا زمان تطبیق با بسته فیزیکی، وزن و مقدار هر سروینگ قطعی فرض نشود.",
+    "isNew": false,
+    "imageSource": "https://en.activlab.pl/products/activ-2019-ws"
   },
   {
     "id": "p121",
@@ -2157,7 +2162,7 @@
     "image3": "",
     "icon": "💊",
     "badge": "",
-    "description": "مکمل ALLMAX Yohimbine+ حاوی Yohimbine و Rauwolscine (Alpha-Yohimbine)، بسته ۶۰ کپسولی؛ تصویر و تعداد کپسول‌ها با صفحه رسمی سازنده تطبیق داده شد.",
+    "description": "ALLMAX Yohimbine+، بسته ۶۰ کپسولی؛ طبق صفحه رسمی هر کپسول حاوی ۳ میلی‌گرم یوهیمبین و ۰٫۵ میلی‌گرم راوولسین است. این ترکیبات محرک می‌توانند عوارض قلبی‌عروقی و تداخل دارویی داشته باشند؛ محصول نباید بدون هشدار مناسب یا به‌عنوان راهکار بی‌خطر کاهش وزن معرفی شود.",
     "isNew": false,
     "imageSource": "https://www.allmaxnutrition.com/products/allmax-yohimbine-plus"
   },
@@ -2192,8 +2197,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "فرمول پشتیبانی از سلامت کبد — 100 قرص | اهداف: سلامت عمومی | منبع تصویر: https://megapump.ie/products/qrp-nutrition-liver-health",
-    "isNew": false
+    "description": "QRP Nutrition Liver Health، محصولی با هدف پشتیبانی تغذیه‌ای از سلامت کبد، بسته ۱۰۰ عددی طبق عنوان کاتالوگ. تصویر فعلی از فروشنده ثالث است؛ ترکیبات، تعداد قرص و دستور مصرف باید با برچسب بسته موجودی تطبیق داده شود. از معرفی محصول به‌عنوان درمان یا پاک‌سازی قطعی کبد خودداری شود.",
+    "isNew": false,
+    "imageSource": "https://megapump.ie/products/qrp-nutrition-liver-health"
   },
   {
     "id": "p124",
