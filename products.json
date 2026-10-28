@@ -778,8 +778,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "آمینو — 25 سرو | اهداف: آمینواسید | منبع تصویر: https://bpisports.com/collections/all/products/best-aminos",
-    "isNew": false
+    "description": "BPI Sports Best Aminos؛ بسته ۲۵ سروینگ با طعم Plum Berry مطابق نام فایل تصویر رسمی. مکمل آمینواسیدی برای مصرف پیرامون تمرین؛ طعم و تعداد سروینگ را با بسته واقعی انبار تطبیق دهید.",
+    "isNew": false,
+    "imageSource": "https://bpisports.com/collections/all/products/best-aminos"
   },
   {
     "id": "p045",
@@ -795,7 +796,7 @@
     "image3": "",
     "icon": "🧪",
     "badge": "",
-    "description": "BSN AMINOx، بسته ۳۰ سروینگ با طعم انگور؛ ترکیب آمینواسیدی بدون کافئین با ۱۰ گرم آمینواسید در هر سروینگ برای حمایت از استقامت و ریکاوری.",
+    "description": "BSN AMINOx؛ بسته ۳۰ سروینگ. فرمول بدون کافئین با ترکیب آمینواسیدی ۱۰ گرمی در هر سروینگ طبق اطلاعات محصول؛ تصویر رسمی فعلی با طعم نمایش‌داده‌شده در سایت سازگار است.",
     "isNew": false,
     "imageSource": "https://www.gobsn.com/products/amino-x-bcaa"
   },
@@ -813,8 +814,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "آمینواسیدهای ضروری همراه الکترولیت — 300 گرم | اهداف: ریکاوری، تأمین آمینواسید، آبرسانی حین تمرین | منبع تصویر: https://www.bigman.es/en/product-page/eaa-electrolytes-300g",
-    "isNew": false
+    "description": "Bigman EAA / Electrolytes، بسته ۳۰۰ گرمی؛ آمینواسیدهای ضروری به‌همراه الکترولیت‌ها. صفحه سازنده ۳۰ سروینگ را ذکر می‌کند، اما مقدار سروینگ ۲۰ گرمی با وزن ۳۰۰ گرم همخوانی ندارد؛ تعداد سروینگ روی بسته واقعی باید پیش از انتشار قطعی بررسی شود.",
+    "isNew": false,
+    "imageSource": "https://www.bigman.es/en/product-page/eaa-electrolytes-300g"
   },
   {
     "id": "p047",
@@ -830,8 +832,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "ترکیب 9 آمینواسید ضروری — 40 سروینگ | اهداف: ریکاوری، تأمین آمینواسید، حفظ توده بدون چربی | منبع تصویر: https://cellucor.com/products/xtend-eaa",
-    "isNew": false
+    "description": "Xtend EAA؛ بسته ۴۰ سروینگ با تصویر طعم Lemon Lime. ترکیب ۹ آمینواسید ضروری، بدون شکر؛ تعداد سروینگ و طعم باید با محصول واقعی موجودی تطبیق داده شود.",
+    "isNew": false,
+    "imageSource": "https://cellucor.com/products/xtend-eaa"
   },
   {
     "id": "p048",
@@ -847,7 +850,7 @@
     "image3": "",
     "icon": "🧪",
     "badge": "",
-    "description": "BSN AMINOx EAAs، بسته ۲۵ سروینگ؛ ترکیب ۹ آمینواسید ضروری با ۱۰ گرم EAA و ۵ گرم BCAA در هر سروینگ، بدون کافئین.",
+    "description": "BSN AMINOx EAAs؛ بسته ۲۵ سروینگ. فرمول EAA با ۱۰ گرم آمینواسید ضروری و ۵ گرم BCAA در هر سروینگ طبق اطلاعات سازنده؛ بدون کافئین.",
     "isNew": false,
     "imageSource": "https://www.gobsn.com/products/aminox-eaas"
   },
@@ -865,7 +868,7 @@
     "image3": "",
     "icon": "🧪",
     "badge": "",
-    "description": "USN All9 Amino؛ ترکیب آمینواسیدهای ضروری و BCAA برای مصرف حین تمرین و پشتیبانی از ریکاوری. تصویر منبع مربوط به بسته 330 گرمی است؛ تعداد سروینگ در فهرست فروشگاه نیازمند تطبیق با بسته واقعی است.",
+    "description": "USN All9 Amino؛ تصویر منبع برای بسته ۳۳۰ گرمی است و محصول برای تأمین آمینواسیدهای ضروری و BCAA عرضه می‌شود. تعداد سروینگ روی بسته واقعی با عنوان ۳۰ سرو فروشگاه تطبیق داده شود.",
     "isNew": false,
     "imageSource": "https://www.dischem.co.za/usn-all-9-amino-330g-951"
   },
@@ -883,8 +886,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "آمینو — 30 سرو | اهداف: آمینواسید | منبع تصویر: https://labradanutrition.in/collections/frontpage/products/eaa-power-essential-amino-acid-complex",
-    "isNew": false
+    "description": "Labrada EAA Power؛ مکمل ترکیب آمینواسیدهای ضروری برای پشتیبانی تغذیه‌ای و ریکاوری پیرامون تمرین. تصویر از صفحه محصول Labrada گرفته شده؛ تعداد ۳۰ سروینگ و طعم را با بسته واقعی تطبیق دهید.",
+    "isNew": false,
+    "imageSource": "https://labradanutrition.in/collections/frontpage/products/eaa-power-essential-amino-acid-complex"
   },
   {
     "id": "p051",
@@ -900,8 +904,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "آمینو — 30 سرو | اهداف: آمینواسید | منبع تصویر: https://shop.mammothsupplements.com/products/eaa-energize",
-    "isNew": false
+    "description": "Mammoth EAA Energize؛ طعم Cherry Slushie، ۳۰ سروینگ طبق برگه اطلاعات محصول. حاوی ۸٬۶۵۵ میلی‌گرم EAA و ترکیبات پشتیبان انرژی و تمرکز در هر سروینگ؛ تصویر با محصول رسمی همخوان است.",
+    "isNew": false,
+    "imageSource": "https://shop.mammothsupplements.com/products/eaa-energize"
   },
   {
     "id": "p052",
@@ -917,8 +922,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "آمینو — 30 سرو | اهداف: آمینواسید | منبع تصویر: https://www.ruleoneproteins.com/products/energized-amino",
-    "isNew": false
+    "description": "Rule One Energized Amino؛ طعم Peach Mango، بسته ۳۰ سروینگ. هر سروینگ ۵٫۵ گرم ترکیب آمینواسیدی، ۲ گرم BCAA و ۱۲۰ میلی‌گرم کافئین دارد؛ به‌دلیل کافئین، با سایر محرک‌ها جمع مصرف را در نظر بگیرید.",
+    "isNew": false,
+    "imageSource": "https://www.ruleoneproteins.com/collections/all-products/products/energized-amino"
   },
   {
     "id": "p053",
@@ -934,8 +940,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "آمینو — 30 سرو | اهداف: آمینواسید | منبع تصویر: https://www.allmaxnutrition.com/products/allmax-acuts-amino-charged-energy-drink",
-    "isNew": false
+    "description": "ALLMAX A-Cuts Amino-Charged Energy Drink؛ بسته ۳۰ سروینگ. هر سروینگ ۷ گرمی حدود ۱۲۷ میلی‌گرم کافئین، ۲ گرم تورین و ترکیب آمینواسیدی دارد؛ محصول انرژی‌زا است و کافئین آن باید در مجموع مصرف روزانه حساب شود.",
+    "isNew": false,
+    "imageSource": "https://www.allmaxnutrition.com/products/allmax-acuts-amino-charged-energy-drink"
   },
   {
     "id": "p054",
