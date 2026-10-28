@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>پیش‌نمایش مرحله ۳ — چیدمان Bento Grid، مزایا و راهنمای هوشمند</title>
+  <title>پیش‌نمایش مرحله ۴ — جزئیات محصول، سبد خرید و رسید نهایی</title>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -29,772 +29,186 @@
         radial-gradient(ellipse at 15% 45%, rgba(16, 185, 129, 0.07), transparent 38%);
       color: var(--text);
       font-family: Vazirmatn, system-ui, sans-serif;
-      overflow-x: clip;
       padding: 32px 0 90px;
     }
-    a { color: inherit; text-decoration: none; }
     .shell { width: min(1280px, calc(100% - 56px)); margin: auto; }
-
-    /* تیترهای استاندارد بخش‌ها */
-    .section-head, .store-section-heading {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 20px;
-      margin-bottom: 22px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid rgba(190, 210, 235, 0.12);
-    }
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: #6ee7b7;
-      font-size: 10.5px;
-      font-weight: 800;
-      letter-spacing: 0.16em;
+      display: inline-flex; align-items: center; gap: 6px;
+      color: #6ee7b7; font-size: 10.5px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase;
     }
     .eyebrow::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #34d399;
-      box-shadow: 0 0 8px #34d399;
+      content: ""; width: 6px; height: 6px; border-radius: 50%; background: #34d399; box-shadow: 0 0 8px #34d399;
     }
-    .section-head h2, .store-section-heading h2 {
-      font-size: clamp(22px, 2.4vw, 30px);
-      margin: 6px 0 0;
-      color: #fff;
+    .btn {
+      border: 1px solid var(--line); border-radius: 13px; padding: 13px 22px;
+      color: var(--text); background: rgba(255, 255, 255, 0.03); font-weight: 700; font-size: 13px;
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.22s ease;
     }
-    .section-head p, .store-section-heading p {
-      font-size: 12.5px;
-      color: var(--muted);
-      margin: 6px 0 0;
-    }
-    .text-link {
-      font-size: 12px;
-      font-weight: 600;
-      color: #a8d2ff;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(114, 182, 255, 0.1);
-      border: 1px solid rgba(114, 182, 255, 0.22);
-      white-space: nowrap;
-      transition: all 0.2s ease;
-    }
-    .text-link:hover {
-      background: rgba(114, 182, 255, 0.2);
-      transform: translateX(-3px);
+    .btn.primary {
+      background: linear-gradient(135deg, #3b9eff 0%, #1d6fe8 55%, #10b981 100%);
+      border-color: rgba(168, 210, 255, 0.4); color: #fff;
+      box-shadow: 0 14px 34px rgba(29, 111, 232, 0.34);
     }
 
-    /* ۱. بخش مزایای خرید (Store Benefits) با نقشه و آیکون‌های برجسته */
-    .store-benefits {
+    /* ۱. صفحه جزئیات محصول (ProductPage Preview) */
+    .product-detail {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin: 10px auto 52px;
-    }
-    .benefit-card {
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      min-height: 112px;
-      padding: 20px 22px;
-      border-radius: 20px;
-      background: linear-gradient(145deg, rgba(43, 58, 78, 0.92), rgba(25, 36, 50, 0.96));
-      border: 1px solid rgba(168, 210, 255, 0.2);
-      box-shadow: 0 14px 34px rgba(5, 11, 19, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-    }
-    .benefit-card::after {
-      content: "";
-      position: absolute;
-      width: 140px;
-      height: 140px;
-      left: -35px;
-      bottom: -55px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(114, 182, 255, 0.18), transparent 70%);
-      pointer-events: none;
-    }
-    .benefit-card.benefit-authenticity::after {
-      background: radial-gradient(circle, rgba(16, 185, 129, 0.2), transparent 70%);
-    }
-    .benefit-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(143, 197, 255, 0.52);
-      box-shadow: 0 20px 42px rgba(4, 9, 16, 0.34);
-    }
-    .benefit-icon, .benefit-map {
-      width: 58px;
-      height: 58px;
-      flex: 0 0 58px;
-      border-radius: 16px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(145deg, rgba(114, 182, 255, 0.16), rgba(16, 185, 129, 0.1));
-      border: 1px solid rgba(143, 197, 255, 0.28);
-      color: #93caff;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 8px 20px rgba(0, 0, 0, 0.2);
-    }
-    .benefit-authenticity .benefit-icon {
-      border-color: rgba(52, 211, 153, 0.35);
-      color: #6ee7b7;
-    }
-    .benefit-icon svg, .benefit-map svg {
-      width: 28px;
-      height: 28px;
-    }
-    .benefit-card > div {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      min-width: 0;
-    }
-    .benefit-tag {
-      font-size: 9px;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      color: #6ee7b7;
-      text-transform: uppercase;
-    }
-    .benefit-card b {
-      font-size: 15px;
-      font-weight: 800;
-      color: #fff;
-    }
-    .benefit-card small {
-      font-size: 11.5px;
-      color: #b8c7d9;
-      line-height: 1.6;
-    }
-
-    /* ۲. بخش دسترسی سریع (Quick Access Bento) */
-    .quick-access-section { margin-bottom: 56px; }
-    .quick-access-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-    }
-    .quick-access-card {
-      position: relative;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 50px 1fr;
-      grid-template-rows: auto auto;
-      align-items: center;
-      column-gap: 14px;
-      min-height: 108px;
-      padding: 18px;
-      border-radius: 18px;
-      border: 1px solid rgba(190, 210, 235, 0.16);
-      background: linear-gradient(150deg, rgba(48, 62, 82, 0.94), rgba(31, 41, 56, 0.98));
-      box-shadow: 0 12px 28px rgba(6, 12, 20, 0.18);
-      transition: all 0.24s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .quick-access-card::before {
-      content: "";
-      position: absolute;
-      right: 0;
-      top: 18%;
-      bottom: 18%;
-      width: 3px;
-      border-radius: 4px 0 0 4px;
-      background: linear-gradient(180deg, #72b6ff, #34d399);
-      opacity: 0.75;
-    }
-    .quick-access-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(143, 197, 255, 0.55);
-      background: linear-gradient(150deg, rgba(56, 72, 95, 0.98), rgba(36, 48, 65, 0.99));
-      box-shadow: 0 18px 38px rgba(4, 10, 18, 0.3);
-    }
-    .quick-access-card > span {
-      grid-row: 1 / 3;
-      width: 50px;
-      height: 50px;
-      display: grid;
-      place-items: center;
-      border-radius: 14px;
-      background: rgba(114, 182, 255, 0.13);
-      border: 1px solid rgba(143, 197, 255, 0.24);
-      color: #a8d2ff;
-      font-size: 22px;
-      transition: transform 0.25s ease, background 0.25s ease;
-    }
-    .quick-access-card:hover > span {
-      transform: scale(1.06);
-      background: rgba(16, 185, 129, 0.18);
-      color: #6ee7b7;
-      border-color: rgba(52, 211, 153, 0.35);
-    }
-    .quick-access-card b {
-      font-size: 14.5px;
-      font-weight: 800;
-      color: #fff;
-      align-self: end;
-    }
-    .quick-access-card small {
-      font-size: 11px;
-      color: #b0c0d4;
-      align-self: start;
-      margin-top: 4px;
-      line-height: 1.6;
-    }
-    .quick-access-card i {
-      position: absolute;
-      left: 14px;
-      top: 14px;
-      width: 26px;
-      height: 26px;
-      border-radius: 8px;
-      display: grid;
-      place-items: center;
-      background: rgba(255, 255, 255, 0.04);
-      color: #93caff;
-      font-style: normal;
-      font-size: 13px;
-      transition: transform 0.2s ease, background 0.2s ease;
-    }
-    .quick-access-card:hover i {
-      transform: translateX(-3px);
-      background: rgba(114, 182, 255, 0.2);
-      color: #fff;
-    }
-
-    /* ۳. چیدمان Bento Grid برای ۱۱ دسته‌بندی (۱ کارت ۲ ستونه + ۱۰ کارت ۱ ستونه = ۱۲ سلول کامل) */
-    .categories-section { margin-bottom: 56px; }
-    .category-grid.compact-category-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-    }
-    .category-card.compact-category-card {
-      position: relative;
-      overflow: hidden;
-      min-height: 126px;
-      padding: 18px 20px;
-      border-radius: 20px;
-      border: 1px solid rgba(190, 210, 235, 0.16);
-      background: linear-gradient(150deg, rgba(46, 59, 78, 0.94), rgba(29, 39, 53, 0.98));
-      display: grid;
-      grid-template-columns: 46px minmax(0, 1fr) auto;
-      align-items: center;
-      column-gap: 14px;
-      box-shadow: 0 12px 28px rgba(6, 12, 20, 0.16);
-      transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    /* کارت اول (پروتئین وی و ایزوله) به عنوان بلوک شاخص Bento دو ستون را می‌گیرد */
-    .category-card.compact-category-card:first-child {
-      grid-column: span 2;
-      background:
-        radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.22), transparent 55%),
-        linear-gradient(135deg, rgba(35, 58, 86, 0.98), rgba(24, 38, 56, 0.99));
-      border-color: rgba(114, 182, 255, 0.38);
-    }
-    .category-card.compact-category-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(143, 197, 255, 0.6);
-      box-shadow: 0 18px 38px rgba(4, 10, 18, 0.3);
-    }
-    .category-num {
-      position: absolute;
-      top: 11px;
-      left: 14px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 10px;
-      font-weight: 700;
-      color: rgba(168, 210, 255, 0.45);
-      letter-spacing: 0.1em;
-    }
-    .category-icon-small {
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      background: rgba(114, 182, 255, 0.12);
-      border: 1px solid rgba(143, 197, 255, 0.24);
-      color: #a8d2ff;
-      transition: all 0.25s ease;
-    }
-    .category-card.compact-category-card:first-child .category-icon-small {
-      width: 54px;
-      height: 54px;
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.24), rgba(16, 185, 129, 0.18));
-      border-color: rgba(110, 231, 183, 0.4);
-      color: #6ee7b7;
-    }
-    .category-card.compact-category-card:hover .category-icon-small {
-      background: rgba(16, 185, 129, 0.18);
-      border-color: rgba(52, 211, 153, 0.4);
-      color: #6ee7b7;
-      transform: scale(1.06);
-    }
-    .category-icon-small svg { width: 22px; height: 22px; }
-    .category-card-body { min-width: 0; }
-    .category-card-body h3 {
-      font-size: 14.5px;
-      font-weight: 800;
-      color: #fff;
-      margin: 0 0 4px;
-    }
-    .category-card.compact-category-card:first-child .category-card-body h3 {
-      font-size: 17px;
-    }
-    .category-card-body p {
-      font-size: 11px;
-      color: #a9bacf;
-      margin: 0 0 8px;
-      line-height: 1.5;
-    }
-    .category-count-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: rgba(15, 23, 35, 0.65);
-      border: 1px solid rgba(190, 210, 235, 0.15);
-      color: #6ee7b7;
-      font-size: 9.5px;
-      font-weight: 700;
-    }
-    .category-arrow {
-      width: 28px;
-      height: 28px;
-      border-radius: 9px;
-      display: grid;
-      place-items: center;
-      background: rgba(255, 255, 255, 0.04);
-      color: #93caff;
-      font-size: 13px;
-      align-self: end;
-      transition: all 0.2s ease;
-    }
-    .category-card.compact-category-card:hover .category-arrow {
-      background: rgba(114, 182, 255, 0.22);
-      color: #fff;
-      transform: translate(-2px, -2px);
-    }
-
-    /* ۴. نوار برندهای منتخب (Brand Marquee) */
-    .brand-marquee-section {
-      margin: 48px 0;
-      padding: 26px 0;
-      background: linear-gradient(90deg, rgba(19, 28, 41, 0.6), rgba(32, 45, 64, 0.8), rgba(19, 28, 41, 0.6));
-      border-top: 1px solid rgba(190, 210, 235, 0.14);
-      border-bottom: 1px solid rgba(190, 210, 235, 0.14);
-      overflow: hidden;
-    }
-    .brand-marquee-heading {
-      width: min(1280px, calc(100% - 56px));
-      margin: 0 auto 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 12px;
-      color: var(--muted);
-    }
-    .brand-marquee-track {
-      display: flex;
-      gap: 14px;
-      width: max-content;
-      animation: marqueeSlide 36s linear infinite;
-    }
-    .brand-marquee-item {
-      padding: 12px 22px;
-      border-radius: 999px;
-      background: rgba(15, 23, 35, 0.65);
-      border: 1px solid rgba(190, 210, 235, 0.16);
-      color: #dbe7f5;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      white-space: nowrap;
-    }
-    @keyframes marqueeSlide {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    /* ۵. بخش آموزش و نوار اعتماد (Education & Trust Strip) */
-    .education-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 36px;
       margin-bottom: 48px;
     }
-    .education-card {
-      padding: 20px;
-      border-radius: 18px;
-      border: 1px solid rgba(190, 210, 235, 0.16);
-      background: linear-gradient(150deg, rgba(45, 58, 76, 0.9), rgba(27, 37, 50, 0.95));
-      transition: transform 0.22s ease, border-color 0.22s ease;
-    }
-    .education-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(110, 231, 183, 0.45);
-    }
-    .education-card h3 {
-      margin: 0 0 8px;
-      font-size: 15.5px;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .education-card h3::after {
-      content: "↗";
-      font-size: 13px;
-      color: #6ee7b7;
-    }
-    .education-card p {
-      margin: 0;
-      font-size: 12px;
-      line-height: 1.85;
-      color: #b0c0d4;
-    }
-
-    .trust-strip {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-      padding: 20px;
-      border-radius: 20px;
-      background: rgba(16, 25, 37, 0.65);
-      border: 1px solid rgba(190, 210, 235, 0.16);
-    }
-    .trust-strip > span {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 6px 12px;
-      border-left: 1px solid rgba(190, 210, 235, 0.12);
-    }
-    .trust-strip > span:last-child { border-left: 0; }
-    .trust-strip b {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, rgba(114, 182, 255, 0.18), rgba(16, 185, 129, 0.14));
-      border: 1px solid rgba(143, 197, 255, 0.28);
-      color: #6ee7b7;
+    .gallery-main {
+      height: 520px;
+      border: 1px solid rgba(190, 210, 235, 0.18);
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(114, 182, 255, 0.22), transparent 50%),
+        linear-gradient(145deg, #2d3b4e, #1e2938);
       display: grid;
       place-items: center;
-      font-size: 14px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 45px rgba(5, 11, 19, 0.25);
     }
-    .trust-strip strong { display: block; font-size: 12.5px; color: #fff; }
-    .trust-strip small { display: block; font-size: 10.5px; color: #9cb2ca; margin-top: 2px; }
+    .gallery-main img {
+      max-width: 82%; max-height: 82%; object-fit: contain;
+      filter: drop-shadow(0 22px 30px rgba(0,0,0,0.5));
+    }
+    .product-info {
+      border: 1px solid rgba(190, 210, 235, 0.18);
+      border-radius: 22px;
+      background: linear-gradient(155deg, rgba(46, 59, 78, 0.96), rgba(28, 38, 52, 0.98));
+      padding: 32px;
+      box-shadow: 0 18px 40px rgba(5, 11, 19, 0.22);
+    }
+    .product-info h1 { font-size: clamp(26px, 3.2vw, 38px); margin: 8px 0 6px; line-height: 1.4; }
+    .lead { color: var(--muted); font-size: 13.5px; margin: 0 0 18px; }
+    .price-row { display: flex; align-items: center; gap: 18px; margin: 20px 0; }
+    .price-row strong { font-size: 30px; font-weight: 900; color: #6ee7b7; letter-spacing: -0.02em; }
+    .buy-row { display: flex; gap: 12px; margin-top: 24px; }
+    .quantity {
+      display: flex; border: 1px solid rgba(190, 210, 235, 0.25); border-radius: 13px; overflow: hidden; background: rgba(17, 25, 36, 0.6);
+    }
+    .quantity button, .quantity b { width: 48px; display: grid; place-items: center; background: transparent; border: 0; color: #fff; font-weight: 700; }
+    .quantity button:hover { background: rgba(114, 182, 255, 0.18); color: #93caff; }
+    .grow { flex: 1; }
 
-    @media (max-width: 1024px) {
-      .store-benefits { grid-template-columns: 1fr; }
-      .quick-access-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .category-grid.compact-category-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    /* ۲. ویجت چاپگر رسید فانتزی (ReceiptPrinter Preview) */
+    .receipt-printer { max-width: 500px; width: 100%; margin: 40px auto; }
+    .receipt-printer__machine {
+      padding: 18px; border: 1px solid rgba(190, 210, 235, 0.22); border-radius: 24px;
+      background: linear-gradient(145deg, #2a384c, #1a2534); box-shadow: 0 24px 50px rgba(0,0,0,0.35); overflow: hidden;
     }
-    @media (max-width: 680px) {
-      .category-grid.compact-category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .education-grid { grid-template-columns: 1fr; }
-      .trust-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .receipt-printer__top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+    .receipt-printer__brand { font-size: 10.5px; letter-spacing: 0.15em; font-weight: 800; color: #93caff; }
+    .receipt-printer__status { display: flex; align-items: center; gap: 8px; color: #6ee7b7; font-size: 12px; font-weight: 700; }
+    .receipt-printer__dot { width: 8px; height: 8px; border-radius: 50%; background: #34d399; box-shadow: 0 0 10px #34d399; }
+    .receipt-printer__slot { height: 8px; margin: 0 12px; border-radius: 99px; background: #0f1722; }
+    .receipt-printer__paper {
+      margin: 0 6px; padding: 26px 20px; background: #f6f5ef; color: #152235;
+      clip-path: polygon(0 0, 100% 0, 100% 97%, 95% 100%, 90% 97%, 85% 100%, 80% 97%, 75% 100%, 70% 97%, 65% 100%, 60% 97%, 55% 100%, 50% 97%, 45% 100%, 40% 97%, 35% 100%, 30% 97%, 25% 100%, 20% 97%, 15% 100%, 10% 97%, 5% 100%, 0 97%);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    .receipt-center { text-align: center; padding-bottom: 14px; }
+    .receipt-check {
+      width: 42px; height: 42px; margin: 0 auto 10px; border-radius: 50%;
+      background: rgba(16, 185, 129, 0.16); color: #047857; display: grid; place-items: center; font-size: 22px; font-weight: 900;
+    }
+    .receipt-center h2 { margin: 0; font-size: 18px; color: #111827; }
+    .receipt-center p { margin: 5px 0 0; color: #4b5563; font-size: 11.5px; }
+    .receipt-rule { border-top: 1px dashed #cbd5e1; margin: 14px 0; }
+    .receipt-item { display: flex; justify-content: space-between; gap: 12px; margin: 10px 0; font-size: 12px; }
+    .receipt-item strong { color: #1f2937; }
+    .receipt-total { display: flex; justify-content: space-between; padding-top: 12px; border-top: 2px solid #94a3b8; font-size: 14px; font-weight: 800; color: #065f46; }
+
+    @media (max-width: 900px) {
+      .product-detail { grid-template-columns: 1fr; }
+      .gallery-main { height: 380px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ۱. بخش مزایای خرید با چیدمان افقی و بج‌های تخصصی -->
-  <section class="store-benefits shell" aria-label="مزایای خرید">
-    <div class="benefit-card benefit-countrywide">
-      <span class="benefit-map" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Z"/><circle cx="12" cy="9" r="2.5"/></svg>
-      </span>
-      <div>
-        <span class="benefit-tag">NATIONWIDE DISPATCH</span>
-        <b>ارسال به سراسر کشور</b>
-        <small>بسته‌بندی ایمن و ارسال پستی همه‌روزه به تمام استان‌ها</small>
+  <!-- پیش‌نمایش صفحه جزئیات محصول -->
+  <main class="shell">
+    <div style="margin-bottom: 20px;">
+      <span class="eyebrow">PRODUCT DETAIL VIEW · STAGE 4</span>
+      <h2 style="font-size: 24px; margin: 6px 0 0;">بازطراحی صفحه جزئیات محصول و خرید</h2>
+    </div>
+
+    <section class="product-detail">
+      <div class="gallery-main">
+        <span style="position: absolute; top: 16px; right: 16px; background: rgba(16,185,129,0.2); border: 1px solid rgba(52,211,153,0.4); color: #6ee7b7; padding: 6px 12px; border-radius: 999px; font-size: 11px; font-weight: 700;">موجود در انبار</span>
+        <img src="https://mutantnation.com/cdn/shop/files/31501US_MUTANT_MASS_Vanilla_Ice_Cream_Flavor_5_LB_2.27_KG_v2.00_NS-L3.png?v=1745428536&width=900" alt="گینر موتانت" />
+      </div>
+      <div class="product-info">
+        <span class="eyebrow">MUTANT NUTRITION</span>
+        <h1>گینر موتانت 2.3کیلو</h1>
+        <p class="lead">گینر پرکالری با کربوهیدرات پیشرفته برای افزایش حجم و وزن خشک — 2.3 kg</p>
+        <div style="color: #fbbf24; font-size: 14px; margin-bottom: 14px;">★ 4.9 <span style="color: var(--muted); font-size: 12px;">(۱۴۲ نظر تأییدشده)</span></div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; font-size: 11.5px; color: #e2e8f0; margin-bottom: 20px;">
+          <span style="background: rgba(114,182,255,0.12); border: 1px solid rgba(143,197,255,0.24); padding: 5px 10px; border-radius: 8px;">دسته‌بندی: گینر</span>
+          <span style="background: rgba(114,182,255,0.12); border: 1px solid rgba(143,197,255,0.24); padding: 5px 10px; border-radius: 8px;">هدف: افزایش کالری و وزن</span>
+        </div>
+        <hr style="border: 0; border-top: 1px solid rgba(190,210,235,0.15); margin: 16px 0;" />
+        <div class="price-row">
+          <strong>۱۰٬۲۸۰٬۰۰۰ تومان</strong>
+          <span style="color: var(--green); font-size: 12px; font-weight: 700;">● ارسال فوری با پست پیشتاز</span>
+        </div>
+        <div class="buy-row">
+          <div class="quantity">
+            <button type="button">−</button>
+            <b>1</b>
+            <button type="button">+</button>
+          </div>
+          <button class="btn primary grow">افزودن به سبد خرید 🛒</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- پیش‌نمایش ویجت چاپگر رسید -->
+    <div style="text-align: center; margin-top: 50px;">
+      <span class="eyebrow">CHECKOUT CONFIRMATION · RECEIPT PRINTER</span>
+      <h2 style="font-size: 24px; margin: 6px 0 0;">چاپگر رسید فانتزی تایید سفارش</h2>
+    </div>
+
+    <div class="receipt-printer">
+      <div class="receipt-printer__machine">
+        <div class="receipt-printer__top">
+          <span class="receipt-printer__brand">SUPPLEMENT ENERGY</span>
+          <span class="receipt-printer__status">
+            <span class="receipt-printer__dot"></span>
+            سفارش تأیید شد
+          </span>
+        </div>
+        <div class="receipt-printer__slot"></div>
+        <div class="receipt-printer__paper">
+          <div class="receipt-center">
+            <div class="receipt-check">✓</div>
+            <h2>تاییدیه ثبت سفارش</h2>
+            <p>شماره پیگیری: <b>SE-984210</b></p>
+          </div>
+          <div class="receipt-rule"></div>
+          <div class="receipt-item">
+            <span>گینر موتانت 2.3کیلو (×۱)</span>
+            <strong>۱۰٬۲۸۰٬۰۰۰ تومان</strong>
+          </div>
+          <div class="receipt-item">
+            <span>هزینه ارسال پستی</span>
+            <strong>۱۰۰٬۰۰۰ تومان</strong>
+          </div>
+          <div class="receipt-rule"></div>
+          <div class="receipt-total">
+            <span>مبلغ قابل پرداخت</span>
+            <strong>۱۰٬۳۸۰٬۰۰۰ تومان</strong>
+          </div>
+          <div style="text-align: center; margin-top: 16px; color: #6b7280; font-size: 10px;">
+            از اعتماد شما به مکمل انرژی سپاسگزاریم 🙏
+          </div>
+        </div>
       </div>
     </div>
-    <div class="benefit-card benefit-free-shipping">
-      <span class="benefit-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5M12 22V12"/></svg>
-      </span>
-      <div>
-        <span class="benefit-tag">VIP LOGISTICS</span>
-        <b>ارسال رایگان سفارشات</b>
-        <small>ویژه سبدهای خرید شامل حداقل ۳ محصول از کاتالوگ</small>
-      </div>
-    </div>
-    <div class="benefit-card benefit-authenticity">
-      <span class="benefit-icon benefit-check" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-      </span>
-      <div>
-        <span class="benefit-tag">100% LAB VERIFIED</span>
-        <b>تضمین اصالت محصولات</b>
-        <small>ضمانت پلمپ اصلی شرکت سازنده و بازگشت وجه در صورت عدم رضایت</small>
-      </div>
-    </div>
-  </section>
-
-  <!-- ۲. بخش دسترسی سریع -->
-  <section id="quick-access" class="shell quick-access-section">
-    <div class="store-section-heading">
-      <div>
-        <span class="eyebrow">QUICK ACCESS</span>
-        <h2>دسترسی سریع به مکمل‌های کلیدی</h2>
-      </div>
-      <p>مستقیم وارد پرتقاضاترین دسته‌های تمرینی شو</p>
-    </div>
-    <div class="quick-access-grid">
-      <a href="#protein" class="quick-access-card">
-        <span>◉</span>
-        <b>پروتئین وی</b>
-        <small>وی، ایزوله، ریکاوری و عضله‌سازی خالص</small>
-        <i>←</i>
-      </a>
-      <a href="#creatine" class="quick-access-card">
-        <span>✦</span>
-        <b>کراتین</b>
-        <small>افزایش انفجاری قدرت، ATP و حجم سلولی</small>
-        <i>←</i>
-      </a>
-      <a href="#pre" class="quick-access-card">
-        <span>ϟ</span>
-        <b>پیش‌تمرین و پمپ</b>
-        <small>افزایش انرژی، خون‌رسانی و تمرکز ذهنی</small>
-        <i>←</i>
-      </a>
-      <a href="#gainer" class="quick-access-card">
-        <span>▤</span>
-        <b>گینر و افزایش وزن</b>
-        <small>تأمین کالری بالا، کربوهیدرات پیچیده و حجم</small>
-        <i>←</i>
-      </a>
-    </div>
-  </section>
-
-  <!-- ۳. بخش دسته‌بندی‌ها با معماری Bento Grid (۱۱ دسته در ۱۲ واحد گرید بدون فضای خالی) -->
-  <section id="categories" class="shell categories-section">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">EXPLORE CATEGORIES · BENTO GRID</span>
-        <h2>هر هدف، مسیر خودش را دارد.</h2>
-        <p>چیدمان Bento Grid: کارت اول ۲ ستون و ۱۰ کارت بعدی هرکدام ۱ ستون (مجموع ۱۲ سلول کامل بدون فضای خالی در انتهای جدول)</p>
-      </div>
-      <a href="#products" class="text-link">مشاهده همه ←</a>
-    </div>
-
-    <div class="category-grid compact-category-grid">
-      <!-- ۰۱: پروتئین (۲ ستون) -->
-      <a href="#cat-protein" class="category-card compact-category-card">
-        <span class="category-num">01 / FLAGSHIP</span>
-        <span class="category-icon-small">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 3h10l1 3v14H6V6l1-3Z"/><path d="M7 7h10M9 11h6M9 14h6"/></svg>
-        </span>
-        <div class="category-card-body">
-          <h3>پروتئین وی و ایزوله</h3>
-          <p>وی کنسانتره، ایزوله و هیدرولیزشده از برترین برندهای جهانی برای عضله‌سازی</p>
-          <span class="category-count-pill">۲۳ محصول در کاتالوگ</span>
-        </div>
-        <span class="category-arrow">↗</span>
-      </a>
-
-      <!-- ۰۲: گینر -->
-      <a href="#cat-gainer" class="category-card compact-category-card">
-        <span class="category-num">02</span>
-        <span class="category-icon-small">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 6h14l-1 14H6L5 6Z"/><path d="M8 6V4h8v2M8 11h8"/></svg>
-        </span>
-        <div class="category-card-body">
-          <h3>گینر و افزایش وزن</h3>
-          <p>وی، وی ایزوله و گینرها</p>
-          <span class="category-count-pill">۷ محصول</span>
-        </div>
-        <span class="category-arrow">↗</span>
-      </a>
-
-      <!-- ۰۳: پیش‌تمرین -->
-      <a href="#cat-pre" class="category-card compact-category-card">
-        <span class="category-num">03</span>
-        <span class="category-icon-small">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m13.5 2.5-9 11h6l-.5 8 9-11h-6l.5-8Z"/></svg>
-        </span>
-        <div class="category-card-body">
-          <h3>پیش‌تمرین و پمپ</h3>
-          <p>قبل تمرین، حین تمرین و قدرت</p>
-          <span class="category-count-pill">۱۱ محصول</span>
-        </div>
-        <span class="category-arrow">↗</span>
-      </a>
-
-      <!-- ۰۴: BCAA -->
-      <a href="#cat-bcaa" class="category-card compact-category-card">
-        <span class="category-num">04</span>
-        <span class="category-icon-small">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8.5"/><circle cx="7.5" cy="9" r="1"/><circle cx="15.5" cy="8" r="1"/><circle cx="12" cy="15.5" r="1"/></svg>
-        </span>
-        <div class="category-card-body">
-          <h3>بی سی ای ای (BCAA)</h3>
-          <p>ریکاوری و جلوگیری از کاتابولیسم</p>
-          <span class="category-count-pill">۴ محصول</span>
-        </div>
-        <span class="category-arrow">↗</span>
-      </a>
-
-      <!-- ۰۵: آمینو و EAA -->
-      <a href="#cat-amino" class="category-card compact-category-card">
-        <span class="category-num">05</span>
-        <span class="category-icon-small">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8.5"/><path d="m8.5 9.5 3 5m1-6 2.5-.5"/></svg>
-        </span>
-        <div class="category-card-body">
-          <h3>آمینو و EAA</h3>
-          <p>آمینواسیدهای ضروری</p>
-          <span class="category-count-pill">۱۱ محصول</span>
-        </div>
-        <span class="category-arrow">↗</span>
-      </a>
-
-      <!-- ۰۶: کراتین -->
-      <a href="#cat-creatine" class="category-card compact-category-card">
-        <span class="category-num">06</span>
-        <span class="category-icon-small">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 9v6m3-9v12m10-12v12m3-9v6M7 12h10"/></svg>
-        </span>
-        <div class="category-card-body">
-          <h3>کراتین</h3>
-          <p>مونوهیدرات، میکرونایزد و ترکیبی</p>
-          <span class="category-count-pill">۱۱ محصول</span>
-        </div>
-        <span class="category-arrow">↗</span>
-      </a>
-
-      <!-- ۰۷: چربی‌سوز -->
-      <a href="#cat-burn" class="category-card compact-category-card">
-        <span class="category-num">07</span>
-        <span class="category-icon-small">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M13 2.8c.8 3-1.4 4.2-2.6 6.1-1 1.5-.8 2.9.3 3.8-.1-2 1.6-2.8 2.7-4.1 2.7 2.2 4.1 4.5 3.6 7.1-.5 3-2.8 5.1-5.8 5.1-3.4 0-5.8-2.4-5.8-5.6 0-2.2 1.1-4.2 3.3-6.1Z"/></svg>
-        </span>
-        <div class="category-card-body">
-          <h3>چربی‌سوز</h3>
-          <p>ال‌کارنیتین، سی‌ال‌ای و ترموژنیک</p>
-          <span class="category-count-pill">۱۵ محصول</span>
-        </div>
-        <span class="category-arrow">↗</span>
-      </a>
-
-      <!-- ۰۸: مولتی‌ویتامین -->
-      <a href="#cat-multi" class="category-card compact-category-card">
-        <span class="category-num">08</span>
-        <span class="category-icon-small">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="4" width="14" height="16" rx="3"/><path d="M12 8v8M8.5 12h7"/></svg>
-        </span>
-        <div class="category-card-body">
-          <h3>مولتی‌ویتامین و مینرال</h3>
-          <p>ویتامین، زینک، منیزیم و کلاژن</p>
-          <span class="category-count-pill">۸ محصول</span>
-        </div>
-        <span class="category-arrow">↗</span>
-      </a>
-
-      <!-- ۰۹: تست بوستر -->
-      <a href="#cat-test" class="category-card compact-category-card">
-        <span class="category-num">09</span>
-        <span class="category-icon-small">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v10M7 12h10"/></svg>
-        </span>
-        <div class="category-card-body">
-          <h3>تست بوستر</h3>
-          <p>تریبولوس و تقویت هورمونی</p>
-          <span class="category-count-pill">۳ محصول</span>
-        </div>
-        <span class="category-arrow">↗</span>
-      </a>
-
-      <!-- ۱۰: گلوتامین -->
-      <a href="#cat-glutamine" class="category-card compact-category-card">
-        <span class="category-num">10</span>
-        <span class="category-icon-small">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M3 12h18"/></svg>
-        </span>
-        <div class="category-card-body">
-          <h3>گلوتامین</h3>
-          <p>ریکاوری عضلانی و سیستم ایمنی</p>
-          <span class="category-count-pill">۴ محصول</span>
-        </div>
-        <span class="category-arrow">↗</span>
-      </a>
-
-      <!-- ۱۱: سایر مکمل‌ها -->
-      <a href="#cat-other" class="category-card compact-category-card">
-        <span class="category-num">11</span>
-        <span class="category-icon-small">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3 20 7.5v9L12 21l-8-4.5v-9L12 3Z"/></svg>
-        </span>
-        <div class="category-card-body">
-          <h3>دیگر محصولات</h3>
-          <p>امگا ۳، آشواگاندا، ZMA و تخصصی</p>
-          <span class="category-count-pill">۱۲ محصول</span>
-        </div>
-        <span class="category-arrow">↗</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- ۴. نوار برندها -->
-  <section class="brand-marquee-section">
-    <div class="brand-marquee-heading">
-      <span class="eyebrow">TRUSTED NUTRITION BRANDS</span>
-      <span>برندهای اورجینال موجود در فروشگاه</span>
-    </div>
-    <div class="brand-marquee" dir="ltr">
-      <div class="brand-marquee-track">
-        <span class="brand-marquee-item">OPTIMUM NUTRITION</span>
-        <span class="brand-marquee-item">MUSCLETECH</span>
-        <span class="brand-marquee-item">MUTANT</span>
-        <span class="brand-marquee-item">CELLUCOR / C4</span>
-        <span class="brand-marquee-item">RULE ONE</span>
-        <span class="brand-marquee-item">ALLMAX</span>
-        <span class="brand-marquee-item">USN</span>
-        <span class="brand-marquee-item">NUTREX RESEARCH</span>
-        <span class="brand-marquee-item">BSN</span>
-        <span class="brand-marquee-item">GHOST</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ۵. بخش آموزش و نوار اعتماد -->
-  <section class="shell">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">LEARN &amp; CHOOSE</span>
-        <h2>آموزش و راهنمای خرید</h2>
-      </div>
-    </div>
-    <div class="education-grid">
-      <article class="education-card">
-        <h3>محاسبه‌گر ماکرو و کالری</h3>
-        <p>ماشین‌حساب‌های مربوط به ماکروها، کالری، BMI و حداکثر یک تکرار (1RM) برای تنظیم دقیق رژیم.</p>
-      </article>
-      <article class="education-card">
-        <h3>تغذیه و دوز مصرفی</h3>
-        <p>راهنماهای علمی زمان‌بندی مصرف پروتئین، کراتین و آمینواسیدها بر اساس شدت تمرین.</p>
-      </article>
-      <article class="education-card">
-        <h3>ریکاوری و بازسازی</h3>
-        <p>خواب باکیفیت، کنترل کورتیزول و استراتژی‌های ریکاوری برای رشد مستمر عضلات.</p>
-      </article>
-    </div>
-
-    <div class="trust-strip">
-      <span><b>✓</b><div><strong>تضمین اصالت</strong><small>خرید مطمئن و شفاف</small></div></span>
-      <span><b>↯</b><div><strong>ارسال سریع</strong><small>پردازش روزانه سفارش</small></div></span>
-      <span><b>◈</b><div><strong>مشاوره تخصصی</strong><small>پاسخگویی قبل از خرید</small></div></span>
-      <span><b>AI</b><div><strong>انتخاب هوشمند</strong><small>پیشنهاد متناسب با هدف</small></div></span>
-    </div>
-  </section>
+  </main>
 
 </body>
 </html>
