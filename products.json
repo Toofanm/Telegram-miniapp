@@ -1676,7 +1676,7 @@
     "image3": "",
     "icon": "🔥",
     "badge": "",
-    "description": "پیش‌تمرین Total War ردکان، طعم Rainbow Candy، بسته ۳۰ سروینگ؛ طبق صفحه سازنده حاوی ۳۲۰ میلی‌گرم کافئین، ۶ گرم سیترولین مالات و ۳٫۲ گرم بتاآلانین در هر سروینگ.",
+    "description": "Redcon1 Total War، پیش‌تمرین طعم Rainbow Candy، بسته ۳۰ سروینگ. صفحه رسمی سازنده مقدار ۳۲۰ میلی‌گرم کافئین، ۶ گرم سیترولین مالات و ۳٫۲ گرم بتاآلانین در هر سروینگ را درج می‌کند.",
     "isNew": false,
     "imageSource": "https://redcon1.com/products/redcon1-total-war-pre-workout"
   },
@@ -1694,8 +1694,9 @@
     "image3": "",
     "icon": "⚡",
     "badge": "",
-    "description": "پمپ — 30 سرو | اهداف: پیش‌تمرین، عملکرد تمرینی | منبع تصویر: https://www.jnxsports.com/products/the-ripper-thermogenic-fat-burner",
-    "isNew": false
+    "description": "JNX Sports The Ripper، مکمل ترموژنیک با ۳۰ سروینگ؛ صفحه رسمی ۲۰۰ میلی‌گرم کافئین در هر سروینگ و ترکیباتی از جمله بتاآلانین و ال‌کارنیتین را ذکر می‌کند. تصویر فعلی بسته‌بندی Dark Grape است.",
+    "isNew": false,
+    "imageSource": "https://www.jnxsports.com/products/the-ripper-thermogenic-fat-burner"
   },
   {
     "id": "p096",
@@ -1711,8 +1712,9 @@
     "image3": "",
     "icon": "⚡",
     "badge": "",
-    "description": "پمپ — 40 سرو | اهداف: پیش‌تمرین، عملکرد تمرینی | منبع تصویر: https://usn-shop.ru/catalog/predtrenirovochnye-kompleksy/qhush-platinum-black-super-heat-300-gramm-027045",
-    "isNew": false
+    "description": "USN Qhush Platinum Black Super Heat، بسته ۴۰ سروینگ طبق عنوان محصول موجود. تصویر فعلی از فروشنده ثالث است؛ ترکیبات و اندازه سروینگ باید با برچسب بسته موجود تطبیق داده شود.",
+    "isNew": false,
+    "imageSource": "https://usn-shop.ru/catalog/predtrenirovochnye-kompleksy/qhush-platinum-black-super-heat-300-gramm-027045"
   },
   {
     "id": "p097",
@@ -1728,8 +1730,9 @@
     "image3": "",
     "icon": "⚡",
     "badge": "",
-    "description": "پمپ — 120 عدد | اهداف: پیش‌تمرین، عملکرد تمرینی | منبع تصویر: https://ba.proteini.si/pre-workout/arginin/usn-l-arginine-ultra-hydro-1500-120-kapsula",
-    "isNew": false
+    "description": "USN L-Arginine Ultra Hydro 1500، بسته ۱۲۰ کپسول. تصویر و منبع فعلی از فروشنده ثالث‌اند؛ مقدار دقیق آرژنین در هر وعده و تعداد کپسول هر وعده باید با برچسب محصول تطبیق داده شود.",
+    "isNew": false,
+    "imageSource": "https://ba.proteini.si/pre-workout/arginin/usn-l-arginine-ultra-hydro-1500-120-kapsula"
   },
   {
     "id": "p098",
@@ -1745,8 +1748,9 @@
     "image3": "",
     "icon": "⚡",
     "badge": "",
-    "description": "پمپ — 180 عدد | اهداف: پیش‌تمرین، عملکرد تمرینی | منبع تصویر: https://teamwarrior.com/products/warrior-aakg-180-caps",
-    "isNew": false
+    "description": "Warrior AAKG 2000 mg، بسته ۱۸۰ کپسول؛ طبق صفحه رسمی، هر وعده ۴ کپسولی ۲۰۰۰ میلی‌گرم AAKG فراهم می‌کند و بسته ۴۵ وعده دارد. تصویر رسمی Warrior.",
+    "isNew": false,
+    "imageSource": "https://teamwarrior.com/products/warrior-aakg-180-caps"
   },
   {
     "id": "p099",
@@ -1762,8 +1766,9 @@
     "image3": "",
     "icon": "⚡",
     "badge": "",
-    "description": "پمپ — 300 g | اهداف: پیش‌تمرین، عملکرد تمرینی | منبع تصویر: https://www.hyjiyastore.com/product/usn-l-citrulline-malate-300-g/",
-    "isNew": false
+    "description": "USN L-Citrulline Malate، پودر ۳۰۰ گرمی. تصویر فعلی از فروشنده ثالث است؛ نسبت سیترولین به مالات و مقدار هر سروینگ باید با برچسب بسته موجود بررسی شود.",
+    "isNew": false,
+    "imageSource": "https://www.hyjiyastore.com/product/usn-l-citrulline-malate-300-g/"
   },
   {
     "id": "p100",
@@ -1779,8 +1784,9 @@
     "image3": "",
     "icon": "⚡",
     "badge": "",
-    "description": "پمپ — 300 g | اهداف: پیش‌تمرین، عملکرد تمرینی | منبع تصویر: https://www.allmaxnutrition.com/products/allmax-citrulline-malate-2-to-1",
-    "isNew": false
+    "description": "ALLMAX Citrulline Malate 2:1، پودر ۳۰۰ گرمی؛ نسبت ۲:۱ سیترولین به مالات. تصویر و اندازه بسته با صفحه رسمی ALLMAX مطابقت دارد.",
+    "isNew": false,
+    "imageSource": "https://ca.allmaxnutrition.com/products/citrulline-malate-2-1"
   },
   {
     "id": "p101",
@@ -1796,8 +1802,9 @@
     "image3": "",
     "icon": "⚡",
     "badge": "",
-    "description": "پمپ — 200 g | اهداف: پیش‌تمرین، عملکرد تمرینی | منبع تصویر: https://en.activlab.pl/products/citrulline-xtra",
-    "isNew": false
+    "description": "Activlab Citrulline Xtra، پودر طعم‌دار ۲۰۰ گرمی. طبق صفحه رسمی، یک پیمانه ۶ گرمی شامل ۵ گرم سیترولین مالات و ۲٫۸ گرم سیترولین است؛ تصویر مربوط به یکی از طعم‌های محصول است.",
+    "isNew": false,
+    "imageSource": "https://en.activlab.pl/products/citrulline-xtra"
   },
   {
     "id": "p102",
@@ -1813,8 +1820,9 @@
     "image3": "",
     "icon": "⚡",
     "badge": "",
-    "description": "پمپ — 300 g | اهداف: پیش‌تمرین، عملکرد تمرینی | منبع تصویر: https://en.activlab.pl/collections/beta-alanina",
-    "isNew": false
+    "description": "Activlab Beta-Alanine Extra، پودر طعم‌دار کولا ۳۰۰ گرمی. تصویر فعلی مربوط به طعم کولاست؛ مقدار بتاآلانین در هر وعده و دستور مصرف باید با جدول روی بسته موجود تطبیق داده شود.",
+    "isNew": false,
+    "imageSource": "https://en.activlab.pl/collections/beta-alanina"
   },
   {
     "id": "p103",
@@ -1830,8 +1838,9 @@
     "image3": "",
     "icon": "⚡",
     "badge": "",
-    "description": "پمپ — 300 g | اهداف: پیش‌تمرین، عملکرد تمرینی | منبع تصویر: https://market.yandex.ru/card/usn-beta-alanine-beta-alanin-300-g/4538180560",
-    "isNew": false
+    "description": "USN Beta-Alanine، پودر ۳۰۰ گرمی. تصویر فعلی از فروشنده ثالث است؛ مقدار بتاآلانین در هر سروینگ و اندازه پیمانه باید با برچسب بسته موجود بررسی شود.",
+    "isNew": false,
+    "imageSource": "https://market.yandex.ru/card/usn-beta-alanine-beta-alanin-300-g/4538180560"
   },
   {
     "id": "p104",
