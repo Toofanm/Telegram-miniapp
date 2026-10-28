@@ -202,8 +202,9 @@
     "image3": "",
     "icon": "🥛",
     "badge": "",
-    "description": "پروتئین وی — 2.3 kg | اهداف: تأمین پروتئین روزانه، ریکاوری عضلات | منبع تصویر: https://dymatize.com/elite-100-whey",
-    "isNew": false
+    "description": "Dymatize Elite 100% Whey؛ پروتئین وی با ۲۵ گرم پروتئین در هر وعده، حدود ۱۴۰ کالری یا کمتر، ۵٫۵ گرم BCAA و ۲٫۷ گرم لوسین طبق اطلاعات سازنده. تصویر فعلی از فروشنده است و منبع مشخصات رسمی سازنده ثبت شد.",
+    "isNew": false,
+    "imageSource": "https://dymatize.com/elite-100-whey"
   },
   {
     "id": "p013",
@@ -219,8 +220,9 @@
     "image3": "",
     "icon": "🥛",
     "badge": "",
-    "description": "ترکیب پروتئین، کراتین و MCT — 2.1 kg | اهداف: تأمین پروتئین روزانه، ریکاوری عضلات | منبع تصویر: https://www.pontemasfuerte.com/big-man/forza-protein",
-    "isNew": false
+    "description": "Bigman Forza Protein؛ ترکیب پروتئین، کراتین و MCT طبق صفحه فروشنده. وزن ثبت‌شده در کاتالوگ ۲٫۱ کیلوگرم است؛ پیش از تغییر وزن یا ترکیبات، برچسب موجودی فیزیکی باید با صفحه فروشنده تطبیق داده شود.",
+    "isNew": false,
+    "imageSource": "https://www.pontemasfuerte.com/big-man/forza-protein"
   },
   {
     "id": "p014",
@@ -236,8 +238,9 @@
     "image3": "",
     "icon": "🥛",
     "badge": "",
-    "description": "پروتئین — 2.5 kg | اهداف: تأمین پروتئین روزانه | منبع تصویر: https://cellucor.com/products/c4-whey-protein",
-    "isNew": false
+    "description": "Cellucor C4 Whey Protein؛ طبق صفحه رسمی، هر وعده ۲۵ گرم پروتئین و بدون شکر افزوده دارد. طعم‌ها و اندازه‌های فعلی صفحه رسمی ممکن است با بسته‌بندی ۲٫۵ کیلوگرمی درج‌شده در کاتالوگ تفاوت داشته باشند؛ وزن فیزیکی باید تأیید شود.",
+    "isNew": false,
+    "imageSource": "https://cellucor.com/products/c4-whey-protein"
   },
   {
     "id": "p015",
@@ -253,8 +256,9 @@
     "image3": "",
     "icon": "🥛",
     "badge": "",
-    "description": "پروتئین — 2.3 kg | اهداف: تأمین پروتئین روزانه | منبع تصویر: https://www.ruleoneproteins.com/products/whey-protein",
-    "isNew": false
+    "description": "Rule One Whey Protein؛ ترکیبی از منابع وی با ۲۴ گرم پروتئین و ۱۱ گرم EAA طبیعی در هر وعده طبق سازنده. تصویر ثبت‌شده مربوط به بسته ۵ پوندی وانیل است؛ وزن کاتالوگ ۲٫۳ کیلوگرم تقریباً معادل ۵ پوند است.",
+    "isNew": false,
+    "imageSource": "https://www.ruleoneproteins.com/products/whey-protein"
   },
   {
     "id": "p016",
@@ -270,8 +274,9 @@
     "image3": "",
     "icon": "🥛",
     "badge": "",
-    "description": "پروتئین — 2.3 kg | اهداف: تأمین پروتئین روزانه | منبع تصویر: https://www.allmaxnutrition.com/products/allmax-gold-allwhey-premium-whey-protein-powder",
-    "isNew": false
+    "description": "ALLMAX Gold AllWhey؛ ترکیب وی ایزوله و کنسانتره، ۲۴ گرم پروتئین و ۱۳۰ کالری در هر وعده ۳۲ گرمی طبق سازنده. تصویر بسته‌بندی ۵ پوندی است و با وزن ثبت‌شده ۲٫۳ کیلوگرم تطبیق دارد.",
+    "isNew": false,
+    "imageSource": "https://www.allmaxnutrition.com/products/allmax-gold-allwhey-premium-whey-protein-powder"
   },
   {
     "id": "p017",
@@ -287,8 +292,9 @@
     "image3": "",
     "icon": "🥛",
     "badge": "",
-    "description": "پروتئین — 2.3 kg | اهداف: تأمین پروتئین روزانه | منبع تصویر: https://www.allmaxnutrition.com/products/allmax-classic-allwhey-100-whey-protein-powder",
-    "isNew": false
+    "description": "ALLMAX Classic AllWhey؛ پروتئین وی با ۳۰ گرم پروتئین در هر وعده ۴۶ گرمی طبق اطلاعات رسمی سازنده. صفحه رسمی اندازه ۵ پوندی را ارائه می‌کند؛ وزن کاتالوگ ۲٫۳ کیلوگرم تقریباً معادل ۵ پوند است.",
+    "isNew": false,
+    "imageSource": "https://www.allmaxnutrition.com/products/allmax-classic-allwhey-100-whey-protein-powder"
   },
   {
     "id": "p018",
@@ -304,8 +310,9 @@
     "image3": "",
     "icon": "🥛",
     "badge": "",
-    "description": "پروتئین — 2.3 kg | اهداف: تأمین پروتئین روزانه | منبع تصویر: https://www.muscletech.com/products/nitro-tech-100-whey-gold",
-    "isNew": false
+    "description": "MuscleTech Nitro-Tech 100% Whey Gold؛ هر وعده ۲۴ گرم پروتئین و ۵٫۴ گرم BCAA طبق سازنده. تصویر ثبت‌شده برای بسته ۵ پوندی شکلات است؛ وزن ۲٫۳ کیلوگرم کاتالوگ با این اندازه هم‌خوانی دارد.",
+    "isNew": false,
+    "imageSource": "https://www.muscletech.com/products/nitro-tech-100-whey-gold"
   },
   {
     "id": "p019",
@@ -321,8 +328,9 @@
     "image3": "",
     "icon": "🥛",
     "badge": "",
-    "description": "پروتئین — 2.3 kg | اهداف: تأمین پروتئین روزانه | منبع تصویر: https://www.muscletech.com/products/nitro-tech-100-whey-gold",
-    "isNew": false
+    "description": "MuscleTech Nitro-Tech 100% Whey Gold، نسخه طعم Churros؛ هر وعده ۲۴ گرم پروتئین و ۵٫۴ گرم BCAA طبق سازنده. تصویر ثبت‌شده بسته ۵ پوندی طعم Churros است و با وزن کاتالوگ ۲٫۳ کیلوگرم هم‌خوانی دارد.",
+    "isNew": false,
+    "imageSource": "https://www.muscletech.com/products/nitro-tech-100-whey-gold"
   },
   {
     "id": "p020",
@@ -374,8 +382,9 @@
     "image3": "",
     "icon": "🥛",
     "badge": "",
-    "description": "پروتئین — 2.3 kg | اهداف: تأمین پروتئین روزانه | منبع تصویر: https://nutrex.com/products/100-pure-whey",
-    "isNew": false
+    "description": "Nutrex Research 100% Whey؛ پودر پروتئین وی برای تکمیل دریافت روزانه پروتئین و حمایت از ریکاوری عضلات. تصویر فعلی بسته ۵ پوندی شکلات و وزن ثبت‌شده ۲٫۳ کیلوگرم تقریباً معادل ۵ پوند است؛ جزئیات تغذیه‌ای را باید بر اساس طعم و برچسب همان بسته نهایی کرد.",
+    "isNew": false,
+    "imageSource": "https://nutrex.com/products/100-pure-whey"
   },
   {
     "id": "p023",
@@ -391,8 +400,9 @@
     "image3": "",
     "icon": "🥛",
     "badge": "",
-    "description": "پروتئین — 2 kg | اهداف: تأمین پروتئین روزانه | منبع تصویر: https://www.badassnutrition.eu/en/all-products/5-bad-ass-whey.html",
-    "isNew": false
+    "description": "Bad Ass Whey؛ مکمل پروتئین وی در بسته‌بندی درج‌شده به‌عنوان ۲ کیلوگرم. تصویر از صفحه فروشنده محصول ثبت شده است؛ مقادیر پروتئین و ترکیبات دقیق بدون تطبیق برچسب همان نسخه به‌صورت عددی اعلام نمی‌شود.",
+    "isNew": false,
+    "imageSource": "https://www.badassnutrition.eu/en/all-products/5-bad-ass-whey.html"
   },
   {
     "id": "p024",
