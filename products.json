@@ -1307,7 +1307,7 @@
   {
     "id": "p074",
     "name": "کراتین ایس فا ۳۰۰گرم",
-    "brand": "نامشخص",
+    "brand": "Fitness Authority",
     "price": 3370000,
     "basePrice": 2930000,
     "category": "creatine",
@@ -1318,8 +1318,9 @@
     "image3": "",
     "icon": "⚡",
     "badge": "",
-    "description": "کراتین ایس فا ۳۰۰گرم | دسته: creatine | منبع تصویر: https://acenutrition.pk/products/ice-creatine-60-servings",
-    "isNew": false
+    "description": "FA ICE Creatine طعم‌دار، بسته ۶۰ سروینگ؛ طبق صفحه فروشنده هر سروینگ حدود ۵ گرم و حاوی ۴ گرم کراتین مونوهیدرات به‌همراه تورین است. تصویر بسته با صفحه محصول تطبیق دارد.",
+    "isNew": false,
+    "imageSource": "https://acenutrition.pk/products/ice-creatine-60-servings"
   },
   {
     "id": "p075",
@@ -1352,8 +1353,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "کراتین — 120 عدد | اهداف: عملکرد تمرینی | منبع تصویر: https://ke.usn.global/products/creatine-x4-120s-capsules",
-    "isNew": false
+    "description": "USN Creatine X4، بسته ۱۲۰ کپسولی؛ ترکیب چهار نوع کراتین شامل HCl، نیترات، مونوهیدرات و اتیل‌استر. تصویر فعلی با تصویر رسمی بسته ۱۲۰ عددی سازنده تطبیق دارد.",
+    "isNew": false,
+    "imageSource": "https://ke.usn.global/products/creatine-x4-120s-capsules"
   },
   {
     "id": "p077",
@@ -1369,8 +1371,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "کراتین مونوهیدرات Creapure خالص — 250 g | اهداف: قدرت و عملکرد تمرینی | منبع تصویر: https://www.myprotein.com/p/sports-nutrition/the-creatine-creapure/10529740/?variation=10529741",
-    "isNew": false
+    "description": "Myprotein THE Creatine Creapure، کراتین مونوهیدرات خالص با ماده اولیه Creapure؛ بسته ۲۵۰ گرمی، ۸۳ سروینگ و ۳ گرم کراتین در هر سروینگ طبق صفحه رسمی. تصویر فعلی به‌عنوان تصویر بسته این محصول حفظ شد.",
+    "isNew": false,
+    "imageSource": "https://www.myprotein.com/p/sports-nutrition/the-creatine-creapure/10529740/?shippingcountry=GB&variation=10529742"
   },
   {
     "id": "p078",
@@ -1386,9 +1389,9 @@
     "image3": "",
     "icon": "⚡",
     "badge": "",
-    "description": "Nutrex Creatine for Women؛ فرمول ۳۰ سروینگ شامل کراتین مونوهیدرات، BCAA، کلاژن، بیوتین، هیالورونیک اسید و ویتامین C. تصویر منبع مربوط به طعم هلو-انبه است.",
+    "description": "Nutrex Creatine for Women، بسته ۳۰ سروینگ؛ ترکیبی از کراتین مونوهیدرات، BCAA، کلاژن، بیوتین، اسید هیالورونیک و ویتامین C. تصویر موجود مربوط به طعم Peach Mango است و با صفحه رسمی محصول تطبیق دارد.",
     "isNew": false,
-    "imageSource": "https://massforlife.com/products/nutrex-creatine-for-women-creatine-collagen-bcaa"
+    "imageSource": "https://nutrex.com/products/creatine-for-women"
   },
   {
     "id": "p079",
@@ -1404,8 +1407,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "چربی‌سوز — 110 عدد | اهداف: مدیریت وزن | منبع تصویر: https://www.muscletech.in/weight-management/muscletech-hydroxycut-hardcore-super-elite/",
-    "isNew": false
+    "description": "MuscleTech Hydroxycut Hardcore Super Elite؛ مکمل مدیریت وزن با ترکیبات محرک. تصویر موجود در سایت سازنده با برچسب 110ct دیده می‌شود، اما مشخصات متنی صفحه رسمی فعلی 100 عدد را ذکر می‌کند؛ تعداد روی بسته فیزیکی پیش از انتشار نهایی باید تأیید شود.",
+    "isNew": false,
+    "imageSource": "https://www.muscletech.in/weight-management/muscletech-hydroxycut-hardcore-super-elite/"
   },
   {
     "id": "p080",
@@ -1421,8 +1425,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "چربی‌سوز — 90 عدد | اهداف: مدیریت وزن | منبع تصویر: https://ca.allmaxnutrition.com/products/rapidcuts-shredded",
-    "isNew": false
+    "description": "ALLMAX RapidCuts Shredded، بسته ۹۰ کپسولی؛ فرمول ترموژنیک برای پشتیبانی از مدیریت وزن. تصویر مستقیم رسمی سازنده و تعداد ۹۰ کپسول با صفحه محصول تطبیق داده شد.",
+    "isNew": false,
+    "imageSource": "https://ca.allmaxnutrition.com/products/rapidcuts-shredded"
   },
   {
     "id": "p081",
@@ -1455,12 +1460,13 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "چربی‌سوز — 80 عدد | اهداف: مدیریت وزن | منبع تصویر: https://ke.usn.global/products/usn%C2%AE-phedra-cut-lipo-x-black",
-    "isNew": false
+    "description": "USN Phedra Cut Lipo X Black، بسته ۸۰ کپسولی؛ فرمول مدیریت وزن حاوی ترکیبات محرک و کافئین. تصویر فعلی با بسته ۸۰ عددی در صفحه رسمی USN تطبیق دارد؛ به دلیل محرک‌ها باید مطابق برچسب مصرف شود.",
+    "isNew": false,
+    "imageSource": "https://ke.usn.global/products/usn%C2%AE-phedra-cut-lipo-x-black"
   },
   {
     "id": "p083",
-    "name": "لیپو سیکس الترا ناترکس ۶۰عدد",
+    "name": "لیپو ۶ بلک اولترا کانسنتریت ناترکس ۶۰عدد",
     "brand": "Nutrex",
     "price": 4300000,
     "basePrice": 3740000,
@@ -1472,7 +1478,7 @@
     "image3": "",
     "icon": "🔥",
     "badge": "",
-    "description": "لیپو ۶ بلک اولترا کانسنتریت ناترکس، بسته ۶۰ کپسول مایع؛ فرمول محرک برای انرژی و حمایت از مدیریت وزن. ترکیبات محرک را با احتیاط مصرف کنید.",
+    "description": "Nutrex Lipo-6 Black Ultra Concentrate، بسته ۶۰ کپسول مایع؛ فرمول ترموژنیک غلیظ با محرک‌ها برای پشتیبانی از مدیریت وزن. تصویر فعلی از صفحه رسمی سازنده و با بسته ۶۰ عددی تطبیق دارد؛ ترکیبات محرک را با احتیاط مصرف کنید.",
     "isNew": false,
     "imageSource": "https://nutrex.com/products/lipo-6-black-ultra-concentrate"
   },
