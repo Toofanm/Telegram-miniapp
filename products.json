@@ -1782,19 +1782,20 @@
   {
     "id": "p104",
     "name": "بوستر DHEA اوربیلد ۶۰عدد",
-    "brand": "نامشخص",
+    "brand": "Everbuild Nutrition",
     "price": 3900000,
     "basePrice": 3390000,
     "category": "testbooster",
     "subcategory": "testbooster",
     "weight": "60 عدد",
-    "image": "",
+    "image": "https://www.everbuildnutrition.com/uf/product/153_banner_banner_dhea50_detail_prod_banner.jpg",
     "image2": "",
     "image3": "",
     "icon": "💊",
     "badge": "",
-    "description": "بوستر DHEA اوربیلد ۶۰عدد | دسته: testbooster",
-    "isNew": false
+    "description": "مکمل DHEA برند Everbuild Nutrition، بسته ۶۰ عددی. صفحه رسمی سازنده تصویر و بسته ۶۰ قرصی را تأیید می‌کند؛ نسخه رسمی معرفی‌شده ۵۰ میلی‌گرم است و پیش از درج دوز در نام کالا باید با موجودی فروشگاه تطبیق داده شود.",
+    "isNew": false,
+    "imageSource": "https://www.everbuildnutrition.com/en/153-DHEA-50mg-60-Tabs.html"
   },
   {
     "id": "p105",
