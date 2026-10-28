@@ -1087,19 +1087,20 @@
   {
     "id": "p064",
     "name": "کراتین میکرونایزد المکس ۴۰۰گرم",
-    "brand": "Elmax",
+    "brand": "ALLMAX Nutrition",
     "price": 6925000,
     "basePrice": 6020000,
     "category": "creatine",
     "subcategory": "creatine",
     "weight": "400 گرم",
-    "image": "",
+    "image": "https://kingbody.shop/wp-content/uploads/2024/10/CREATINE-400G-US1022-main.jpg.png",
     "image2": "",
     "image3": "",
     "icon": "⚡",
     "badge": "",
-    "description": "کراتین میکرونایزد المکس ۴۰۰گرم | دسته: creatine",
-    "isNew": false
+    "description": "کراتین مونوهیدرات میکرونایز ALLMAX Essentials، وزن ۴۰۰ گرم و ۸۰ سروینگ؛ هر سروینگ ۵ گرم کراتین مونوهیدرات. برند، وزن و تصویر بسته‌بندی با صفحه محصول فروشنده تطبیق داده شد.",
+    "isNew": false,
+    "imageSource": "https://kingbody.shop/product/%DA%A9%D8%B1%D8%A7%D8%AA%DB%8C%D9%86-400-%DA%AF%D8%B1%D9%85%DB%8C-%D8%A2%D9%84%D9%85%DA%A9%D8%B3/"
   },
   {
     "id": "p065",
