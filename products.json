@@ -1856,7 +1856,7 @@
     "image3": "",
     "icon": "💊",
     "badge": "",
-    "description": "مکمل DHEA برند Everbuild Nutrition، بسته ۶۰ عددی. صفحه رسمی سازنده تصویر و بسته ۶۰ قرصی را تأیید می‌کند؛ نسخه رسمی معرفی‌شده ۵۰ میلی‌گرم است و پیش از درج دوز در نام کالا باید با موجودی فروشگاه تطبیق داده شود.",
+    "description": "Everbuild Nutrition DHEA، بسته ۶۰ قرصی. صفحه رسمی سازنده نسخه ۵۰ میلی‌گرمی و ۶۰ قرص را نشان می‌دهد؛ مقدار درج‌شده روی بسته موجودی فروشگاه باید پیش از تأیید نهایی با همین نسخه تطبیق داده شود. DHEA یک پیش‌ساز هورمونی است و نباید به‌عنوان درمان یا تضمین افزایش تستوسترون معرفی شود.",
     "isNew": false,
     "imageSource": "https://www.everbuildnutrition.com/en/153-DHEA-50mg-60-Tabs.html"
   },
@@ -1874,7 +1874,7 @@
     "image3": "",
     "icon": "💊",
     "badge": "",
-    "description": "USN Testo gH Ultra، مکمل ترکیبی ۱۲۰ کپسولی. تصویر و تعداد کپسول با صفحه محصول رسمی USN تطبیق داده شده است؛ ادعاهای مربوط به هورمون در صفحه محصول به‌عنوان تضمین اثر درمانی در نظر گرفته نمی‌شوند.",
+    "description": "USN Testo gH Ultra، بسته ۱۲۰ عددی. تصویر و تعداد با صفحه رسمی USN تطبیق داده شده است. محصول در دسته مکمل‌های ترکیبی قرار می‌گیرد؛ از ادعاهای قطعی درباره افزایش تستوسترون یا هورمون رشد خودداری شود.",
     "isNew": false,
     "imageSource": "https://ke.usn.global/products/testo-gh-ultra-120s"
   },
@@ -1892,8 +1892,9 @@
     "image3": "",
     "icon": "💊",
     "badge": "",
-    "description": "تی اپ مکس ناترکس ۶۰عدد | دسته: testbooster | منبع تصویر: https://nutrex.com/products/t-up-max-testosterone-support",
-    "isNew": false
+    "description": "Nutrex Research T-Up Max، بسته ۶۰ عددی؛ مکمل ترکیبی با هدف پشتیبانی تغذیه‌ای عمومی. تصویر و اندازه بسته از صفحه رسمی سازنده ثبت شده است؛ ادعاهای تبلیغاتی درباره افزایش تستوسترون به‌عنوان اثر قطعی یا درمانی ارائه نمی‌شوند.",
+    "isNew": false,
+    "imageSource": "https://nutrex.com/products/t-up-max-testosterone-support"
   },
   {
     "id": "p107",
@@ -1909,8 +1910,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "تست بوستر — 60 عدد | اهداف: مکمل هدف‌محور | منبع تصویر: https://nutrex.com/products/abol",
-    "isNew": false
+    "description": "Nutrex Research Anabol Hardcore، بسته ۶۰ کپسول مایع. صفحه محصول/برچسب سازنده تعداد ۶۰ کپسول را تأیید می‌کند. این محصول مکمل دارویی‌نما با هشدارهای مصرف است؛ ادعاهای عضله‌سازی سازنده تضمین اثر نیستند و پیش از فروش باید برچسب و الزامات عرضه بررسی شوند.",
+    "isNew": false,
+    "imageSource": "https://nutrex.com/products/abol"
   },
   {
     "id": "p108",
@@ -1921,13 +1923,14 @@
     "category": "testbooster",
     "subcategory": "testbooster",
     "weight": "90 عدد",
-    "image": "https://www.sporter.com/media/catalog/product/1/3/130304-new90.jpg",
+    "image": "https://nutrex.com/cdn/shop/files/Tribulus_b06b235d-814e-4565-9d0c-438f9a7cb2b8.png?v=1740142343&width=1000",
     "image2": "",
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "تست بوستر — 90 عدد | اهداف: مکمل هدف‌محور | منبع تصویر: https://nutrex.com/products/tribulus-1400",
-    "isNew": false
+    "description": "Nutrex Research Tribulus 1400، مکمل گیاهی مبتنی بر Tribulus terrestris. تصویر به نسخه رسمی سازنده تغییر داده شد. صفحه رسمی به مقدار ۱۴۰۰ میلی‌گرم در هر وعده اشاره می‌کند؛ تعداد کپسول و مقدار هر وعده را با برچسب بسته موجودی تطبیق دهید، زیرا شواهد تبلیغاتی سازنده تضمین افزایش تستوسترون نیست.",
+    "isNew": false,
+    "imageSource": "https://nutrex.com/products/tribulus-1400"
   },
   {
     "id": "p109",
@@ -1943,7 +1946,7 @@
     "image3": "",
     "icon": "💊",
     "badge": "",
-    "description": "Bigman Tribulus Terrestris، مکمل گیاهی ۹۰ کپسولی بر پایه عصاره تریبولوس با استانداردسازی ساپونین. تصویر و تعداد کپسول با صفحه سازنده تطبیق داده شده است.",
+    "description": "Bigman Tribulus Terrestris، بسته ۹۰ کپسولی. تصویر و اندازه بسته از صفحه رسمی Bigman تطبیق داده شده است. برای معرفی محصول به ترکیبات درج‌شده روی برچسب تکیه شود و از وعده قطعی افزایش تستوسترون پرهیز شود.",
     "isNew": false,
     "imageSource": "https://www.bigman.es/product-page/tribulus-terrestris-90-c%C3%A1p"
   },
@@ -1961,7 +1964,7 @@
     "image3": "",
     "icon": "🌿",
     "badge": "",
-    "description": "مولتی‌ویتامین Vita Max یو اس ان، بسته ۶۰ عددی؛ برای تکمیل دریافت روزانه ریزمغذی‌ها. اطلاعات دقیق ترکیبات را از برچسب همان بسته بررسی کنید.",
+    "description": "USN Vita-Max One A Day، بسته ۶۰ کپسولی؛ مولتی‌ویتامین روزانه برای تکمیل دریافت ریزمغذی‌ها. تصویر فعلی از فروشنده است و صفحه محصول مرجع برای تطبیق بسته‌بندی و ترکیبات ثبت شده؛ عبارت «۲ دوره» در نام محصول تا تأیید نحوه مصرف روی برچسب، به‌عنوان تعداد سروینگ قطعی تلقی نشود.",
     "isNew": false,
     "imageSource": "https://www.benu.cz/usn-vita-max-one-a-day-60-cps"
   },
@@ -1979,8 +1982,9 @@
     "image3": "",
     "icon": "💊",
     "badge": "",
-    "description": "مولتی‌ویتامین — 90 عدد | اهداف: ویتامین و مینرال | منبع تصویر: https://www.muscletech.com/products/platinum-multivitamin",
-    "isNew": false
+    "description": "MuscleTech Platinum Multivitamin، بسته ۹۰ قرصی؛ مولتی‌ویتامین و مینرال همراه با ترکیبات پشتیبان اضافی. صفحه رسمی سازنده اندازه ۹۰ عدد و سروینگ ۳ قرصی را ذکر می‌کند؛ بنابراین بسته شامل ۳۰ سروینگ طبق دستور صفحه رسمی است.",
+    "isNew": false,
+    "imageSource": "https://www.muscletech.com/products/platinum-multivitamin"
   },
   {
     "id": "p112",
@@ -1996,8 +2000,9 @@
     "image3": "",
     "icon": "💊",
     "badge": "",
-    "description": "مولتی‌ویتامین — 90 عدد | اهداف: ویتامین و مینرال | منبع تصویر: https://www.ruleoneproteins.com/collections/all-products/products/r1-train-daily",
-    "isNew": false
+    "description": "Rule One Men's Multi / Train Daily، بسته ۹۰ عددی؛ مولتی‌ویتامین روزانه با ویتامین‌ها، مینرال‌ها و ترکیبات تکمیلی. صفحه رسمی اندازه ۹۰ قرصی و توصیه مصرف همراه غذا را نشان می‌دهد؛ تعداد و دوز نهایی باید با برچسب همان بسته مطابقت داشته باشد.",
+    "isNew": false,
+    "imageSource": "https://www.ruleoneproteins.com/collections/all-products/products/r1-train-daily"
   },
   {
     "id": "p113",
@@ -2008,13 +2013,14 @@
     "category": "vitamin",
     "subcategory": "vitamin",
     "weight": "60 عدد",
-    "image": "https://topnutritionandfitness.com/cdn/shop/files/Allmax-Vitaform-Complete-Men-s-Multivitamin-60-tabs-Top-Nutrition-and-Fitness-24606594367562.jpg?v=1762442350",
+    "image": "https://www.allmaxnutrition.com/cdn/shop/files/vitaform-men-allmax-nutrition-us_1.webp?v=1783543983&width=2000",
     "image2": "",
     "image3": "",
     "icon": "💊",
     "badge": "",
-    "description": "مولتی‌ویتامین — 60 عدد | اهداف: ویتامین و مینرال | منبع تصویر: https://www.allmaxnutrition.com/products/allmax-vitaform-men-multivitamin",
-    "isNew": false
+    "description": "ALLMAX Vitaform Men، مولتی‌ویتامین مخصوص آقایان، بسته ۶۰ قرصی. تصویر از صفحه رسمی سازنده جایگزین تصویر فروشنده شد. طبق صفحه رسمی، فرمول شامل شش ترکیب عملکردی و دستور مصرف دو قرص در روز پس از اولین وعده غذایی است؛ با این حال ادعاهای مربوط به حمایت از سلامت، جایگزین ارزیابی پزشکی نیست.",
+    "isNew": false,
+    "imageSource": "https://www.allmaxnutrition.com/products/allmax-vitaform-men-multivitamin"
   },
   {
     "id": "p114",
