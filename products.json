@@ -830,13 +830,14 @@
     "category": "amino",
     "subcategory": "amino",
     "weight": "30 سرو",
-    "image": "",
+    "image": "https://www.dischem.co.za/api/catalog/product/6/4/64e73fd8328bb_66009544921141-1.jpg?image-type=image&store=default",
     "image2": "",
     "image3": "",
     "icon": "🧪",
     "badge": "",
-    "description": "امینو EAA ال ناین یو اس ان ۳۰سرو | دسته: amino",
-    "isNew": false
+    "description": "USN All9 Amino؛ ترکیب آمینواسیدهای ضروری و BCAA برای مصرف حین تمرین و پشتیبانی از ریکاوری. تصویر منبع مربوط به بسته 330 گرمی است؛ تعداد سروینگ در فهرست فروشگاه نیازمند تطبیق با بسته واقعی است.",
+    "isNew": false,
+    "imageSource": "https://www.dischem.co.za/usn-all-9-amino-330g-951"
   },
   {
     "id": "p050",
@@ -1589,13 +1590,14 @@
     "category": "preworkout",
     "subcategory": "pump",
     "weight": "30 سرو",
-    "image": "",
+    "image": "https://dailyvita.com/cdn/shop/files/2000911__1_800x.jpg?v=1711396275",
     "image2": "",
     "image3": "",
     "icon": "🔥",
     "badge": "",
-    "description": "پمپ رور رول وان ۳۰سرو | دسته: pump",
-    "isNew": false
+    "description": "R1 Pump از Rule One، فرمول پیش‌تمرین بدون محرک برای پشتیبانی از پمپ عضلانی؛ بسته ۳۰ سروینگ. نسخه تصویرشده بدون طعم است.",
+    "isNew": false,
+    "imageSource": "https://dailyvita.com/en-cn/collections/citrulline/products/r1-pump-stim-free-pre-workout-30-servings-unflavored-231-g"
   },
   {
     "id": "p094",
@@ -1948,13 +1950,14 @@
     "category": "vitamin",
     "subcategory": "multivitamin",
     "weight": "330 گرم",
-    "image": "",
+    "image": "https://www.proteini.si/hr/image/original/48774/usn-liv-smart-marine-collagen-330g",
     "image2": "",
     "image3": "",
     "icon": "🌿",
     "badge": "",
-    "description": "کلاژن مارین یو اس ان ۳۳۰گرم | دسته: multivitamin",
-    "isNew": false
+    "description": "USN Liv Smart Marine Collagen، پودر کلاژن دریایی ۳۳۰ گرمی؛ برای تکمیل دریافت کلاژن در رژیم غذایی.",
+    "isNew": false,
+    "imageSource": "https://www.proteini.si/hr/kolagen/usn-liv-smart-marine-collagen-330g"
   },
   {
     "id": "p115",
@@ -2266,19 +2269,20 @@
   {
     "id": "p133",
     "name": "زد ام ای اپتیموم ۹۰عدد",
-    "brand": "نامشخص",
+    "brand": "Optimum Nutrition",
     "price": 5430000,
     "basePrice": 4720000,
     "category": "other",
     "subcategory": "others",
     "weight": "90 عدد",
-    "image": "",
+    "image": "https://www.optimumnutrition.com/cdn/shop/files/US_ON_ZMA_90Caps_6065392-2000x2000-064a3d6.png?v=1761667286&width=2000",
     "image2": "",
     "image3": "",
     "icon": "💊",
     "badge": "",
-    "description": "زد ام ای اپتیموم ۹۰عدد | دسته: others",
-    "isNew": false
+    "description": "Optimum Nutrition ZMA، ترکیب روی، منیزیم و ویتامین B6؛ بسته ۹۰ کپسولی برای پشتیبانی از دریافت ریزمغذی‌ها.",
+    "isNew": false,
+    "imageSource": "https://www.optimumnutrition.com/en-us/products/zma-zinc-magnesium-aspartate-supplement"
   },
   {
     "id": "p134",
