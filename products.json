@@ -2076,20 +2076,21 @@
   },
   {
     "id": "p121",
-    "name": "یوهمبین الفا المکس ۶۰عدد",
-    "brand": "Elmax",
+    "name": "یوهمبین پلاس آلمکس ۶۰ کپسول",
+    "brand": "ALLMAX",
     "price": 4440000,
     "basePrice": 3860000,
     "category": "other",
     "subcategory": "others",
     "weight": "60 عدد",
-    "image": "",
+    "image": "https://www.allmaxnutrition.com/cdn/shop/files/yohimbine_1.2.webp?v=1791491668&width=1254",
     "image2": "",
     "image3": "",
     "icon": "💊",
     "badge": "",
-    "description": "یوهمبین الفا المکس ۶۰عدد | دسته: others",
-    "isNew": false
+    "description": "مکمل ALLMAX Yohimbine+ حاوی Yohimbine و Rauwolscine (Alpha-Yohimbine)، بسته ۶۰ کپسولی؛ تصویر و تعداد کپسول‌ها با صفحه رسمی سازنده تطبیق داده شد.",
+    "isNew": false,
+    "imageSource": "https://www.allmaxnutrition.com/products/allmax-yohimbine-plus"
   },
   {
     "id": "p122",
