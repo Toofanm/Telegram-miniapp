@@ -705,13 +705,14 @@
     "category": "glutamine",
     "subcategory": "glutamine",
     "weight": "400 گرم",
-    "image": "",
+    "image": "https://www.ruleoneproteins.com/cdn/shop/files/Glutamine_75s_Unflavored0001.png?v=1763136640&width=1920",
     "image2": "",
     "image3": "",
     "icon": "🧬",
     "badge": "",
-    "description": "گلوتامین جدید رول وان ۴۰۰گرم | دسته: glutamine",
-    "isNew": false
+    "description": "گلوتامین خالص و میکرونایز رول وان، بسته ۷۵ سروینگ (حدود ۳۹۸ گرم)، بدون طعم؛ برای افزودن به نوشیدنی یا شیک پس از تمرین.",
+    "isNew": false,
+    "imageSource": "https://www.ruleoneproteins.com/products/r1-glutamine"
   },
   {
     "id": "p043",
@@ -722,13 +723,14 @@
     "category": "glutamine",
     "subcategory": "glutamine",
     "weight": "300 گرم",
-    "image": "",
+    "image": "https://www.muscletech.com/cdn/shop/files/mt-platinum-100-glutamine.png?v=1742823763",
     "image2": "",
     "image3": "",
     "icon": "🧬",
     "badge": "",
-    "description": "گلوتامین جدید پلاتینوم ماسل تک ۳۰۰گرم | دسته: glutamine",
-    "isNew": false
+    "description": "گلوتامین پلاتینوم ماسل‌تک، ۳۰۰ گرم، ۵ گرم گلوتامین در هر سروینگ و حدود ۶۰ سروینگ؛ فرمول بدون طعم برای ریکاوری پس از تمرین.",
+    "isNew": false,
+    "imageSource": "https://www.muscletech.com/products/platinum-100-glutamine"
   },
   {
     "id": "p044",
@@ -756,13 +758,14 @@
     "category": "amino",
     "subcategory": "amino",
     "weight": "30 سرو",
-    "image": "",
+    "image": "https://www.gobsn.com/cdn/shop/files/bsn-1047396_Image_01.png?v=1761234009&width=800",
     "image2": "",
     "image3": "",
     "icon": "🧪",
     "badge": "",
-    "description": "امینو X بی اس ان ۳۰سرو | دسته: amino",
-    "isNew": false
+    "description": "BSN AMINOx، بسته ۳۰ سروینگ با طعم انگور؛ ترکیب آمینواسیدی بدون کافئین با ۱۰ گرم آمینواسید در هر سروینگ برای حمایت از استقامت و ریکاوری.",
+    "isNew": false,
+    "imageSource": "https://www.gobsn.com/products/amino-x-bcaa"
   },
   {
     "id": "p046",
@@ -1022,19 +1025,20 @@
   {
     "id": "p061",
     "name": "کراتین میکرونایزد جدید اپلاید ۱کیلو",
-    "brand": "نامشخص",
+    "brand": "Applied Nutrition",
     "price": 17685000,
     "basePrice": 15380000,
     "category": "creatine",
     "subcategory": "creatine",
     "weight": "1 کیلو",
-    "image": "",
+    "image": "https://appliednutrition.uk/cdn/shop/files/Creatine_Monohydrate_Professional_1kg_Free_Gift.webp?v=1781657000&width=416",
     "image2": "",
     "image3": "",
     "icon": "⚡",
     "badge": "",
-    "description": "کراتین میکرونایزد جدید اپلاید ۱کیلو | دسته: creatine",
-    "isNew": false
+    "description": "کراتین مونوهیدرات میکرونایز اپلاید نوتریشن، ۱ کیلوگرم و ۲۰۰ سروینگ؛ پودر کراتین خالص برای حمایت از قدرت و عملکرد تمرین.",
+    "isNew": false,
+    "imageSource": "https://appliednutrition.uk/products/creatine-monohydrate"
   },
   {
     "id": "p062",
@@ -1215,13 +1219,14 @@
     "category": "creatine",
     "subcategory": "creatine",
     "weight": "300 گرم",
-    "image": "",
+    "image": "https://pkohtcvegadjqbjnzcwz.supabase.co/storage/v1/object/public/product-images/nutrex/creatine-monohydrate/00-Creatine-60.webp",
     "image2": "",
     "image3": "",
     "icon": "⚡",
     "badge": "",
-    "description": "کراتین ناترکس ۳۰۰گرم | دسته: creatine",
-    "isNew": false
+    "description": "کراتین مونوهیدرات ناترکس، ۳۰۰ گرم، میکرونایز و بدون طعم؛ هر سروینگ ۵ گرم کراتین مونوهیدرات.",
+    "isNew": false,
+    "imageSource": "https://www.sport-zona.com/en/product/creatine-monohydrate-nutrex"
   },
   {
     "id": "p073",
@@ -1402,30 +1407,32 @@
     "category": "fatburner",
     "subcategory": "fatburner",
     "weight": "60 عدد",
-    "image": "",
+    "image": "https://nutrex.com/cdn/shop/files/Lipo6-BlackUC-60.webp?v=1783857791&width=550",
     "image2": "",
     "image3": "",
     "icon": "🔥",
     "badge": "",
-    "description": "لیپو سیکس الترا ناترکس ۶۰عدد | دسته: fatburner",
-    "isNew": false
+    "description": "لیپو ۶ بلک اولترا کانسنتریت ناترکس، بسته ۶۰ کپسول مایع؛ فرمول محرک برای انرژی و حمایت از مدیریت وزن. ترکیبات محرک را با احتیاط مصرف کنید.",
+    "isNew": false,
+    "imageSource": "https://nutrex.com/products/lipo-6-black-ultra-concentrate"
   },
   {
     "id": "p084",
     "name": "لیپو سیکس هاردکور ناترکس ۶۰عدد",
-    "brand": "Hardcore",
+    "brand": "Nutrex",
     "price": 4660000,
     "basePrice": 4050000,
     "category": "fatburner",
     "subcategory": "fatburner",
     "weight": "60 عدد",
-    "image": "",
+    "image": "https://nutrex.com/cdn/shop/files/AMAZON-1_403e7af6-0164-4d5e-a8a9-1b3da8fbf7a7.png?v=1765926998&width=1000",
     "image2": "",
     "image3": "",
     "icon": "🔥",
     "badge": "",
-    "description": "لیپو سیکس هاردکور ناترکس ۶۰عدد | دسته: fatburner",
-    "isNew": false
+    "description": "لیپو ۶ هاردکور ناترکس، بسته ۶۰ کپسول؛ مکمل محرک برای حمایت از انرژی و مدیریت وزن. برچسب محصول را برای ترکیبات و هشدارهای مصرف بررسی کنید.",
+    "isNew": false,
+    "imageSource": "https://nutrex.com/products/lipo-6-hardcore"
   },
   {
     "id": "p085",
@@ -1589,13 +1596,14 @@
     "category": "preworkout",
     "subcategory": "pump",
     "weight": "30 سرو",
-    "image": "",
+    "image": "https://redcon1.com/cdn/shop/products/TW_RAINBOWCANDY_30SERV_FLV-2023.png?v=1770325008&width=1946",
     "image2": "",
     "image3": "",
     "icon": "🔥",
     "badge": "",
-    "description": "توتال وار ردکان ۳۰سرو | دسته: pump",
-    "isNew": false
+    "description": "پیش‌تمرین Total War ردکان، طعم Rainbow Candy، بسته ۳۰ سروینگ؛ طبق صفحه سازنده حاوی ۳۲۰ میلی‌گرم کافئین، ۶ گرم سیترولین مالات و ۳٫۲ گرم بتاآلانین در هر سروینگ.",
+    "isNew": false,
+    "imageSource": "https://redcon1.com/products/redcon1-total-war-pre-workout"
   },
   {
     "id": "p095",
@@ -1861,13 +1869,14 @@
     "category": "vitamin",
     "subcategory": "multivitamin",
     "weight": "60 عدد",
-    "image": "",
+    "image": "https://www.benu.cz/data/images/product-640x640-webp/5/1_248995.webp",
     "image2": "",
     "image3": "",
     "icon": "🌿",
     "badge": "",
-    "description": "ویتا مکس یو اس ان ۶۰عدد (۲ دوره) | دسته: multivitamin",
-    "isNew": false
+    "description": "مولتی‌ویتامین Vita Max یو اس ان، بسته ۶۰ عددی؛ برای تکمیل دریافت روزانه ریزمغذی‌ها. اطلاعات دقیق ترکیبات را از برچسب همان بسته بررسی کنید.",
+    "isNew": false,
+    "imageSource": "https://www.benu.cz/usn-vita-max-one-a-day-60-cps"
   },
   {
     "id": "p111",
@@ -1940,19 +1949,20 @@
   {
     "id": "p115",
     "name": "کلاژن XPN پیور ۳۰۰گرم",
-    "brand": "نامشخص",
+    "brand": "XPN",
     "price": 5945000,
     "basePrice": 5170000,
     "category": "vitamin",
     "subcategory": "multivitamin",
     "weight": "300 گرم",
-    "image": "",
+    "image": "https://xpnworld.com/cdn/shop/files/PureCollagen-300g-LimonadeFraise_c3d9daec-eefb-4ca0-99f8-ae60336c8e9a_2048x2048.png?v=1734357778",
     "image2": "",
     "image3": "",
     "icon": "🌿",
     "badge": "",
-    "description": "کلاژن XPN پیور ۳۰۰گرم | دسته: multivitamin",
-    "isNew": false
+    "description": "کلاژن پیور XPN، بسته ۳۰۰ گرم با طعم لیموناد توت‌فرنگی؛ پودر کلاژن هیدرولیزشده با ۱۰ گرم کلاژن در هر سروینگ، طبق اطلاعات سازنده.",
+    "isNew": false,
+    "imageSource": "https://xpnworld.com/products/pure-collagen"
   },
   {
     "id": "p116",
