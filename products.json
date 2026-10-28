@@ -1193,19 +1193,20 @@
   {
     "id": "p070",
     "name": "کراتین پرفورمنس سولکور ۳۰۰گرم",
-    "brand": "نامشخص",
+    "brand": "Cellucor",
     "price": 4395000,
     "basePrice": 3820000,
     "category": "creatine",
     "subcategory": "creatine",
     "weight": "300 گرم",
-    "image": "",
+    "image": "https://kingbody.shop/wp-content/uploads/2025/02/Cellucor-Performance-Creatine-Monohydrate-300g.png",
     "image2": "",
     "image3": "",
     "icon": "⚡",
     "badge": "",
-    "description": "کراتین پرفورمنس سولکور ۳۰۰گرم | دسته: creatine",
-    "isNew": false
+    "description": "کراتین مونوهیدرات Cellucor COR-Performance، بسته حدود ۳۰۶ گرمی. منبع تصویری محصول و برند Cellucor بررسی شد؛ وزن روی بسته 306 گرم درج شده است.",
+    "isNew": false,
+    "imageSource": "https://kingbody.shop/product/%DA%A9%D8%B1%D8%A7%D8%AA%DB%8C%D9%86-%D9%85%D9%88%D9%86%D9%88%D9%87%DB%8C%D8%AF%D8%B1%D8%A7%D8%AA-%D9%BE%D8%B1%D9%81%D9%88%D8%B1%D9%85%D9%86%D8%B3-%D8%B3%D9%84%D9%88%DA%A9%D9%88%D8%B1-300-%DA%AF%D8%B1/"
   },
   {
     "id": "p071",
@@ -1245,19 +1246,20 @@
   {
     "id": "p073",
     "name": "کراتین شاک گیر ۳۰۰گرم",
-    "brand": "نامشخص",
+    "brand": "Gear Nutrition",
     "price": 3175000,
     "basePrice": 2760000,
     "category": "creatine",
     "subcategory": "creatine",
     "weight": "300 گرم",
-    "image": "",
+    "image": "https://fasklep.pl/2687-large_default/gear-crea-shock-300-g.jpg",
     "image2": "",
     "image3": "",
     "icon": "⚡",
     "badge": "",
-    "description": "کراتین شاک گیر ۳۰۰گرم | دسته: creatine",
-    "isNew": false
+    "description": "کراتین مونوهیدرات Gear Nutrition Crea Shock با وزن ۳۰۰ گرم و ۶۰ سروینگ؛ حاوی کراتین مونوهیدرات و ویتامین B6. تصویر و مشخصات با صفحه محصول سازنده تطبیق داده شد.",
+    "isNew": false,
+    "imageSource": "https://gearnutrition.eu/index.php/tools/?cid=104&lang=2&pid=1221"
   },
   {
     "id": "p074",
