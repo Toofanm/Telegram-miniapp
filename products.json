@@ -598,8 +598,9 @@
     "image3": "",
     "icon": "🥛",
     "badge": "",
-    "description": "پروتئین ایزوله گوشت — بسته مرجع تصویر 1.89 کیلوگرمی | اهداف: تأمین پروتئین روزانه، ریکاوری عضلات | منبع تصویر: https://supplementscanada.com/products/musclemeds-carnivor-beef-protein-4-lb-56-servings",
-    "isNew": false
+    "description": "پروتئین Carnivor از MuscleMeds بر پایه پروتئین ایزوله گوشت گاو است. تصویر با بسته ۴ پوندی (حدود ۱٫۸۱ کیلوگرم)، طعم شکلات و ۵۶ سروینگ تطبیق داده شد. هر سروینگ حدود ۲۳ گرم پروتئین دارد.",
+    "isNew": false,
+    "imageSource": "https://musclemedsrx.com/products/carnivor"
   },
   {
     "id": "p035",
@@ -615,8 +616,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "آمینواسید شاخه‌دار با نسبت 12:1:1 — بسته مرجع تصویر 315 گرمی | اهداف: حمایت از تمرین، ریکاوری عضلات | منبع تصویر: https://www.supplementworld.co.za/usn-bcaa-12-1-1.html",
-    "isNew": false
+    "description": "BCAA برند USN با نسبت درج‌شده ۱۲:۱:۱؛ تصویر مرجع فروشنده برای بسته ۳۰ سروینگی است. وزن و فرمول دقیق را در زمان عرضه با برچسب روی بسته نهایی تطبیق دهید.",
+    "isNew": false,
+    "imageSource": "https://www.supplementworld.co.za/usn-bcaa-12-1-1.html"
   },
   {
     "id": "p036",
@@ -632,8 +634,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "بی سی ای ای — 30 سرو | اهداف: آمینواسید | منبع تصویر: https://cellucor.com/products/xtend-original",
-    "isNew": false
+    "description": "XTEND Original از Scivation/Cellucor، فرمول BCAA همراه الکترولیت؛ نسخه ۳۰ سروینگی. تصویر رسمی محصول استفاده شده است. طعم تصویر ممکن است با موجودی واقعی متفاوت باشد.",
+    "isNew": false,
+    "imageSource": "https://cellucor.com/products/xtend-original"
   },
   {
     "id": "p037",
@@ -649,8 +652,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "بی سی ای ای — 30 سرو | اهداف: آمینواسید | منبع تصویر: https://www.ruleoneproteins.com/products/r1-bcaas",
-    "isNew": false
+    "description": "R1 BCAAs از Rule One؛ پودر آمینواسیدهای شاخه‌دار با نسبت ۲:۱:۱. تصویر رسمی نسخه بدون طعم و ۳۰ سروینگی است؛ طعم کالای تحویلی باید با برچسب بسته تطبیق داده شود.",
+    "isNew": false,
+    "imageSource": "https://www.ruleoneproteins.com/products/r1-bcaas"
   },
   {
     "id": "p038",
@@ -666,8 +670,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "BCAA و گلوتامین همراه الکترولیت — 32 سرو | اهداف: حمایت از تمرین، ریکاوری عضلات | منبع تصویر: https://www.boteprote.com/bigman-bcaa-glutamine-electrolytes-300g.html",
-    "isNew": false
+    "description": "ترکیب BCAA، گلوتامین و الکترولیت از Bigman؛ بسته مرجع ۳۰۰ گرمی با حدود ۳۲ سروینگ. تصویر از صفحه فروشنده همین محصول گرفته شده است.",
+    "isNew": false,
+    "imageSource": "https://www.boteprote.com/bigman-bcaa-glutamine-electrolytes-300g.html"
   },
   {
     "id": "p039",
@@ -683,8 +688,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "گلوتامین — 500 g | اهداف: آمینواسید | منبع تصویر: https://bpisports.com/products/best-glutamine",
-    "isNew": false
+    "description": "BPI Sports Best Glutamine؛ تصویر رسمی نسخه طعم Berry Citrus با ۵۰ سروینگ است. وزن درج‌شده در کاتالوگ ۵۰۰ گرم است؛ پیش از عرضه، وزن و تعداد سروینگ را با برچسب بسته موجودی کنترل کنید.",
+    "isNew": false,
+    "imageSource": "https://bpisports.com/products/best-glutamine"
   },
   {
     "id": "p040",
@@ -700,8 +706,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "گلوتامین — 300 g | اهداف: آمینواسید | منبع تصویر: https://mutantnation.com/collections/products/products/premium-micronized-glutamine",
-    "isNew": false
+    "description": "گلوتامین میکرونایز MUTANT، نسخه بدون طعم و بسته ۳۰۰ گرمی؛ فرمول بر پایه L-Glutamine و حدود ۶۰ سروینگ در بسته مرجع. تصویر از صفحه رسمی محصول است.",
+    "isNew": false,
+    "imageSource": "https://mutantnation.com/products/premium-micronized-glutamine"
   },
   {
     "id": "p041",
@@ -717,8 +724,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "گلوتامین — 300 g | اهداف: آمینواسید | منبع تصویر: https://us.usn.global/products/glutamine",
-    "isNew": false
+    "description": "USN Pure Glutamine، پودر L-Glutamine بدون طعم؛ تصویر رسمی بسته ۳۰۰ گرمی است. منبع رسمی محصول ۵ گرم گلوتامین در هر سروینگ را اعلام می‌کند؛ تعداد سروینگ را با بسته نهایی تطبیق دهید.",
+    "isNew": false,
+    "imageSource": "https://us.usn.global/products/glutamine"
   },
   {
     "id": "p042",
