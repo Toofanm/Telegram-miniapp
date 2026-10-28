@@ -1211,19 +1211,20 @@
   {
     "id": "p071",
     "name": "کراتین کرس جی ان اکس ۳۰۰گرم",
-    "brand": "GNX",
+    "brand": "GNx - Giatros Nutrition",
     "price": 3830000,
     "basePrice": 3330000,
     "category": "creatine",
     "subcategory": "creatine",
     "weight": "300 گرم",
-    "image": "",
+    "image": "https://www.bodyclub.gr/image/cache/catalog/Products/GNx/GNx-Giatros-Nutrition-100percent-Pure-Creatine-Monohydrate-Micronized-300gr-1200x950h.png",
     "image2": "",
     "image3": "",
     "icon": "⚡",
     "badge": "",
-    "description": "کراتین کرس جی ان اکس ۳۰۰گرم | دسته: creatine",
-    "isNew": false
+    "description": "کراتین مونوهیدرات میکرونایز GNx (Giatros Nutrition)، وزن ۳۰۰ گرم؛ محصول با خلوص ۱۰۰٪ و اندازه ذرات 200 Mesh طبق مشخصات فروشنده. تصویر بسته‌بندی از صفحه محصول تأیید شد.",
+    "isNew": false,
+    "imageSource": "https://www.bodyclub.gr/en/creatine/gnx-giatros-nutrition-100percent-pure-creatine-monohydrate-micronized-300gr-bc00000041gnx"
   },
   {
     "id": "p072",
