@@ -1326,19 +1326,20 @@
   {
     "id": "p078",
     "name": "کراتین بی سی اا+پوست و مو بانوان ناترکس ۳۰سرو",
-    "brand": "Nutrex",
+    "brand": "Nutrex Research",
     "price": 6070000,
     "basePrice": 5280000,
     "category": "creatine",
     "subcategory": "creatine",
     "weight": "30 سرو",
-    "image": "",
+    "image": "https://massforlife.com/cdn/shop/files/Creatine_for_Women-peach_mango.jpg?v=1779145574&width=800",
     "image2": "",
     "image3": "",
     "icon": "⚡",
     "badge": "",
-    "description": "کراتین بی سی اا+پوست و مو بانوان ناترکس ۳۰سرو | دسته: creatine",
-    "isNew": false
+    "description": "Nutrex Creatine for Women؛ فرمول ۳۰ سروینگ شامل کراتین مونوهیدرات، BCAA، کلاژن، بیوتین، هیالورونیک اسید و ویتامین C. تصویر منبع مربوط به طعم هلو-انبه است.",
+    "isNew": false,
+    "imageSource": "https://massforlife.com/products/nutrex-creatine-for-women-creatine-collagen-bcaa"
   },
   {
     "id": "p079",
@@ -1796,13 +1797,14 @@
     "category": "testbooster",
     "subcategory": "testbooster",
     "weight": "120 عدد",
-    "image": "",
+    "image": "https://ke.usn.global/cdn/shop/files/USN_Testo_gH_Ultra_120s.webp?v=1724330780&width=1946",
     "image2": "",
     "image3": "",
     "icon": "💊",
     "badge": "",
-    "description": "تست GH الترا یو اس ان ۱۲۰عدد | دسته: testbooster",
-    "isNew": false
+    "description": "USN Testo gH Ultra، مکمل ترکیبی ۱۲۰ کپسولی. تصویر و تعداد کپسول با صفحه محصول رسمی USN تطبیق داده شده است؛ ادعاهای مربوط به هورمون در صفحه محصول به‌عنوان تضمین اثر درمانی در نظر گرفته نمی‌شوند.",
+    "isNew": false,
+    "imageSource": "https://ke.usn.global/products/testo-gh-ultra-120s"
   },
   {
     "id": "p106",
@@ -1858,19 +1860,20 @@
   {
     "id": "p109",
     "name": "تریبولوس بیگمن ۹۰عدد",
-    "brand": "نامشخص",
+    "brand": "Bigman",
     "price": 4440000,
     "basePrice": 3860000,
     "category": "testbooster",
     "subcategory": "testbooster",
     "weight": "90 عدد",
-    "image": "",
+    "image": "https://static.wixstatic.com/media/d0a27c_f2539c9eeecf445288e5267182e7bc4a~mv2.png/v1/fill/w_768%2Ch_768%2Cal_c%2Cq_90%2Cenc_avif%2Cquality_auto/d0a27c_f2539c9eeecf4452882e7bc4a~mv2.png",
     "image2": "",
     "image3": "",
     "icon": "💊",
     "badge": "",
-    "description": "تریبولوس بیگمن ۹۰عدد | دسته: testbooster",
-    "isNew": false
+    "description": "Bigman Tribulus Terrestris، مکمل گیاهی ۹۰ کپسولی بر پایه عصاره تریبولوس با استانداردسازی ساپونین. تصویر و تعداد کپسول با صفحه سازنده تطبیق داده شده است.",
+    "isNew": false,
+    "imageSource": "https://www.bigman.es/product-page/tribulus-terrestris-90-c%C3%A1p"
   },
   {
     "id": "p110",
