@@ -814,7 +814,7 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "Bigman EAA / Electrolytes، بسته ۳۰۰ گرمی؛ آمینواسیدهای ضروری به‌همراه الکترولیت‌ها. صفحه سازنده ۳۰ سروینگ را ذکر می‌کند، اما مقدار سروینگ ۲۰ گرمی با وزن ۳۰۰ گرم همخوانی ندارد؛ تعداد سروینگ روی بسته واقعی باید پیش از انتشار قطعی بررسی شود.",
+    "description": "Bigman EAA / Electrolytes، بسته ۳۰۰ گرمی با ۳۰ سروینگ طبق صفحه سازنده؛ ترکیب آمینواسیدهای ضروری و BCAA به‌همراه الکترولیت‌هایی مانند سدیم، پتاسیم، کلسیم و منیزیم. طعم مرجع صفحه سازنده کولا.",
     "isNew": false,
     "imageSource": "https://www.bigman.es/en/product-page/eaa-electrolytes-300g"
   },
@@ -958,8 +958,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "آمینو — 330 عدد | اهداف: آمینواسید | منبع تصویر: https://aminokyseliny.heureka.cz/kevin-levrone-gold-amino-chewable-330-tablet/",
-    "isNew": false
+    "description": "Kevin Levrone Gold Amino Chewable؛ بسته ۳۳۰ قرصی جویدنی با آمینواسیدها. تصویر مرجع فروشگاهی با نام و تعداد قرص محصول تطبیق دارد؛ طعم را با بسته واقعی بررسی کنید.",
+    "isNew": false,
+    "imageSource": "https://aminokyseliny.heureka.cz/kevin-levrone-gold-amino-chewable-330-tablet/"
   },
   {
     "id": "p055",
@@ -975,8 +976,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "آمینواسیدهای پروتئین گوشت — 300 قرص | اهداف: تأمین آمینواسید، ریکاوری عضلات | منبع تصویر: https://musclemedsrx.com/products/carnivor-beef-aminos",
-    "isNew": false
+    "description": "MuscleMeds Carnivor Beef Aminos؛ بسته ۳۰۰ قرصی، معادل ۱۰۰ سروینگ طبق سازنده. آمینواسیدهای حاصل از منابع پروتئین گوشت همراه کراتین و BCAA؛ تصویر فعلی با محصول هم‌خوان است.",
+    "isNew": false,
+    "imageSource": "https://musclemedsrx.com/products/carnivor-beef-aminos"
   },
   {
     "id": "p056",
@@ -992,8 +994,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "فرمول کراتین و کربوهیدرات — بسته 6 پوندی (حدود 2.63 کیلوگرم) | اهداف: قدرت، عملکرد تمرین، افزایش وزن | منبع تصویر: https://www.muscletech.com/products/cell-tech",
-    "isNew": false
+    "description": "MuscleTech Cell-Tech، بسته ۶ پوندی (حدود ۲٫۷۲ کیلوگرم) با تصویر طعم Fruit Punch. فرمول ترکیبی کراتین مونوهیدرات و کربوهیدرات؛ تصویر و اندازه بسته با نسخه ۶ پوندی سازنده تطبیق دارند.",
+    "isNew": false,
+    "imageSource": "https://www.muscletech.com/products/cell-tech"
   },
   {
     "id": "p057",
@@ -1009,7 +1012,7 @@
     "image3": "",
     "icon": "⚡",
     "badge": "",
-    "description": "Cell-Tech ماسل‌تک، حدود ۱٫۳۶ کیلوگرم و ۲۹ سروینگ؛ فرمول ترکیبی کراتین و کربوهیدرات با طعم پرتقال، برای حمایت از قدرت و ریکاوری تمرینی. وزن تصویر مرجع حدود ۱٫۴ کیلوگرم است.",
+    "description": "MuscleTech Cell-Tech؛ تصویر مرجع فروشگاهی نسخه‌ای حدود ۱٫۴ کیلوگرمی با ۲۹ سروینگ و طعم پرتقال را نشان می‌دهد، در حالی‌که عنوان فروشگاه ۱٫۳ کیلوگرم درج کرده است. وزن دقیق با بسته موجودی تطبیق داده شود.",
     "isNew": false,
     "imageSource": "https://www.muscletech.com/products/cell-tech"
   },
@@ -1027,8 +1030,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "کراتین — 120 سرو | اهداف: عملکرد تمرینی | منبع تصویر: https://www.muscletech.com/products/cell-tech-creatine-hcl",
-    "isNew": false
+    "description": "MuscleTech Cell-Tech Creactor؛ ترکیب کراتین HCl و کراتین آزاد، حدود ۱۲۰ سروینگ. هر سروینگ حدود ۲ گرم بوده و محصول با Cell-Tech کربوهیدرات‌دار متفاوت است.",
+    "isNew": false,
+    "imageSource": "https://www.muscletech.com/products/cell-tech-creatine-hcl"
   },
   {
     "id": "p059",
@@ -1044,8 +1048,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "کراتین — 450 g | اهداف: عملکرد تمرینی | منبع تصویر: https://international.muscletech.com/products/all/post-workout/platinum-100-creatine/",
-    "isNew": false
+    "description": "MuscleTech Platinum 100% Creatine؛ پودر کراتین مونوهیدرات میکرونایز و بدون طعم. منبع رسمی بین بازارها اندازه‌های متفاوتی دارد؛ وزن ۴۵۰ گرمِ ثبت‌شده در فروشگاه باید با برچسب بسته واقعی تطبیق داده شود.",
+    "isNew": false,
+    "imageSource": "https://international.muscletech.com/products/all/post-workout/platinum-100-creatine/"
   },
   {
     "id": "p060",
@@ -1061,9 +1066,9 @@
     "image3": "",
     "icon": "⚡",
     "badge": "",
-    "description": "USN Creatine Hydrator با وزن ۳۶۰ گرم و ۳۰ سروینگ؛ ترکیب کراتین مونوهیدرات و الکترولیت‌ها برای پشتیبانی از عملکرد تمرین و آبرسانی. وزن و بسته‌بندی در منبع محصول تأیید شد.",
+    "description": "USN Creatine Hydrator؛ ترکیب کراتین و مواد معدنی/الکترولیت برای مصرف پیرامون تمرین. تصویر فعلی از فروشگاه عرضه‌کننده است و بسته‌بندی ۳۶۰ گرمی ثبت‌شده باید با محصول واقعی موجودی تطبیق داده شود.",
     "isNew": false,
-    "imageSource": "https://kingbody.shop/product/%DA%A9%D8%B1%D8%A7%D8%AA%DB%8C%D9%86-%D8%AA%D8%B1%DA%A9%DB%8C%D8%A8%DB%8C-%D9%87%DB%8C%D8%AF%D8%B1%D8%A7%D8%AA%D9%88%D8%B1-usn/"
+    "imageSource": "https://usn.global/products/creatine-hydrator"
   },
   {
     "id": "p061",
@@ -1079,7 +1084,7 @@
     "image3": "",
     "icon": "⚡",
     "badge": "",
-    "description": "کراتین مونوهیدرات میکرونایز اپلاید نوتریشن، ۱ کیلوگرم و ۲۰۰ سروینگ؛ پودر کراتین خالص برای حمایت از قدرت و عملکرد تمرین.",
+    "description": "Applied Nutrition Creatine Monohydrate Professional؛ کراتین مونوهیدرات میکرونایز، بسته ۱ کیلوگرمی. تصویر فعلی شامل نشان هدیه تبلیغاتی است؛ اگر بسته موجودی بدون هدیه است، بهتر است تصویر ساده محصول جایگزین شود.",
     "isNew": false,
     "imageSource": "https://appliednutrition.uk/products/creatine-monohydrate"
   },
@@ -1097,7 +1102,7 @@
     "image3": "",
     "icon": "⚡",
     "badge": "",
-    "description": "کراتین میکرونایزد BPI Sports، بسته ۳۰۰ گرم و ۶۰ سروینگ؛ کراتین مونوهیدرات بدون طعم با ۵ گرم در هر سروینگ.",
+    "description": "BPI Sports Micronized Creatine؛ بسته ۳۰۰ گرمی و ۶۰ سروینگ، کراتین مونوهیدرات بدون طعم با ۵ گرم در هر سروینگ طبق سازنده. تصویر با اندازه ۶۰ سروینگ تطبیق دارد.",
     "isNew": false,
     "imageSource": "https://bpisports.com/products/micronized-creatine-1"
   },
@@ -1115,8 +1120,9 @@
     "image3": "",
     "icon": "◈",
     "badge": "",
-    "description": "کراتین — 600 g | اهداف: عملکرد تمرینی | منبع تصویر: https://bpisports.com/products/micronized-creatine-1",
-    "isNew": false
+    "description": "BPI Sports Micronized Creatine؛ بسته ۶۰۰ گرمی و ۱۲۰ سروینگ، کراتین مونوهیدرات بدون طعم. تصویر رسمی با برچسب ۱۲۰ سروینگ تطبیق دارد.",
+    "isNew": false,
+    "imageSource": "https://bpisports.com/products/micronized-creatine-1"
   },
   {
     "id": "p064",
