@@ -186,6 +186,7 @@ function fmt(n){return Number(n||0).toLocaleString("fa-IR");}
 function money(n){return fmt(n)+" تومان";}
 function safe(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
 function notify(s){var t=document.getElementById("toast");t.textContent=s;t.classList.add("show");window.clearTimeout(notify.timer);notify.timer=window.setTimeout(function(){t.classList.remove("show");},2100);}
+function isAvailable(p){if(!p||p.available===false||p.inStock===false||p.price==="out")return false;var stock=p.stock;if(typeof stock==="number"&&stock<=0)return false;var stockText=String(stock==null?"":stock).trim().toLocaleLowerCase("fa");if(["ناموجود","اتمام موجودی","out","out of stock","unavailable","false","0"].includes(stockText))return false;var status=String(p.status==null?"":p.status).trim().toLocaleLowerCase("fa");if(["ناموجود","اتمام موجودی","out","out of stock","unavailable"].includes(status))return false;return true;}
 function catName(c){return categoryNames[c]||c||"سایر مکمل‌ها";}
 function productImage(p,cls){var src=p.image||p.image2||p.image3;if(src){return '<img class="'+cls+'" loading="lazy" src="'+safe(src)+'" alt="'+safe(p.name)+'" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'grid\'"><span class="product-fallback" style="display:none">'+safe(p.icon||"◈")+"</span>";}return '<span class="product-fallback">'+safe(p.icon||"◈")+"</span>";}
 function makeCategoryChips(){
@@ -210,7 +211,7 @@ function makeSubcategoryChips(){
 function filtered(){
 var q=query.trim().toLocaleLowerCase("fa");
 var list=products.filter(function(p){
-if(category==="all"&&p.category==="discount")return false;
+if(!isAvailable(p))return false;
 if(category!=="all"&&p.category!==category)return false;
  if(category==="steroid"&&subcategory!=="all"&&p.subcategory!==subcategory)return false;
 if(q&&!((p.name||"")+" "+(p.brand||"")+" "+(p.description||"")+" "+catName(p.category)+" "+catName(p.subcategory)).toLocaleLowerCase("fa").includes(q))return false;
@@ -219,6 +220,7 @@ return true;
 if(sort==="price-up")list.sort(function(a,b){return (Number(a.price)||0)-(Number(b.price)||0);});
 if(sort==="price-down")list.sort(function(a,b){return (Number(b.price)||0)-(Number(a.price)||0);});
 if(sort==="name")list.sort(function(a,b){return String(a.name).localeCompare(String(b.name),"fa");});
+list.sort(function(a,b){return (b.category==="discount"?1:0)-(a.category==="discount"?1:0);});
 return list;
 }
 function render(){
@@ -240,8 +242,7 @@ grid.querySelectorAll("[data-add]").forEach(function(el){el.addEventListener("cl
 function setCategory(c){category=c;subcategory="all";makeCategoryChips();render();}
 function findProduct(id){return products.find(function(p){return String(p.id)===String(id);});}
 function addToCart(id){
-var p=findProduct(id);if(!p)return;
-if(p.price==="out"||p.stock==="ناموجود"||p.available===false){notify("این محصول در حال حاضر ناموجود است.");return;}
+var p=findProduct(id);if(!p||!isAvailable(p)){notify("این محصول در حال حاضر ناموجود است.");return;}
 cart[id]=(cart[id]||0)+1;updateCart();document.querySelectorAll("[data-add]").forEach(function(b){if(b.dataset.add===String(id)){b.textContent="+"+fmt(cart[id]);b.classList.add("has-qty");}});document.querySelectorAll("[data-qty-note]").forEach(function(n){if(n.dataset.qtyNote===String(id))n.textContent="در سبد خرید: "+fmt(cart[id])+" عدد";});notify("به سبد خرید اضافه شد.");
 }
 function updateCart(){
@@ -286,7 +287,7 @@ document.getElementById("overlay").addEventListener("click",function(e){if(e.tar
 document.addEventListener("keydown",function(e){if(e.key==="Escape")closeSheet();});
 document.querySelectorAll(".nav-item[data-target]").forEach(function(el){el.addEventListener("click",function(){var target=document.getElementById(el.dataset.target);if(el.dataset.action==="search"){var input=document.getElementById("search");if(input){input.scrollIntoView({behavior:"smooth",block:"center"});window.setTimeout(function(){input.focus();},220);}}else if(target){target.scrollIntoView({behavior:"smooth",block:"start"});}document.querySelectorAll(".nav-item").forEach(function(n){n.classList.remove("active");});el.classList.add("active");});});
 fetch("./products.json",{cache:"no-cache"}).then(function(r){if(!r.ok)throw new Error("products.json HTTP "+r.status);return r.json();}).then(function(data){
-products=Array.isArray(data)?data.map(function(p){return Object.assign({},p,{price:p.price==="out"?"out":Number(p.price)||0,basePrice:Number(p.basePrice)||0});}):[];
+products=Array.isArray(data)?data.filter(isAvailable).map(function(p){return Object.assign({},p,{price:p.price==="out"?"out":Number(p.price)||0,basePrice:Number(p.basePrice)||0});}):[];
 makeCategoryChips();render();
 }).catch(function(err){console.error(err);document.getElementById("result-count").textContent="بارگذاری ناموفق";document.getElementById("products-grid").innerHTML='<div class="empty">فهرست محصولات بارگذاری نشد.<br>صفحه را دوباره بارگذاری کن.</div>';});
 })();
