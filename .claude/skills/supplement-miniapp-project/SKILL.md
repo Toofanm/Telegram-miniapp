@@ -6,16 +6,18 @@ description: Project-specific rules for the Toofanm Telegram supplement-shop Min
 # Supplement Mini App Project
 
 ## Project scope
-- Repository: `Toofanm/telegram-shop`.
+- Repository: `Toofanm/Telegram-miniapp`.
+- Current Mini App entry point: `index.html`; the runtime catalog is loaded from `./products.json`.
 - Persian RTL Telegram Mini App integrated with the shop bot.
 - Inspect the repository and current architecture before editing. Preserve working behavior; avoid destructive rewrites and unrelated refactors.
 - Website and Mini App are related but their deployment and business rules are not interchangeable.
 
 ## Catalog integrity
-- `products.txt` is the accepted human-editable copy/paste inventory source. Do not replace it with a JSON-only workflow.
-- Identify the latest authoritative list before any catalog update. Compare source and app catalogs; preserve every valid product, variant, and stable ID.
-- When the current source list applies, verify all 23 creatine models. Correct product naming is `JNX`, not `GNx`.
-- Discounted/damaged products belong only in Discounts, not duplicated in the main supplement list.
+- `products.json` is the catalog currently consumed by the Mini App (`index.html` loads it at runtime). Do not assume a `products.txt` file exists in this repository.
+- Identify the latest authoritative inventory before any catalog update. Compare it against `products.json`; preserve valid products, variants, and stable IDs.
+- The inventory requirement is 23 creatine models. Validate product identity and variants against the latest source list; do not count pack-size duplicates or non-creatine formulas as separate models without checking.
+- Correct product naming is `JNX`, not `GNx`.
+- Discounted/damaged products belong only in the `discount` category. Never duplicate the same product under its regular category and Discounts. Keep one stable product ID and verify the Discounts category renders.
 - Do not import the website-only rule for unavailable products without explicit instruction.
 - Product descriptions and Supplement Facts must come from manufacturer/product-label sources. Attribute unverified performance claims to the manufacturer. Never invent ingredients, dosages, benefits, or facts.
 - When correcting images or descriptions, do not silently alter price, stock, category, or product identity. Match each image to the exact brand, packaging, size, and variant.
@@ -79,8 +81,8 @@ Safeguards:
 - Never commit secrets.
 
 ## Acceptance checklist
-- [ ] Catalog and stable IDs match latest authoritative source.
-- [ ] All 23 creatine models present when required by current source.
+- [ ] `products.json` matches the latest authoritative inventory and stable IDs are preserved.
+- [ ] The 23 creatine models are verified against source, excluding unrelated formulas and duplicate pack variants.
 - [ ] Discount products appear only in Discounts.
 - [ ] Images and descriptions match exact variants and manufacturer sources.
 - [ ] Price and shipping rules match Mini App policy.
