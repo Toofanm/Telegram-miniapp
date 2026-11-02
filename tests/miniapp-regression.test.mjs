@@ -4,7 +4,7 @@ import test from "node:test";
 
 const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
 const products = JSON.parse(readFileSync(new URL("../products.json", import.meta.url), "utf8"));
-const inlineScripts = [...html.matchAll(/<script\\b[^>]*>([\\s\\S]*?)<\\/script>/gi)]
+const inlineScripts = [...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/gi)]
   .map((match) => match[1])
   .filter((source) => source.trim());
 const appScript = inlineScripts.at(-1);
@@ -23,28 +23,28 @@ test("catalog keeps stable unique IDs and one dedicated discount item", () => {
   assert.equal(String(discounts[0].id), "21");
 });
 
-test("catalog prices use source basePrice and correct branch markup", () => {
+test("catalog has source prices and verifiable image provenance", () => {
   for (const product of products) {
     const base = Number(product.basePrice);
-    assert.ok(Number.isFinite(base) && base > 0, `invalid basePrice for product ${product.id}`);
+    assert.ok(Number.isFinite(base) && base > 0, "invalid basePrice for product " + product.id);
     const rate = product.category === "steroid" ? 0.20 : 0.15;
-    const expected = Math.round((base * (1 + rate)) / 5000) * 5000;
-    assert.equal(Math.round((base * (1 + rate)) / 5000) * 5000, expected);
-    if (product.image) assert.ok(product.imageSource, `image source missing for product ${product.id}`);
+    const finalPrice = Math.round((base * (1 + rate)) / 5000) * 5000;
+    assert.equal(finalPrice % 5000, 0);
+    if (product.image) assert.ok(product.imageSource, "image source missing for product " + product.id);
   }
 });
 
 test("mobile cart badge, cart navigation, and checkout retry key are wired", () => {
   assert.match(appScript, /id="mobile-cart-count"/);
-  assert.match(appScript, /getElementById\\("mobile-cart"\\)\\.addEventListener\\("click"/);
+  assert.match(appScript, /getElementById\("mobile-cart"\)\.addEventListener\("click"/);
   assert.match(appScript, /idempotency_key:idempotencyKey/);
-  assert.match(appScript, /clearCheckoutIdempotencyKey\\(\\)/);
+  assert.match(appScript, /clearCheckoutIdempotencyKey\(\)/);
   assert.doesNotMatch(appScript, /ثبت سفارش و پرداخت آنلاین در این نسخه آزمایشی فعال نیست/);
 });
 
 test("Persian and Arabic product weights calculate shipping correctly", () => {
   const start = appScript.indexOf("function normalizeWeightDigits");
-  const end = appScript.indexOf("\\nfunction openCart", start);
+  const end = appScript.indexOf("\nfunction openCart", start);
   assert.ok(start >= 0 && end > start, "weight and shipping helpers must exist");
   const helpers = appScript.slice(start, end);
   const productsById = new Map([
@@ -54,11 +54,10 @@ test("Persian and Arabic product weights calculate shipping correctly", () => {
     ["4", { weight: "وزن نامشخص" }],
   ]);
   let cart = {};
-  const getShipping = new Function(
-    "findProduct",
-    "cart",
-    `${helpers}; return getShipping;`,
-  )((id) => productsById.get(String(id)), cart);
+  const getShipping = new Function("findProduct", "cart", helpers + "; return getShipping;")(
+    (id) => productsById.get(String(id)),
+    cart,
+  );
 
   cart = { "1": 1 };
   assert.deepEqual(getShipping(["1"]), { fee: 250000, free: false, missing: false });
