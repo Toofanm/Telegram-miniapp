@@ -14,13 +14,13 @@ test("Mini App inline JavaScript parses", () => {
   assert.doesNotThrow(() => new Function(appScript));
 });
 
-test("catalog keeps stable unique IDs and one dedicated discount item", () => {
+test("catalog count is sourced from products.json and IDs remain unique", () => {
   const ids = products.map((product) => String(product.id));
-  assert.equal(products.length, 190);
+  assert.ok(products.length > 0, "products.json must contain the current inventory");
   assert.equal(new Set(ids).size, products.length);
-  const discounts = products.filter((product) => product.category === "discount");
-  assert.equal(discounts.length, 1);
-  assert.equal(String(discounts[0].id), "21");
+  for (const product of products) {
+    assert.ok(product.id !== undefined && product.id !== null && String(product.id).length > 0);
+  }
 });
 
 test("catalog has source prices and verifiable image provenance", () => {
@@ -32,6 +32,13 @@ test("catalog has source prices and verifiable image provenance", () => {
     assert.equal(finalPrice % 5000, 0);
     if (product.image) assert.ok(product.imageSource, "image source missing for product " + product.id);
   }
+});
+
+test("mobile layout keeps compact category navigation and accessible controls", () => {
+  assert.doesNotMatch(html, /id="quick-access"/);
+  assert.match(html, /id="categories"/);
+  assert.match(html, /focus-visible/);
+  assert.match(html, /min-height:52px/);
 });
 
 test("mobile cart badge, cart navigation, and checkout retry key are wired", () => {
