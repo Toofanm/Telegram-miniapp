@@ -1,0 +1,17 @@
+name: Mini App regression checks
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  miniapp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Run Mini App regression tests
+        run: node --test tests/miniapp-regression.test.mjs
