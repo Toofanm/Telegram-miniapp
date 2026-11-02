@@ -135,6 +135,31 @@ body{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
 @media(max-width:380px){.receipt-machine{padding:11px}.receipt-paper{margin:0 3px;padding:18px 12px 25px}.receipt-line,.receipt-line strong{font-size:9px}}
 @media(prefers-reduced-motion:reduce){.receipt-paper{animation:none}}
 
+
+/* UI/UX Pro Max pass — mobile-first hierarchy, accessible controls and consistent surfaces. */
+:root{--bg:#030914;--surface:#071321;--surface2:#0b1a2c;--elevated:#10243b;--text:#f5f8ff;--muted:#a7bad1;--line:#213b58;--blue:#4b9cff;--blue2:#8bc2ff;--blue-soft:rgba(75,156,255,.14)}
+html{scroll-padding-top:16px}
+button,a,select{touch-action:manipulation}
+button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--blue2);outline-offset:3px}
+.section-head{align-items:center}.section-head h2{line-height:1.55}
+.category-card{min-height:76px}.category-card-copy b{font-size:11px}.category-card-copy small{font-size:9px;color:#a7bad1}
+.subcategory-chip,.sort-select{min-height:40px}
+.product-card{border-color:rgba(93,132,177,.28);background:linear-gradient(155deg,#0c1c30,#071321 72%)}
+.product-img-wrap{background:radial-gradient(circle at 50% 45%,rgba(75,156,255,.12),transparent 72%)}
+.product-name{font-size:12px;line-height:1.9;color:#f4f7fd}.product-brand,.product-meta{color:#a9c8eb}
+.add-btn,.inline-qty button,.qty button{min-width:36px;min-height:36px}
+.bottom-nav{isolation:isolate}.nav-item{min-height:52px}.nav-item.active{border-radius:14px}
+@media(max-width:600px){
+ .category-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+ .category-card{min-height:76px;padding:9px 7px;gap:7px;align-items:center}
+ .category-card-copy b{font-size:9px;line-height:1.55}.category-card-copy small{font-size:7.5px;line-height:1.5}.category-card-count{font-size:8px}
+ .products{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .product-body{padding:10px;gap:6px}.product-name{font-size:10.5px;line-height:1.85;min-height:39px}.product-price{font-size:12px}
+ .add-btn,.inline-qty button{min-width:36px;min-height:36px}
+ .bottom-nav{min-height:64px;padding:6px}.nav-item{min-height:50px}
+}
+@media(max-width:360px){.category-row{gap:6px}.category-card{padding:7px 5px;gap:5px}.category-card-icon{width:25px;height:25px}.category-card-copy b{font-size:8px}.category-card-copy small{font-size:7px}}
+
 </style>
 </head>
 <body>
@@ -144,7 +169,7 @@ body{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
     <a class="brand" href="#home" aria-label="صفحه اصلی">
       <span class="brand-mark">SE</span><span class="brand-copy"><b>SUPPLEMENT</b><small>ENERGY</small></span>
     </a>
-    <nav class="desktop-nav"><a href="#quick-access">دسترسی سریع</a><a href="#categories">دسته‌بندی‌ها</a><a href="#products">محصولات</a></nav>
+    <nav class="desktop-nav"><a href="#categories">دسته‌بندی‌ها</a><a href="#categories">دسته‌بندی‌ها</a><a href="#products">محصولات</a></nav>
     <div class="header-actions"><button class="cart-btn" id="open-cart">سبد خرید <span class="count" id="cart-count">۰</span></button></div>
   </div>
   <div class="shell header-search"><label class="searchbox"><span>⌕</span><input id="search" type="search" placeholder="جست‌وجوی نام محصول، برند یا مکمل..." autocomplete="off"><button class="search-clear" id="clear-search" aria-label="پاک کردن جست‌وجو">×</button></label></div>
@@ -169,15 +194,6 @@ body{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
     <div class="benefit"><span class="benefit-icon benefit-map"><img src="./assets/iran-map.svg" alt="" loading="lazy"></span><div><b>ارسال به سراسر کشور</b><small>ارسال پستی همه‌روزه</small></div></div>
     <div class="benefit"><span class="benefit-icon"><img src="./assets/icon-box.svg" alt="" loading="lazy"></span><div><b>ارسال رایگان سفارشات</b><small>با خرید حداقل ۳ محصول</small></div></div>
     <div class="benefit"><span class="benefit-icon"><img src="./assets/icon-shield.svg" alt="" loading="lazy"></span><div><b>تضمین اصالت محصولات</b><small>برگشت در صورت نارضایتی</small></div></div>
-  </section>
-  <section id="quick-access" class="section">
-    <div class="section-head"><div><span class="eyebrow">QUICK ACCESS</span><h2>دسترسی سریع به مکمل‌ها</h2></div><p>مستقیم وارد دسته موردنظرت شو</p></div>
-    <div class="quick-cats">
-      <button class="quick-cat" data-category="protein"><span class="quick-icon">◈</span><span><b>پروتئین و ایزوله</b><small>ساخت عضله و تأمین پروتئین</small></span></button>
-      <button class="quick-cat" data-category="gainer"><span class="quick-icon">▤</span><span><b>گینر و افزایش وزن</b><small>افزایش کالری دریافتی</small></span></button>
-      <button class="quick-cat" data-category="creatine"><span class="quick-icon">ϟ</span><span><b>کراتین و قدرت</b><small>قدرت و عملکرد تمرین</small></span></button>
-      <button class="quick-cat" data-category="preworkout"><span class="quick-icon">ϟ</span><span><b>پیش‌تمرین و پمپ</b><small>آمادگی پیش از تمرین</small></span></button>
-    </div>
   </section>
   <section id="categories" class="section">
     <div class="section-head"><div><span class="eyebrow">EXPLORE CATEGORIES</span><h2>دسته‌بندی محصولات</h2></div></div>
