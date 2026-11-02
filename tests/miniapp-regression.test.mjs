@@ -35,7 +35,7 @@ test("catalog has source prices and verifiable image provenance", () => {
 });
 
 test("mobile cart badge, cart navigation, and checkout retry key are wired", () => {
-  assert.match(appScript, /id="mobile-cart-count"/);
+  assert.match(html, /id="mobile-cart-count"/);
   assert.match(appScript, /getElementById\("mobile-cart"\)\.addEventListener\("click"/);
   assert.match(appScript, /idempotency_key:idempotencyKey/);
   assert.match(appScript, /clearCheckoutIdempotencyKey\(\)/);
@@ -53,20 +53,21 @@ test("Persian and Arabic product weights calculate shipping correctly", () => {
     ["3", { weight: "١.٢ kg" }],
     ["4", { weight: "وزن نامشخص" }],
   ]);
-  let cart = {};
+  const cart = {};
   const getShipping = new Function("findProduct", "cart", helpers + "; return getShipping;")(
     (id) => productsById.get(String(id)),
     cart,
   );
+  const setCart = (values) => { for (const key of Object.keys(cart)) delete cart[key]; Object.assign(cart, values); };
 
-  cart = { "1": 1 };
+  setCart({ "1": 1 });
   assert.deepEqual(getShipping(["1"]), { fee: 250000, free: false, missing: false });
-  cart = { "2": 1 };
+  setCart({ "2": 1 });
   assert.deepEqual(getShipping(["2"]), { fee: 150000, free: false, missing: false });
-  cart = { "3": 1 };
+  setCart({ "3": 1 });
   assert.deepEqual(getShipping(["3"]), { fee: 200000, free: false, missing: false });
-  cart = { "4": 1 };
+  setCart({ "4": 1 });
   assert.deepEqual(getShipping(["4"]), { fee: null, free: false, missing: true });
-  cart = { "4": 3 };
+  setCart({ "4": 3 });
   assert.deepEqual(getShipping(["4"]), { fee: 0, free: true, missing: true });
 });
