@@ -171,6 +171,7 @@ body{padding-bottom:0}
 .add-btn,.inline-qty button,.qty button{min-width:44px;min-height:44px;height:44px}
 .inline-qty{gap:5px}
 .category-card{min-height:78px}
+.category-card-icon svg,.product-fallback svg{width:20px;height:20px;display:block;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .category-card-copy b{font-size:10px;line-height:1.6}
 .category-card-copy small{font-size:8.5px;line-height:1.5;color:#b4c6dc}
 .category-card-count{font-size:9px}
@@ -282,7 +283,25 @@ var checkoutKeyCache=null,checkoutFingerprintCache=null;
 var categoryNames={
 gainer:"گینر و افزایش وزن",protein:"پروتئین",bcaa:"بی سی ای ای",glutamine:"گلوتامین",amino:"آمینو",creatine:"کراتین",fatburner:"چربی‌سوز",pump:"پیش‌تمرین و پمپ",preworkout:"پیش‌تمرین و پمپ",vitamin:"ویتامین و مینرال",steroid:"استروئیدها",testbooster:"تست بوستر",multivitamin:"ویتامین و مینرال",recovery:"ریکاوری",other:"سایر مکمل‌ها",st_injectable:"استروئید تزریقی",st_oral:"استروئید خوراکی",st_peptide:"پپتاید",st_sustanon:"سوستانون",st_test_suspension:"تست ساسپنشن",st_test_enanthate:"تست انانتات",st_test_propionate:"تست پروپیونات",st_test_cypionate:"تست سیپیونات",st_winstrol:"وینسترول",st_oxandrolone:"اکساندرولون",st_halotestin:"هالوتستین",st_dianabol:"دیانابول",st_oxymetholone:"اکسی‌متولون",st_turinabol:"تورینابول",st_boldenone:"بولدنون",st_masteron:"مسترون",st_nandrolone_decanoate:"ناندرولون دکانوات",st_nandrolone_phenyl:"ناندرولون فنیل‌پروپیونات",st_trenbolone:"ترنبولون",st_primobolan:"پریموبولان",st_proviron:"پروویرون",st_arimidex:"آریمیدکس",st_clenbuterol:"کلنبوترول",st_liothyronine:"لیوتیرونین",st_ephedrine:"افدرین",discount:"تخفیف‌ها"
 };
-var categoryIcons={gainer:"▤",protein:"◈",bcaa:"◎",glutamine:"✣",amino:"◉",creatine:"ϟ",fatburner:"↘",pump:"ϟ",preworkout:"ϟ",vitamin:"✚",steroid:"◇",testbooster:"✦",multivitamin:"✚",recovery:"↗",other:"◇",st_injectable:"▥",st_oral:"▤",st_peptide:"✧",discount:"٪"};
+var categoryIcons={gainer:"package",protein:"dumbbell",bcaa:"orbit",glutamine:"plus",amino:"activity",creatine:"bolt",fatburner:"flame",pump:"bolt",preworkout:"bolt",vitamin:"plus-circle",steroid:"pill",testbooster:"hexagon",multivitamin:"plus-circle",recovery:"heart-pulse",other:"flask",st_injectable:"syringe",st_oral:"pill",st_peptide:"dna",discount:"tag"};
+var categoryIconPaths={
+package:"M3 7.5 12 3l9 4.5-9 4.5-9-4.5ZM3 7.5V17l9 4 9-4V7.5M12 12v9",
+dumbbell:"M6 5v14M18 5v14M3 9v6M21 9v6M6 12h12",
+orbit:"M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18ZM12 7v5l3 2",
+plus:"M12 5v14M5 12h14",
+activity:"M3 12h4l3-7 4 14 3-7h4",
+bolt:"M13 2 5 13h6l-1 9 9-12h-6l0-8",
+flame:"M12 22a7 7 0 0 0 7-7c0-4-3-7-5-10 0 4-2 5-3 6-1-3-2-4-4-6 0 5-2 7-2 10a7 7 0 0 0 7 7Z",
+"plus-circle":"M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18ZM12 8v8M8 12h8",
+pill:"M7 4a5 5 0 0 0 0 10h10a5 5 0 0 0 0-10H7ZM10 4l4 10",
+hexagon:"M12 2 20 6.5v11L12 22 4 17.5v-11L12 2ZM12 7v10M7 12h10",
+"heart-pulse":"M20.8 8.5a5 5 0 0 0-8.8-3.2L12 5l-.1.3a5 5 0 0 0-8.7 3.2c0 5 8.8 11 8.8 11s8.8-6 8.8-11ZM4 12h4l2-3 3 6 2-3h5",
+flask:"M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3M8 14h8",
+syringe:"M4 20l8-8m-6 6-2-2m4-4 6 6m-2-10 4 4m-2-6 4 4M15 5l4 4",
+dna:"M7 3c10 5 10 13 0 18M17 3C7 8 7 16 17 21M8 7h8M8 17h8M10 12h4",
+tag:"M3 12 12 3h8v8l-9 10-8-9ZM16 7h.01"
+};
+function categoryIconSvg(category){var key=categoryIcons[category]||"package";var path=categoryIconPaths[key]||categoryIconPaths.package;return '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="'+path+'"/></svg>';}
 function fmt(n){return Number(n||0).toLocaleString("fa-IR");}
 function money(n){return fmt(n)+" تومان";}
 function safe(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
@@ -307,13 +326,13 @@ try{window.sessionStorage.removeItem("miniapp.pendingCheckout");}catch(e){}
 function notify(s){var t=document.getElementById("toast");t.textContent=s;t.classList.add("show");window.clearTimeout(notify.timer);notify.timer=window.setTimeout(function(){t.classList.remove("show");},2100);}
 function isAvailable(p){if(!p||p.available===false||p.inStock===false||p.price==="out")return false;var stock=p.stock;if(typeof stock==="number"&&stock<=0)return false;var stockText=String(stock==null?"":stock).trim().toLocaleLowerCase("fa");if(["ناموجود","اتمام موجودی","out","out of stock","unavailable","false","0"].includes(stockText))return false;var status=String(p.status==null?"":p.status).trim().toLocaleLowerCase("fa");if(["ناموجود","اتمام موجودی","out","out of stock","unavailable"].includes(status))return false;return true;}
 function catName(c){return categoryNames[c]||c||"سایر مکمل‌ها";}
-function productImage(p,cls){var src=p.image||p.image2||p.image3;if(src){return '<img class="'+cls+'" loading="lazy" src="'+safe(src)+'" alt="'+safe(p.name)+'" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'grid\'"><span class="product-fallback" style="display:none">'+safe(p.icon||"◈")+"</span>";}return '<span class="product-fallback">'+safe(p.icon||"◈")+"</span>";}
+function productImage(p,cls){var src=p.image||p.image2||p.image3;if(src){return '<img class="'+cls+'" loading="lazy" src="'+safe(src)+'" alt="'+safe(p.name)+'" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'grid\'"><span class="product-fallback" style="display:none">'+categoryIconSvg(p.category)+"</span>";}return '<span class="product-fallback">'+categoryIconSvg(p.category)+"</span>";}
 function makeCategoryChips(){
 var row=document.getElementById("category-row");
 var ordered=["gainer","protein","creatine","preworkout","bcaa","amino","glutamine","fatburner","vitamin","steroid","testbooster","other","discount"];
 row.innerHTML=ordered.filter(function(c){return products.some(function(p){return p.category===c;});}).map(function(c){
 var count=products.filter(function(p){return p.category===c;}).length;
-return '<button class="category-card '+(category===c?"active ":"")+(c==="discount"?"discount":"")+'" data-category="'+c+'"><span class="category-card-icon">'+safe(categoryIcons[c]||"◈")+'</span><span class="category-card-copy"><b>'+safe(catName(c))+'</b><small>'+(c==="discount"?"پیشنهادهای ویژه":"مشاهده محصولات این دسته")+'</small><span class="category-card-count">'+fmt(count)+" محصول"+'</span></span></button>';
+return '<button class="category-card '+(category===c?"active ":"")+(c==="discount"?"discount":"")+'" data-category="'+c+'"><span class="category-card-icon">'+categoryIconSvg(c)+'</span><span class="category-card-copy"><b>'+safe(catName(c))+'</b><small>'+(c==="discount"?"پیشنهادهای ویژه":"مشاهده محصولات این دسته")+'</small><span class="category-card-count">'+fmt(count)+" محصول"+'</span></span></button>';
 }).join("");
 row.querySelectorAll("[data-category]").forEach(function(el){el.addEventListener("click",function(){setCategory(el.dataset.category);document.getElementById("products").scrollIntoView({behavior:"smooth",block:"start"});});});
 makeSubcategoryChips();
