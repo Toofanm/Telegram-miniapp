@@ -274,6 +274,53 @@ body{padding-bottom:0}
 @media(prefers-reduced-motion:reduce){.overlay.open>.sheet{animation:reduced-fade .16s ease-out both!important}.overlay.open .receipt-machine,.overlay.open .receipt-paper,.overlay.open .receipt-check{animation:reduced-fade .16s ease-out both!important}.overlay.open .receipt-slot:after{animation:none!important}}
 @keyframes reduced-fade{from{opacity:0}to{opacity:1}}
 
+
+/* Stable, non-animated dialogs: avoid expensive compositing in Telegram WebView. */
+.overlay{
+  background:rgba(0,0,0,.65)!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  opacity:1!important;
+  transition:none!important;
+  animation:none!important;
+}
+.overlay.open{animation:none!important}
+.sheet{
+  animation:none!important;
+  transition:none!important;
+  transform:none!important;
+  filter:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  background:#071321!important;
+  border:1px solid var(--line)!important;
+  box-shadow:0 -20px 70px rgba(0,0,0,.5)!important;
+}
+.sheet-top{
+  position:static!important;
+  background:transparent!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+.detail-art img{filter:none!important}
+.receipt-printer{perspective:none!important}
+.receipt-machine{animation:none!important;transition:none!important;filter:none!important}
+.receipt-slot:after{display:none!important;animation:none!important}
+.receipt-paper{
+  animation:none!important;
+  transition:none!important;
+  filter:none!important;
+  clip-path:none!important;
+  transform:none!important;
+  box-shadow:none!important;
+}
+.receipt-check{animation:none!important;transition:none!important;transform:none!important}
+@media(prefers-reduced-motion:reduce){
+  .overlay,.overlay.open,.sheet,.receipt-machine,.receipt-slot:after,.receipt-paper,.receipt-check{
+    animation:none!important;transition:none!important
+  }
+}
+
 </style>
 </head>
 <body>
