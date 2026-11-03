@@ -51,13 +51,13 @@
     "price": 17620000,
     "category": "gainer",
     "weight": "۴ کیلو",
-    "image": "https://za.usn.global/cdn/shop/files/B0CM6V2L68.PT05.webp?v=1786952898&width=1946",
+    "image": "https://mopani.co.za/cdn/shop/files/207507.webp?v=1703152414&width=1080",
     "icon": "🥛",
     "badge": "",
     "description": "مس GH سطلی | برند: یو اس ان | ۴ کیلو",
     "isNew": true,
     "basePrice": 15320000,
-    "imageSource": "https://za.usn.global/products/hyperbolic-mass-gh-1-kg-4-kg"
+    "imageSource": "https://mopani.co.za/products/usn-hyperbolic-mass-assorted-flavours-4kg"
   },
   {
     "id": 5,
@@ -261,13 +261,13 @@
     "price": 28635000,
     "category": "protein",
     "weight": "۲.۳ کیلو",
-    "image": "https://www.muscletech.com/cdn/shop/files/mt-nitro-tech-100-whey-gold-french-vanilla-5lb_0a7fe571-2a38-4a63-b889-afc3dd6966bc.png?v=1753903525",
+    "image": "https://international.muscletech.com/wp-content/uploads/2022/06/muscletech-int-nitro-tech-100-whey-gold.png",
     "icon": "💪",
     "badge": "new",
     "description": "وی گلد جدید | برند: ماسل تک | ۲.۳ کیلو",
     "isNew": false,
     "basePrice": 24900000,
-    "imageSource": "https://www.muscletech.com/products/nitro-tech-100-whey-gold"
+    "imageSource": "https://international.muscletech.com/products/all/protein/nitro-tech-100-whey-gold/"
   },
   {
     "id": 19,
@@ -1266,7 +1266,7 @@
     "price": 4300000,
     "category": "fatburner",
     "weight": "۶۰ عدد",
-    "image": "https://nutrex.com/cdn/shop/files/L6_BUC_Carousel_0000s7.webp?v=1783857791&width=1000",
+    "image": "https://nutrex.com/cdn/shop/files/Lipo6-BlackUC-60-INP.webp?v=1783857791&width=550",
     "icon": "🔥",
     "badge": "",
     "description": "لیپو سیکس الترا | برند: ناترکس | ۶۰ عدد",
@@ -1281,7 +1281,7 @@
     "price": 4660000,
     "category": "fatburner",
     "weight": "۶۰ عدد",
-    "image": "https://nutrex.com/cdn/shop/files/AMAZON-1_403e7af6-0164-4d5e-a8a9-1b3da8fbf7a7.png?v=1765926998&width=1000",
+    "image": "https://nutrex.com/cdn/shop/files/Lipo6-HC_800x800.png?v=1740086413",
     "icon": "🔥",
     "badge": "",
     "description": "لیپو سیکس هاردکور | برند: ناترکس | ۶۰ عدد",
