@@ -78,3 +78,35 @@ test("Persian and Arabic product weights calculate shipping correctly", () => {
   setCart({ "4": 3 });
   assert.deepEqual(getShipping(["4"]), { fee: 0, free: true, missing: true });
 });
+
+test("desktop navigation has unique destinations and no duplicate category link", () => {
+  const nav = html.match(/<nav class="desktop-nav"[^>]*>([\\s\\S]*?)<\\/nav>/)?.[1] ?? "";
+  const hrefs = [...nav.matchAll(/href="#([^"]+)"/g)].map((match) => match[1]);
+  assert.deepEqual(hrefs, ["home", "categories", "products"]);
+  assert.equal(new Set(hrefs).size, hrefs.length);
+});
+
+test("product cards use separate semantic controls instead of nested interactive elements", () => {
+  assert.match(html, /class="product-open" data-open-product=/);
+  assert.doesNotMatch(html, /class="product-card[^>]*role="button"/);
+  assert.match(appScript, /querySelectorAll\("\\[data-open-product\\]"\)/);
+});
+
+test("dialog labels itself, traps keyboard focus, and restores focus on close", () => {
+  assert.match(html, /role="dialog" aria-modal="true" aria-labelledby="sheet-title"/);
+  assert.match(appScript, /function trapSheetFocus\(event\)/);
+  assert.match(appScript, /event\.key==="Escape"/);
+  assert.match(appScript, /document\.contains\(returnFocus\)/);
+  assert.match(appScript, /getElementById\("close-sheet"\)\.focus\(\)/);
+});
+
+test("touch controls and checkout fields meet mobile sizing rules", () => {
+  assert.match(html, /\.add-btn,\.inline-qty button,\.qty button\{min-width:44px;min-height:44px;height:44px\}/);
+  assert.match(html, /\.checkout-form input,\.checkout-form textarea\{font-size:16px;min-height:48px\}/);
+  assert.match(html, /\.bottom-nav\{min-height:68px;padding:7px\}/);
+});
+
+test("desktop sheet is centered while bottom navigation remains mobile-only", () => {
+  assert.match(html, /@media\(min-width:601px\)\{\\s*body\{padding-bottom:0\}\\s*\.overlay\{align-items:center;padding:16px\}/);
+  assert.match(html, /@media\(max-width:600px\)[\\s\\S]*?\.bottom-nav\{position:fixed;display:grid/);
+});
