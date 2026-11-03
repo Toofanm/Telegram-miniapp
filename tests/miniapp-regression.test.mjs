@@ -150,18 +150,18 @@ test("requested product packshots are mapped to exact manufacturer or Amazon pro
   }
 });
 
-test("product detail sheet uses glass styling, larger packshots, and motion with reduced-motion support", () => {
-  assert.ok(html.includes("backdrop-filter:blur(24px) saturate(145%)"));
+test("product detail sheet uses static lightweight presentation and preserves larger packshots", () => {
+  assert.ok(html.includes(".overlay.open{animation:none!important}"));
+  assert.ok(html.includes("backdrop-filter:none!important"));
   assert.ok(html.includes("grid-template-columns:184px minmax(0,1fr)"));
-  assert.ok(html.includes("@keyframes sheet-rise"));
-  assert.ok(html.includes("@keyframes sheet-rise-mobile"));
+  assert.ok(html.includes(".sheet{"));
   assert.ok(html.includes("prefers-reduced-motion:reduce"));
 });
 
-test("thermal order receipt uses a smoother printer feed and confirmation sequence", () => {
-  assert.ok(html.includes("@keyframes printer-head-pass"));
-  assert.ok(html.includes("@keyframes receipt-feed"));
-  assert.ok(html.includes("@keyframes receipt-confirm"));
+test("thermal order receipt renders without animated printer effects", () => {
+  assert.ok(html.includes(".receipt-machine{animation:none!important"));
+  assert.ok(html.includes(".receipt-slot:after{display:none!important"));
+  assert.ok(html.includes(".receipt-paper{"));
   assert.ok(appScript.includes("function renderOrderReceipt(data,fallbackItems,customer)"));
 });
 
@@ -182,17 +182,15 @@ test("user-approved product pages provide the exact current catalog packshots", 
   }
 });
 
-test("modal entrance animation is triggered when overlay opens, and detail packshot is larger", () => {
-  assert.ok(html.includes(".overlay.open>.sheet{animation:sheet-enter"));
+test("product modal opens without entrance animation and keeps responsive image sizing", () => {
+  assert.ok(html.includes(".overlay.open{animation:none!important}"));
   assert.ok(html.includes("grid-template-columns:250px minmax(0,1fr)!important"));
   assert.ok(html.includes("grid-template-columns:176px minmax(0,1fr)!important"));
-  assert.ok(html.includes("@keyframes sheet-enter"));
-  assert.ok(html.includes("prefers-reduced-motion:reduce"));
+  assert.ok(html.includes(".sheet{"));
 });
 
-test("receipt printer and paper animations are triggered by opening the receipt dialog", () => {
-  assert.ok(html.includes(".overlay.open .receipt-machine{animation:printer-enter"));
-  assert.ok(html.includes(".overlay.open .receipt-paper{animation:paper-feed"));
-  assert.ok(html.includes("@keyframes paper-feed"));
-  assert.ok(html.includes("@keyframes receipt-stamp"));
+test("order receipt is static and does not run printer or paper animations", () => {
+  assert.ok(html.includes(".receipt-machine{animation:none!important"));
+  assert.ok(html.includes(".receipt-paper{"));
+  assert.ok(html.includes(".receipt-check{animation:none!important"));
 });
