@@ -127,3 +127,39 @@ test("category and image fallback icons use consistent inline SVG rather than em
   assert.ok(appScript.includes('focusable="false"'));
   assert.ok(html.includes(".category-card-icon svg,.product-fallback svg{"));
 });
+
+
+test("requested product packshots are mapped to exact manufacturer or Amazon product sources", () => {
+  const expected = {
+    4: "hyperbolic-mass-gh",
+    14: "B0DJBB1XD2",
+    18: "nitro-tech-100-whey-gold",
+    28: "100WHEY_Van_2kg",
+    54: "gold-amino-chewables-330",
+    75: "cor-performance-creatine-flavored",
+    85: "lipo-6-black-ultra-concentrate",
+    92: "l-carnitine-1000",
+    97: "qhush-platinum-black-pre-workout",
+  };
+  for (const [id, marker] of Object.entries(expected)) {
+    const product = products.find((item) => String(item.id) === id);
+    assert.ok(product, "missing catalog product " + id);
+    assert.ok(product.image.includes(marker) || product.imageSource.includes(marker), "wrong packshot/source for product " + id);
+    assert.ok(product.imageSource, "image source missing for product " + id);
+  }
+});
+
+test("product detail sheet uses glass styling, larger packshots, and motion with reduced-motion support", () => {
+  assert.ok(html.includes("backdrop-filter:blur(24px) saturate(145%)"));
+  assert.ok(html.includes("grid-template-columns:184px minmax(0,1fr)"));
+  assert.ok(html.includes("@keyframes sheet-rise"));
+  assert.ok(html.includes("@keyframes sheet-rise-mobile"));
+  assert.ok(html.includes("prefers-reduced-motion:reduce"));
+});
+
+test("thermal order receipt uses a smoother printer feed and confirmation sequence", () => {
+  assert.ok(html.includes("@keyframes printer-head-pass"));
+  assert.ok(html.includes("@keyframes receipt-feed"));
+  assert.ok(html.includes("@keyframes receipt-confirm"));
+  assert.ok(appScript.includes("function renderOrderReceipt(data,fallbackItems,customer)"));
+});
