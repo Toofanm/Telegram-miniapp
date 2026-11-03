@@ -4,13 +4,12 @@ import test from "node:test";
 
 const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
 const products = JSON.parse(readFileSync(new URL("../products.json", import.meta.url), "utf8"));
-const inlineScripts = [...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/gi)]
-  .map((match) => match[1])
-  .filter((source) => source.trim());
-const appScript = inlineScripts.at(-1);
+const scriptStart = html.lastIndexOf("<script>");
+const scriptEnd = html.indexOf("</script>", scriptStart);
+const appScript = html.slice(scriptStart + "<script>".length, scriptEnd);
 
 test("Mini App inline JavaScript parses", () => {
-  assert.ok(appScript, "inline app script must exist");
+  assert.ok(scriptStart >= 0 && scriptEnd > scriptStart, "inline app script must exist");
   assert.doesNotThrow(() => new Function(appScript));
 });
 
@@ -35,23 +34,23 @@ test("catalog has source prices and verifiable image provenance", () => {
 });
 
 test("mobile layout keeps compact category navigation and accessible controls", () => {
-  assert.doesNotMatch(html, /id="quick-access"/);
-  assert.match(html, /id="categories"/);
-  assert.match(html, /focus-visible/);
-  assert.match(html, /min-height:52px/);
+  assert.ok(!html.includes('id="quick-access"'));
+  assert.ok(html.includes('id="categories"'));
+  assert.ok(html.includes("focus-visible"));
+  assert.ok(html.includes("min-height:52px"));
 });
 
 test("mobile cart badge, cart navigation, and checkout retry key are wired", () => {
-  assert.match(html, /id="mobile-cart-count"/);
-  assert.match(appScript, /getElementById\("mobile-cart"\)\.addEventListener\("click"/);
-  assert.match(appScript, /idempotency_key:idempotencyKey/);
-  assert.match(appScript, /clearCheckoutIdempotencyKey\(\)/);
-  assert.doesNotMatch(appScript, /ثبت سفارش و پرداخت آنلاین در این نسخه آزمایشی فعال نیست/);
+  assert.ok(html.includes('id="mobile-cart-count"'));
+  assert.ok(appScript.includes('getElementById("mobile-cart").addEventListener("click"'));
+  assert.ok(appScript.includes("idempotency_key:idempotencyKey"));
+  assert.ok(appScript.includes("clearCheckoutIdempotencyKey()"));
+  assert.ok(!appScript.includes("ثبت سفارش و پرداخت آنلاین در این نسخه آزمایشی فعال نیست"));
 });
 
 test("Persian and Arabic product weights calculate shipping correctly", () => {
   const start = appScript.indexOf("function normalizeWeightDigits");
-  const end = appScript.indexOf("\nfunction openCart", start);
+  const end = appScript.indexOf("function openCart", start);
   assert.ok(start >= 0 && end > start, "weight and shipping helpers must exist");
   const helpers = appScript.slice(start, end);
   const productsById = new Map([
@@ -65,7 +64,10 @@ test("Persian and Arabic product weights calculate shipping correctly", () => {
     (id) => productsById.get(String(id)),
     cart,
   );
-  const setCart = (values) => { for (const key of Object.keys(cart)) delete cart[key]; Object.assign(cart, values); };
+  const setCart = (values) => {
+    for (const key of Object.keys(cart)) delete cart[key];
+    Object.assign(cart, values);
+  };
 
   setCart({ "1": 1 });
   assert.deepEqual(getShipping(["1"]), { fee: 250000, free: false, missing: false });
@@ -77,4 +79,51 @@ test("Persian and Arabic product weights calculate shipping correctly", () => {
   assert.deepEqual(getShipping(["4"]), { fee: null, free: false, missing: true });
   setCart({ "4": 3 });
   assert.deepEqual(getShipping(["4"]), { fee: 0, free: true, missing: true });
+});
+
+test("desktop navigation has unique destinations and no duplicate category link", () => {
+  const start = html.indexOf('<nav class="desktop-nav"');
+  const end = html.indexOf("</nav>", start);
+  const nav = html.slice(start, end);
+  const hrefs = [...nav.matchAll(/href="#([^"]+)"/g)].map((match) => match[1]);
+  assert.deepEqual(hrefs, ["home", "categories", "products"]);
+  assert.equal(new Set(hrefs).size, hrefs.length);
+});
+
+test("product cards use a semantic detail button and keep cart controls separate", () => {
+  assert.ok(html.includes('class="product-open" data-open-product='));
+  assert.ok(!html.includes('tabindex="0" role="button"'));
+  assert.ok(appScript.includes('querySelectorAll("[data-open-product]")'));
+  assert.ok(html.includes('class="product-bottom"'));
+});
+
+test("dialog labels itself, traps keyboard focus, and restores focus on close", () => {
+  assert.ok(html.includes('role="dialog" aria-modal="true" aria-labelledby="sheet-title"'));
+  assert.ok(appScript.includes("function trapSheetFocus(event)"));
+  assert.ok(appScript.includes('event.key==="Escape"'));
+  assert.ok(appScript.includes("document.contains(returnFocus)"));
+  assert.ok(appScript.includes('getElementById("close-sheet").focus()'));
+});
+
+test("touch controls and checkout fields meet mobile sizing rules", () => {
+  assert.ok(html.includes(".add-btn,.inline-qty button,.qty button{min-width:44px;min-height:44px;height:44px}"));
+  assert.ok(!html.includes(".add-btn,.inline-qty button{min-width:40px;min-height:40px;height:40px}"));
+  assert.ok(html.includes(".checkout-form input,.checkout-form textarea{font-size:16px;min-height:48px}"));
+  assert.ok(html.includes(".bottom-nav{min-height:68px;padding:7px}"));
+});
+
+test("desktop sheet is centered and mobile navigation remains breakpoint-scoped", () => {
+  assert.ok(html.includes(".overlay{align-items:center;padding:16px}"));
+  assert.ok(html.includes(".sheet{border-radius:22px;max-height:calc(100dvh - 32px);padding-bottom:24px}"));
+  const mobileNavRule = html.indexOf(".bottom-nav{position:fixed;display:grid");
+  const mobileBreakpoint = html.lastIndexOf("@media(max-width:600px)", mobileNavRule);
+  assert.ok(mobileNavRule > 0 && mobileBreakpoint >= 0);
+});
+
+test("category and image fallback icons use consistent inline SVG rather than emoji glyphs", () => {
+  assert.ok(appScript.includes("function categoryIconSvg(category)"));
+  assert.ok(appScript.includes("categoryIconSvg(c)"));
+  assert.ok(appScript.includes("categoryIconSvg(p.category)"));
+  assert.ok(appScript.includes('focusable="false"'));
+  assert.ok(html.includes(".category-card-icon svg,.product-fallback svg{"));
 });

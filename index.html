@@ -160,6 +160,65 @@ button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible,te
 }
 @media(max-width:360px){.category-row{gap:6px}.category-card{padding:7px 5px;gap:5px}.category-card-icon{width:25px;height:25px}.category-card-copy b{font-size:8px}.category-card-copy small{font-size:7px}}
 
+
+/* Consolidated responsive and accessibility refinements. */
+body{padding-bottom:0}
+.product-card{cursor:default}
+.product-open{display:flex;flex:1;flex-direction:column;width:100%;min-width:0;padding:0;border:0;background:transparent;color:inherit;text-align:right;cursor:pointer}
+.product-open .product-body{width:100%}
+.product-open:focus-visible{outline:2px solid var(--blue2);outline-offset:-3px;border-radius:12px}
+.product-bottom{padding:0 10px 10px}
+.add-btn,.inline-qty button,.qty button{min-width:44px;min-height:44px;height:44px}
+.inline-qty{gap:5px}
+.category-card{min-height:78px}
+.category-card-icon svg,.product-fallback svg{width:20px;height:20px;display:block;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.category-card-copy b{font-size:10px;line-height:1.6}
+.category-card-copy small{font-size:8.5px;line-height:1.5;color:#b4c6dc}
+.category-card-count{font-size:9px}
+.stock{font-size:9px}
+.checkout-form input,.checkout-form textarea{font-size:16px;min-height:48px}
+.close-btn{width:44px;height:44px;min-width:44px}
+.sheet{overscroll-behavior:contain;scrollbar-gutter:stable}
+@media(min-width:601px){
+ body{padding-bottom:0}
+ .overlay{align-items:center;padding:16px}
+ .sheet{border-radius:22px;max-height:calc(100dvh - 32px);padding-bottom:24px}
+ .product-name{font-size:12px;min-height:44px}
+ .product-brand,.product-meta{font-size:10px}
+ .product-price{font-size:14px}
+}
+@media(max-width:600px){
+ body{padding-bottom:calc(92px + env(safe-area-inset-bottom))}
+ .category-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+ .category-card{min-height:80px;padding:9px 7px;gap:6px;align-items:center}
+ .category-card-copy b{font-size:9.5px;line-height:1.55}
+ .category-card-copy small{font-size:8px;line-height:1.45}
+ .category-card-count{font-size:8.5px}
+ .products{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .product-body{padding:10px;gap:6px}
+ .product-name{font-size:11.5px;line-height:1.8;min-height:42px}
+ .product-brand,.product-meta{font-size:9px}
+ .product-price{font-size:13px}
+ .product-bottom{padding:0 9px 10px;gap:5px}
+ .add-btn,.inline-qty button{min-width:44px;min-height:44px;height:44px}
+ .inline-qty{gap:4px}
+ .bottom-nav{min-height:68px;padding:7px}
+ .nav-item{min-height:52px;font-size:9px}
+ .checkout-form label{font-size:13px}
+ .hero-visual{height:225px}
+ .hero-product{height:195px}
+ .promo{font-size:9px}
+ .benefit b{font-size:9.5px}
+ .benefit small{font-size:8.5px}
+ .section-head h2{font-size:18px}
+}
+@media(max-width:360px){
+ .category-row{gap:6px}
+ .category-card{padding:7px 5px;gap:5px}
+ .category-card-copy b{font-size:9px}
+ .category-card-copy small{font-size:7.5px}
+ .product-name{font-size:10.5px}
+}
 </style>
 </head>
 <body>
@@ -169,7 +228,7 @@ button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible,te
     <a class="brand" href="#home" aria-label="صفحه اصلی">
       <span class="brand-mark">SE</span><span class="brand-copy"><b>SUPPLEMENT</b><small>ENERGY</small></span>
     </a>
-    <nav class="desktop-nav"><a href="#categories">دسته‌بندی‌ها</a><a href="#categories">دسته‌بندی‌ها</a><a href="#products">محصولات</a></nav>
+    <nav class="desktop-nav" aria-label="ناوبری اصلی دسکتاپ"><a href="#home">خانه</a><a href="#categories">دسته‌بندی‌ها</a><a href="#products">محصولات</a></nav>
     <div class="header-actions"><button class="cart-btn" id="open-cart">سبد خرید <span class="count" id="cart-count">۰</span></button></div>
   </div>
   <div class="shell header-search"><label class="searchbox"><span>⌕</span><input id="search" type="search" placeholder="جست‌وجوی نام محصول، برند یا مکمل..." autocomplete="off"><button class="search-clear" id="clear-search" aria-label="پاک کردن جست‌وجو">×</button></label></div>
@@ -212,19 +271,37 @@ button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible,te
   <button class="nav-item" data-target="products" data-action="search" aria-label="جستجو"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg></span><b>جستجو</b></button>
   <button class="nav-item" id="mobile-cart" aria-label="سبد خرید"><span class="nav-icon cart-nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l1 12H5L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><i id="mobile-cart-count"></i></span><b>سبد خرید</b></button>
 </nav>
-<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="جزئیات محصول"><div class="sheet"><div class="sheet-top"><h3 id="sheet-title">جزئیات محصول</h3><button class="close-btn" id="close-sheet" aria-label="بستن">×</button></div><div id="sheet-content"></div></div></div>
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="sheet-title"><div class="sheet" tabindex="-1"><div class="sheet-top"><h3 id="sheet-title">جزئیات محصول</h3><button class="close-btn" id="close-sheet" aria-label="بستن">×</button></div><div id="sheet-content"></div></div></div>
 <div class="toast" id="toast" role="status"></div>
 <script>
 (function(){
 "use strict";
 var tg=window.Telegram&&window.Telegram.WebApp;
 if(tg){try{tg.ready();tg.expand();tg.setHeaderColor("#030914");tg.setBackgroundColor("#030914");}catch(e){}}
-var products=[],category="all",subcategory="all",query="",sort="default",cart={},activeSheetProduct=null;
+var products=[],category="all",subcategory="all",query="",sort="default",cart={},activeSheetProduct=null,sheetReturnFocus=null;
 var checkoutKeyCache=null,checkoutFingerprintCache=null;
 var categoryNames={
 gainer:"گینر و افزایش وزن",protein:"پروتئین",bcaa:"بی سی ای ای",glutamine:"گلوتامین",amino:"آمینو",creatine:"کراتین",fatburner:"چربی‌سوز",pump:"پیش‌تمرین و پمپ",preworkout:"پیش‌تمرین و پمپ",vitamin:"ویتامین و مینرال",steroid:"استروئیدها",testbooster:"تست بوستر",multivitamin:"ویتامین و مینرال",recovery:"ریکاوری",other:"سایر مکمل‌ها",st_injectable:"استروئید تزریقی",st_oral:"استروئید خوراکی",st_peptide:"پپتاید",st_sustanon:"سوستانون",st_test_suspension:"تست ساسپنشن",st_test_enanthate:"تست انانتات",st_test_propionate:"تست پروپیونات",st_test_cypionate:"تست سیپیونات",st_winstrol:"وینسترول",st_oxandrolone:"اکساندرولون",st_halotestin:"هالوتستین",st_dianabol:"دیانابول",st_oxymetholone:"اکسی‌متولون",st_turinabol:"تورینابول",st_boldenone:"بولدنون",st_masteron:"مسترون",st_nandrolone_decanoate:"ناندرولون دکانوات",st_nandrolone_phenyl:"ناندرولون فنیل‌پروپیونات",st_trenbolone:"ترنبولون",st_primobolan:"پریموبولان",st_proviron:"پروویرون",st_arimidex:"آریمیدکس",st_clenbuterol:"کلنبوترول",st_liothyronine:"لیوتیرونین",st_ephedrine:"افدرین",discount:"تخفیف‌ها"
 };
-var categoryIcons={gainer:"▤",protein:"◈",bcaa:"◎",glutamine:"✣",amino:"◉",creatine:"ϟ",fatburner:"↘",pump:"ϟ",preworkout:"ϟ",vitamin:"✚",steroid:"◇",testbooster:"✦",multivitamin:"✚",recovery:"↗",other:"◇",st_injectable:"▥",st_oral:"▤",st_peptide:"✧",discount:"٪"};
+var categoryIcons={gainer:"package",protein:"dumbbell",bcaa:"orbit",glutamine:"plus",amino:"activity",creatine:"bolt",fatburner:"flame",pump:"bolt",preworkout:"bolt",vitamin:"plus-circle",steroid:"pill",testbooster:"hexagon",multivitamin:"plus-circle",recovery:"heart-pulse",other:"flask",st_injectable:"syringe",st_oral:"pill",st_peptide:"dna",discount:"tag"};
+var categoryIconPaths={
+package:"M3 7.5 12 3l9 4.5-9 4.5-9-4.5ZM3 7.5V17l9 4 9-4V7.5M12 12v9",
+dumbbell:"M6 5v14M18 5v14M3 9v6M21 9v6M6 12h12",
+orbit:"M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18ZM12 7v5l3 2",
+plus:"M12 5v14M5 12h14",
+activity:"M3 12h4l3-7 4 14 3-7h4",
+bolt:"M13 2 5 13h6l-1 9 9-12h-6l0-8",
+flame:"M12 22a7 7 0 0 0 7-7c0-4-3-7-5-10 0 4-2 5-3 6-1-3-2-4-4-6 0 5-2 7-2 10a7 7 0 0 0 7 7Z",
+"plus-circle":"M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18ZM12 8v8M8 12h8",
+pill:"M7 4a5 5 0 0 0 0 10h10a5 5 0 0 0 0-10H7ZM10 4l4 10",
+hexagon:"M12 2 20 6.5v11L12 22 4 17.5v-11L12 2ZM12 7v10M7 12h10",
+"heart-pulse":"M20.8 8.5a5 5 0 0 0-8.8-3.2L12 5l-.1.3a5 5 0 0 0-8.7 3.2c0 5 8.8 11 8.8 11s8.8-6 8.8-11ZM4 12h4l2-3 3 6 2-3h5",
+flask:"M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3M8 14h8",
+syringe:"M4 20l8-8m-6 6-2-2m4-4 6 6m-2-10 4 4m-2-6 4 4M15 5l4 4",
+dna:"M7 3c10 5 10 13 0 18M17 3C7 8 7 16 17 21M8 7h8M8 17h8M10 12h4",
+tag:"M3 12 12 3h8v8l-9 10-8-9ZM16 7h.01"
+};
+function categoryIconSvg(category){var key=categoryIcons[category]||"package";var path=categoryIconPaths[key]||categoryIconPaths.package;return '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="'+path+'"/></svg>';}
 function fmt(n){return Number(n||0).toLocaleString("fa-IR");}
 function money(n){return fmt(n)+" تومان";}
 function safe(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
@@ -249,13 +326,13 @@ try{window.sessionStorage.removeItem("miniapp.pendingCheckout");}catch(e){}
 function notify(s){var t=document.getElementById("toast");t.textContent=s;t.classList.add("show");window.clearTimeout(notify.timer);notify.timer=window.setTimeout(function(){t.classList.remove("show");},2100);}
 function isAvailable(p){if(!p||p.available===false||p.inStock===false||p.price==="out")return false;var stock=p.stock;if(typeof stock==="number"&&stock<=0)return false;var stockText=String(stock==null?"":stock).trim().toLocaleLowerCase("fa");if(["ناموجود","اتمام موجودی","out","out of stock","unavailable","false","0"].includes(stockText))return false;var status=String(p.status==null?"":p.status).trim().toLocaleLowerCase("fa");if(["ناموجود","اتمام موجودی","out","out of stock","unavailable"].includes(status))return false;return true;}
 function catName(c){return categoryNames[c]||c||"سایر مکمل‌ها";}
-function productImage(p,cls){var src=p.image||p.image2||p.image3;if(src){return '<img class="'+cls+'" loading="lazy" src="'+safe(src)+'" alt="'+safe(p.name)+'" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'grid\'"><span class="product-fallback" style="display:none">'+safe(p.icon||"◈")+"</span>";}return '<span class="product-fallback">'+safe(p.icon||"◈")+"</span>";}
+function productImage(p,cls){var src=p.image||p.image2||p.image3;if(src){return '<img class="'+cls+'" loading="lazy" src="'+safe(src)+'" alt="'+safe(p.name)+'" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'grid\'"><span class="product-fallback" style="display:none">'+categoryIconSvg(p.category)+"</span>";}return '<span class="product-fallback">'+categoryIconSvg(p.category)+"</span>";}
 function makeCategoryChips(){
 var row=document.getElementById("category-row");
 var ordered=["gainer","protein","creatine","preworkout","bcaa","amino","glutamine","fatburner","vitamin","steroid","testbooster","other","discount"];
 row.innerHTML=ordered.filter(function(c){return products.some(function(p){return p.category===c;});}).map(function(c){
 var count=products.filter(function(p){return p.category===c;}).length;
-return '<button class="category-card '+(category===c?"active ":"")+(c==="discount"?"discount":"")+'" data-category="'+c+'"><span class="category-card-icon">'+safe(categoryIcons[c]||"◈")+'</span><span class="category-card-copy"><b>'+safe(catName(c))+'</b><small>'+(c==="discount"?"پیشنهادهای ویژه":"مشاهده محصولات این دسته")+'</small><span class="category-card-count">'+fmt(count)+" محصول"+'</span></span></button>';
+return '<button class="category-card '+(category===c?"active ":"")+(c==="discount"?"discount":"")+'" data-category="'+c+'"><span class="category-card-icon">'+categoryIconSvg(c)+'</span><span class="category-card-copy"><b>'+safe(catName(c))+'</b><small>'+(c==="discount"?"پیشنهادهای ویژه":"مشاهده محصولات این دسته")+'</small><span class="category-card-count">'+fmt(count)+" محصول"+'</span></span></button>';
 }).join("");
 row.querySelectorAll("[data-category]").forEach(function(el){el.addEventListener("click",function(){setCategory(el.dataset.category);document.getElementById("products").scrollIntoView({behavior:"smooth",block:"start"});});});
 makeSubcategoryChips();
@@ -293,11 +370,11 @@ if(!list.length){grid.innerHTML='<div class="empty">محصولی با این م�
 grid.innerHTML=list.map(function(p){
 var unavailable=p.stock==="ناموجود"||p.stock==="out"||p.available===false;
 var discount=p.category==="discount";
-return '<article class="product-card '+(unavailable?"unavailable":"")+'" data-product="'+safe(p.id)+'" tabindex="0" role="button" aria-label="مشاهده '+safe(p.name)+'">'+
+return '<article class="product-card '+(unavailable?"unavailable":"")+'" data-product="'+safe(p.id)+'">'+
 (discount?'<span class="badge sale">تخفیف</span>':p.isNew?'<span class="badge">جدید</span>':'')+
-'<div class="product-img-wrap">'+productImage(p,"product-img")+'</div><div class="product-body"><span class="product-brand">'+safe(p.brand||"ENERGY SUPPLEMENT")+'</span><b class="product-name">'+safe(p.name)+'</b><span class="product-meta">'+safe(p.category==="steroid"?catName(p.subcategory)+" · "+(p.weight||""):p.weight||catName(p.category))+'</span><div class="product-price">'+(p.price==="out"?"ناموجود":money(p.price))+'</div><div class="product-bottom"><span class="stock '+(unavailable?"out":"")+'">'+(unavailable?"ناموجود":"موجود")+'</span>'+(cart[p.id]?'<div class="inline-qty"><button type="button" data-card-qty="'+safe(p.id)+'" data-delta="-1" aria-label="کم کردن تعداد">−</button><span>'+fmt(cart[p.id])+'</span><button type="button" data-card-qty="'+safe(p.id)+'" data-delta="1" aria-label="زیاد کردن تعداد">+</button></div>':'<button class="add-btn" data-add="'+safe(p.id)+'" aria-label="افزودن به سبد خرید" '+(unavailable?"disabled":"")+'>+</button>')+'</div></div></article>';
+'<button type="button" class="product-open" data-open-product="'+safe(p.id)+'" aria-label="مشاهده جزئیات '+safe(p.name)+'"><span class="product-img-wrap">'+productImage(p,"product-img")+'</span><span class="product-body"><span class="product-brand">'+safe(p.brand||"ENERGY SUPPLEMENT")+'</span><b class="product-name">'+safe(p.name)+'</b><span class="product-meta">'+safe(p.category==="steroid"?catName(p.subcategory)+" · "+(p.weight||""):p.weight||catName(p.category))+'</span><span class="product-price">'+(p.price==="out"?"ناموجود":money(p.price))+'</span></span></button><div class="product-bottom"><span class="stock '+(unavailable?"out":"")+'">'+(unavailable?"ناموجود":"موجود")+'</span>'+(cart[p.id]?'<div class="inline-qty"><button type="button" data-card-qty="'+safe(p.id)+'" data-delta="-1" aria-label="کم کردن تعداد">−</button><span>'+fmt(cart[p.id])+'</span><button type="button" data-card-qty="'+safe(p.id)+'" data-delta="1" aria-label="زیاد کردن تعداد">+</button></div>':'<button class="add-btn" data-add="'+safe(p.id)+'" aria-label="افزودن به سبد خرید" '+(unavailable?"disabled":"")+'>+</button>')+'</div></article>';
 }).join("");
-grid.querySelectorAll("[data-product]").forEach(function(el){el.addEventListener("click",function(e){if(e.target.closest("[data-add]"))return;openProduct(el.dataset.product);});el.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();openProduct(el.dataset.product);}});});
+grid.querySelectorAll("[data-open-product]").forEach(function(el){el.addEventListener("click",function(){openProduct(el.dataset.openProduct);});});
 grid.querySelectorAll("[data-add]").forEach(function(el){el.addEventListener("click",function(e){e.stopPropagation();addToCart(el.dataset.add);render();});});grid.querySelectorAll("[data-card-qty]").forEach(function(el){el.addEventListener("click",function(e){e.stopPropagation();changeCartQuantity(el.dataset.cardQty,Number(el.dataset.delta));});});
 }
 function setCategory(c){category=c;subcategory="all";makeCategoryChips();render();}
@@ -312,8 +389,36 @@ var count=Object.keys(cart).reduce(function(n,id){return n+cart[id];},0);
 document.getElementById("cart-count").textContent=fmt(count);
 document.getElementById("mobile-cart-count").textContent=count?fmt(count):"";document.getElementById("mobile-cart-count").style.display=count?"block":"none";document.getElementById("mobile-cart").setAttribute("aria-label",count?"سبد خرید، "+count+" کالا":"سبد خرید");document.querySelectorAll("[data-add]").forEach(function(b){var q=cart[b.dataset.add]||0;b.textContent=q?"+"+fmt(q):"+";b.classList.toggle("has-qty",q>0);});document.querySelectorAll("[data-qty-note]").forEach(function(n){var q=cart[n.dataset.qtyNote]||0;n.textContent=q?"در سبد خرید: "+fmt(q)+" عدد":"";});
 }
-function openSheet(title,content){document.getElementById("sheet-title").textContent=title;document.getElementById("sheet-content").innerHTML=content;document.getElementById("overlay").classList.add("open");document.body.style.overflow="hidden";}
-function closeSheet(){document.getElementById("overlay").classList.remove("open");document.body.style.overflow="";}
+function openSheet(title,content){
+var overlay=document.getElementById("overlay");
+if(!overlay.classList.contains("open"))sheetReturnFocus=document.activeElement;
+document.getElementById("sheet-title").textContent=title;
+document.getElementById("sheet-content").innerHTML=content;
+overlay.classList.add("open");
+document.body.style.overflow="hidden";
+document.getElementById("close-sheet").focus();
+}
+function closeSheet(){
+var overlay=document.getElementById("overlay");
+if(!overlay.classList.contains("open"))return;
+overlay.classList.remove("open");
+document.body.style.overflow="";
+var returnFocus=sheetReturnFocus;
+sheetReturnFocus=null;
+if(returnFocus&&typeof returnFocus.focus==="function"&&document.contains(returnFocus))returnFocus.focus();
+}
+function trapSheetFocus(event){
+var overlay=document.getElementById("overlay");
+if(!overlay.classList.contains("open"))return;
+if(event.key==="Escape"){event.preventDefault();closeSheet();return;}
+if(event.key!=="Tab")return;
+var focusable=Array.prototype.slice.call(overlay.querySelectorAll('button:not([disabled]),a[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])')).filter(function(el){return el.getClientRects().length>0;});
+if(!focusable.length){event.preventDefault();overlay.querySelector(".sheet").focus();return;}
+var first=focusable[0],last=focusable[focusable.length-1];
+if(!overlay.contains(document.activeElement)){event.preventDefault();(event.shiftKey?last:first).focus();}
+else if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}
+else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}
+}
 function openProduct(id){
 var p=findProduct(id);if(!p)return;activeSheetProduct=p;
 var unavailable=p.price==="out"||p.stock==="ناموجود"||p.available===false;
@@ -368,7 +473,7 @@ document.getElementById("open-cart").addEventListener("click",openCart);
 document.getElementById("mobile-cart").addEventListener("click",function(e){e.preventDefault();e.stopPropagation();document.querySelectorAll(".nav-item").forEach(function(n){n.classList.remove("active");});this.classList.add("active");openCart();});
 document.getElementById("close-sheet").addEventListener("click",closeSheet);
 document.getElementById("overlay").addEventListener("click",function(e){if(e.target===this)closeSheet();});
-document.addEventListener("keydown",function(e){if(e.key==="Escape")closeSheet();});
+document.addEventListener("keydown",trapSheetFocus);
 document.querySelectorAll(".nav-item[data-target]").forEach(function(el){el.addEventListener("click",function(){var target=document.getElementById(el.dataset.target);if(el.dataset.action==="search"){var input=document.getElementById("search");if(input){input.scrollIntoView({behavior:"smooth",block:"center"});window.setTimeout(function(){input.focus();},220);}}else if(target){target.scrollIntoView({behavior:"smooth",block:"start"});}document.querySelectorAll(".nav-item").forEach(function(n){n.classList.remove("active");});el.classList.add("active");});});
 fetch("./products.json",{cache:"no-cache"}).then(function(r){if(!r.ok)throw new Error("products.json HTTP "+r.status);return r.json();}).then(function(data){
 products=Array.isArray(data)?data.filter(isAvailable).map(function(p){var base=Number(p.basePrice)||Number(p.price)||0;var rate=p.category==="steroid"?0.20:0.15;var finalPrice=Math.round((base*(1+rate))/5000)*5000;return Object.assign({},p,{basePrice:base,price:finalPrice});}):[];
