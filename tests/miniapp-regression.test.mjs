@@ -170,6 +170,7 @@ test("user-approved product pages provide the exact current catalog packshots", 
   const expected = {
     4: ["207507.webp", "hyperbolic-mass-assorted-flavours-4kg"],
     18: ["muscletech-int-nitro-tech-100-whey-gold.png", "nitro-tech-100-whey-gold"],
+    43: ["muscleTech-int-platinum-100-glutamine.png", "platinum-100-glutamine"],
     85: ["Lipo6-BlackUC-60-INP.webp", "lipo-6-black-ultra-concentrate"],
     86: ["Lipo6-HC_800x800.png", "lipo-6-hardcore"],
   };
