@@ -390,7 +390,8 @@ if(event.key!=="Tab")return;
 var focusable=Array.prototype.slice.call(overlay.querySelectorAll('button:not([disabled]),a[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])')).filter(function(el){return el.getClientRects().length>0;});
 if(!focusable.length){event.preventDefault();overlay.querySelector(".sheet").focus();return;}
 var first=focusable[0],last=focusable[focusable.length-1];
-if(event.shiftKey&&(document.activeElement===first||!overlay.contains(document.activeElement))){event.preventDefault();last.focus();}
+if(!overlay.contains(document.activeElement)){event.preventDefault();(event.shiftKey?last:first).focus();}
+else if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}
 else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}
 }
 function openProduct(id){
