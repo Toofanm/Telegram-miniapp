@@ -246,6 +246,34 @@ body{padding-bottom:0}
 @keyframes sheet-rise-mobile{from{opacity:0;transform:translateY(38px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.overlay.open,.sheet,.receipt-machine,.receipt-slot:after,.receipt-paper,.receipt-check{animation:none!important;transition:none!important}}
 
+
+/* Re-trigger modal and receipt motion on every open, not on initial page load. */
+.overlay{background:rgba(2,8,18,.66)!important;backdrop-filter:blur(10px) saturate(125%)!important;-webkit-backdrop-filter:blur(10px) saturate(125%)!important;opacity:0;transition:opacity .32s ease}
+.overlay.open{opacity:1;animation:overlay-fade-in .32s ease both}
+.overlay.open>.sheet{animation:sheet-enter .62s cubic-bezier(.16,1,.3,1) both!important}
+.sheet{background:linear-gradient(145deg,rgba(19,43,69,.94),rgba(5,17,32,.94))!important;border:1px solid rgba(155,198,245,.3)!important;box-shadow:0 28px 90px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.09)!important;backdrop-filter:blur(28px) saturate(155%)!important;-webkit-backdrop-filter:blur(28px) saturate(155%)!important;transform-origin:center bottom}
+.overlay.open .sheet-top{background:linear-gradient(180deg,rgba(16,39,64,.98),rgba(16,39,64,.7));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.detail{grid-template-columns:250px minmax(0,1fr)!important;gap:22px!important;align-items:start}
+.detail-art{width:100%;min-height:250px!important;aspect-ratio:1/1;padding:8px!important;border-radius:20px!important;background:radial-gradient(ellipse at 50% 45%,rgba(81,157,239,.23),rgba(10,28,48,.72) 72%)!important;border:1px solid rgba(146,194,246,.3)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 10px 30px rgba(0,0,0,.2)}
+.detail-art img{width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:contain;filter:drop-shadow(0 16px 18px rgba(0,0,0,.36))}
+.detail-art .product-fallback{max-width:none!important}
+.receipt-printer{perspective:1000px}
+.overlay.open .receipt-machine{animation:printer-enter .72s cubic-bezier(.16,1,.3,1) .06s both!important}
+.overlay.open .receipt-slot:after{animation:printer-head-pass 1.3s cubic-bezier(.22,.61,.36,1) .3s both!important}
+.overlay.open .receipt-paper{animation:paper-feed 1.55s cubic-bezier(.16,1,.3,1) .22s both!important;transform-origin:top center}
+.overlay.open .receipt-check{animation:receipt-stamp .55s cubic-bezier(.2,.9,.25,1) 1.15s both!important}
+@keyframes overlay-fade-in{from{opacity:0}to{opacity:1}}
+@keyframes sheet-enter{0%{opacity:0;transform:translate3d(0,64px,0) scale(.965);filter:blur(8px)}65%{opacity:1;filter:blur(0)}100%{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0)}}
+@keyframes printer-enter{0%{opacity:0;transform:translate3d(0,22px,0) scale(.97);filter:blur(5px)}100%{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0)}}
+@keyframes printer-head-pass{0%{left:-35%;opacity:0}18%{opacity:1}80%{opacity:.9}100%{left:115%;opacity:0}}
+@keyframes paper-feed{0%{opacity:0;transform:translate3d(0,-42px,0) scaleY(.88);filter:blur(3px)}55%{opacity:1;filter:blur(.5px)}82%{transform:translate3d(0,3px,0) scaleY(1.01)}100%{opacity:1;transform:translate3d(0,0,0) scaleY(1);filter:blur(0)}}
+@keyframes receipt-stamp{0%{opacity:0;transform:scale(.55) rotate(-8deg)}72%{opacity:1;transform:scale(1.13) rotate(2deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+@media(min-width:601px){.overlay{align-items:center!important;padding:20px!important}.sheet{width:min(820px,calc(100% - 40px))!important;max-height:calc(100dvh - 40px)!important;border-radius:26px!important}.detail{grid-template-columns:270px minmax(0,1fr)!important}.detail-art{min-height:270px!important}}
+@media(max-width:600px){.sheet{width:100%!important;border-radius:26px 26px 0 0!important;background:linear-gradient(155deg,rgba(14,36,60,.97),rgba(4,15,29,.97))!important;padding:20px 16px calc(24px + env(safe-area-inset-bottom) + 82px)!important}.detail{grid-template-columns:176px minmax(0,1fr)!important;gap:14px!important}.detail-art{min-height:176px!important;border-radius:17px!important;padding:6px!important}.detail-name{font-size:14px!important}.detail-price{font-size:17px!important}.detail-desc{font-size:10px!important}.sheet-top{background:linear-gradient(180deg,rgba(14,36,60,.99),rgba(14,36,60,.75));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}}
+@media(max-width:380px){.detail{grid-template-columns:150px minmax(0,1fr)!important;gap:11px!important}.detail-art{min-height:150px!important}}
+@media(prefers-reduced-motion:reduce){.overlay.open>.sheet{animation:reduced-fade .16s ease-out both!important}.overlay.open .receipt-machine,.overlay.open .receipt-paper,.overlay.open .receipt-check{animation:reduced-fade .16s ease-out both!important}.overlay.open .receipt-slot:after{animation:none!important}}
+@keyframes reduced-fade{from{opacity:0}to{opacity:1}}
+
 </style>
 </head>
 <body>
