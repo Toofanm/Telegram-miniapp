@@ -131,13 +131,14 @@ test("category and image fallback icons use consistent inline SVG rather than em
 
 test("requested product packshots are mapped to exact manufacturer or Amazon product sources", () => {
   const expected = {
-    4: "hyperbolic-mass-gh",
+    4: "hyperbolic-mass-assorted-flavours-4kg",
     14: "B0DJBB1XD2",
     18: "nitro-tech-100-whey-gold",
     28: "100WHEY_Van_2kg",
     54: "gold-amino-chewables-330",
     75: "cor-performance-creatine-flavored",
     85: "lipo-6-black-ultra-concentrate",
+    86: "lipo-6-hardcore",
     92: "l-carnitine-1000",
     97: "qhush-platinum-black-pre-workout",
   };
@@ -162,4 +163,35 @@ test("thermal order receipt uses a smoother printer feed and confirmation sequen
   assert.ok(html.includes("@keyframes receipt-feed"));
   assert.ok(html.includes("@keyframes receipt-confirm"));
   assert.ok(appScript.includes("function renderOrderReceipt(data,fallbackItems,customer)"));
+});
+
+
+test("user-approved product pages provide the exact current catalog packshots", () => {
+  const expected = {
+    4: ["207507.webp", "hyperbolic-mass-assorted-flavours-4kg"],
+    18: ["muscletech-int-nitro-tech-100-whey-gold.png", "nitro-tech-100-whey-gold"],
+    85: ["Lipo6-BlackUC-60-INP.webp", "lipo-6-black-ultra-concentrate"],
+    86: ["Lipo6-HC_800x800.png", "lipo-6-hardcore"],
+  };
+  for (const [id, [image, source]] of Object.entries(expected)) {
+    const product = products.find((item) => String(item.id) === id);
+    assert.ok(product, "missing product " + id);
+    assert.ok(product.image.includes(image), "wrong official packshot for product " + id);
+    assert.ok(product.imageSource.includes(source), "wrong reference product page for product " + id);
+  }
+});
+
+test("modal entrance animation is triggered when overlay opens, and detail packshot is larger", () => {
+  assert.ok(html.includes(".overlay.open>.sheet{animation:sheet-enter"));
+  assert.ok(html.includes("grid-template-columns:250px minmax(0,1fr)!important"));
+  assert.ok(html.includes("grid-template-columns:176px minmax(0,1fr)!important"));
+  assert.ok(html.includes("@keyframes sheet-enter"));
+  assert.ok(html.includes("prefers-reduced-motion:reduce"));
+});
+
+test("receipt printer and paper animations are triggered by opening the receipt dialog", () => {
+  assert.ok(html.includes(".overlay.open .receipt-machine{animation:printer-enter"));
+  assert.ok(html.includes(".overlay.open .receipt-paper{animation:paper-feed"));
+  assert.ok(html.includes("@keyframes paper-feed"));
+  assert.ok(html.includes("@keyframes receipt-stamp"));
 });
