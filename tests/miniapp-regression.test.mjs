@@ -107,6 +107,7 @@ test("dialog labels itself, traps keyboard focus, and restores focus on close", 
 
 test("touch controls and checkout fields meet mobile sizing rules", () => {
   assert.ok(html.includes(".add-btn,.inline-qty button,.qty button{min-width:44px;min-height:44px;height:44px}"));
+  assert.ok(!html.includes(".add-btn,.inline-qty button{min-width:40px;min-height:40px;height:40px}"));
   assert.ok(html.includes(".checkout-form input,.checkout-form textarea{font-size:16px;min-height:48px}"));
   assert.ok(html.includes(".bottom-nav{min-height:68px;padding:7px}"));
 });
