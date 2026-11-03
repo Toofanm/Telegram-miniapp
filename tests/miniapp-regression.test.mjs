@@ -118,3 +118,11 @@ test("desktop sheet is centered and mobile navigation remains breakpoint-scoped"
   const mobileBreakpoint = html.lastIndexOf("@media(max-width:600px)", mobileNavRule);
   assert.ok(mobileNavRule > 0 && mobileBreakpoint >= 0);
 });
+
+test("category and image fallback icons use consistent inline SVG rather than emoji glyphs", () => {
+  assert.ok(appScript.includes("function categoryIconSvg(category)"));
+  assert.ok(appScript.includes("categoryIconSvg(c)"));
+  assert.ok(appScript.includes("categoryIconSvg(p.category)"));
+  assert.ok(appScript.includes('focusable="false"'));
+  assert.ok(html.includes(".category-card-icon svg,.product-fallback svg{"));
+});
