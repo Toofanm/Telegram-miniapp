@@ -51,7 +51,7 @@ test("mobile cart badge, cart navigation, and checkout retry key are wired", () 
 
 test("Persian and Arabic product weights calculate shipping correctly", () => {
   const start = appScript.indexOf("function normalizeWeightDigits");
-  const end = appScript.indexOf("\\nfunction openCart", start);
+  const end = appScript.indexOf("\nfunction openCart", start);
   assert.ok(start >= 0 && end > start, "weight and shipping helpers must exist");
   const helpers = appScript.slice(start, end);
   const productsById = new Map([
@@ -93,7 +93,7 @@ test("desktop navigation has unique destinations and no duplicate category link"
 
 test("product cards use a semantic detail button and keep cart controls separate", () => {
   assert.ok(html.includes('class="product-open" data-open-product='));
-  assert.ok(!html.includes('class="product-card \'+(unavailable?"unavailable":"")+'" data-product="'+safe(p.id)+'" tabindex="0" role="button"'));
+  assert.ok(!html.includes('tabindex="0" role="button"'));
   assert.ok(appScript.includes('querySelectorAll("[data-open-product]")'));
   assert.ok(html.includes('class="product-bottom"'));
 });
