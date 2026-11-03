@@ -136,7 +136,7 @@ test("requested product packshots are mapped to exact manufacturer or Amazon pro
     18: "nitro-tech-100-whey-gold",
     28: "100WHEY_Van_2kg",
     54: "gold-amino-chewables-330",
-    75: "cor-performance-creatine-flavored",
+    75: "B0BJ2S32YL",
     85: "lipo-6-black-ultra-concentrate",
     86: "lipo-6-hardcore",
     92: "l-carnitine-1000",
