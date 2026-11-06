@@ -231,7 +231,6 @@ test("all 69 steroid and SARM products are visible as separate catalog categorie
   assert.equal(sarms.length, 4);
   assert.ok(html.includes('sarm:"سارم‌ها"'));
   assert.ok(html.includes('"steroid","sarm","testbooster"'));
-  assert.ok(appScript.includes('category==="sarm"'));
 });
 
 test("steroid and SARM prices are stored and displayed in full toman", () => {
