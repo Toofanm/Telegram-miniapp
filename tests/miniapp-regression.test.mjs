@@ -150,6 +150,34 @@ test("requested product packshots are mapped to exact manufacturer or Amazon pro
   }
 });
 
+test("every supplement has an exact product packshot and source page", () => {
+  const expected = {
+    77: ["jnxsports.com/cdn/shop/files/0486_JNX_Sports", "jnxsports.com/products/the-curse-creatine-monohydrate"],
+    131: ["xpnworld.com/cdn/shop/files/ProJointSupport-180caps", "xpnworld.com/products/pro-joint-support"],
+    201: ["nutriversum.org/sites/new_nutriversum_org/documents/product/gainer_pro_5000g", "nutriversum.org/gainers/PURE_-_Gainer_Pro_5000g"],
+    202: ["m.media-amazon.com/images/I/8118rYJFiQL", "amazon.es/-/en/Zoomad-Labs-Monohydrate-Strawberry"],
+    203: ["b2b.activlab.pl/wp-content/uploads/2022/04/creavita-grape", "b2b.activlab.pl/produkt/creavita"],
+    204: ["grenade.com/cdn/shop/files/Grenade-TD-1", "grenade.com/products/thermo-detonator"],
+    205: ["mutantnation.com/cdn/shop/files/33501USMUTANTMADNESS", "mutantnation.com/products/madness-ultra-concentrated-pre-workout"],
+    206: ["walmartimages.com/seo/Ronnie-Coleman-L-Arginine-XS-Capsules", "walmart.com/ip/Ronnie-Coleman-L-Arginine-XS-Capsules"],
+    207: ["quamtrax.com/cdn/shop/files/l-carnitina-lonza-veggie-120-caps", "quamtrax.com/products/l-carnitina-lonza"],
+    208: ["static.thcdn.com/productimg/original/10530146", "myprotein.com/p/sports-nutrition/l-carnitine-tablets/10530146"],
+    209: ["nutrex.com/cdn/shop/files/CLA-90_800x800", "nutrex.com/products/cla-1000"],
+    210: ["allmaxnutrition.com/cdn/shop/files/ACuts_allmax_nutrition_canada", "allmaxnutrition.com/products/acuts-amino-acid"],
+    211: ["fasklep.pl/2687-large_default/gear-crea-shock-300-g", "fasklep.pl/en/gear/1221-gear-crea-shock-300-g"],
+  };
+  for (const product of products) {
+    if (product.category === "steroid" || product.category === "sarm") continue;
+    assert.ok(product.image && product.imageSource, "missing supplement packshot/source for product " + product.id);
+  }
+  for (const [id, [imageMarker, sourceMarker]] of Object.entries(expected)) {
+    const product = products.find((item) => String(item.id) === id);
+    assert.ok(product, "missing catalog product " + id);
+    assert.ok(product.image.includes(imageMarker), "wrong product image for " + id);
+    assert.ok(product.imageSource.includes(sourceMarker), "wrong source page for " + id);
+  }
+});
+
 test("product detail sheet uses static lightweight presentation and preserves larger packshots", () => {
   assert.ok(html.includes(".overlay.open{animation:none!important}"));
   assert.ok(html.includes("backdrop-filter:none!important"));
