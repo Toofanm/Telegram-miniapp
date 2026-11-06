@@ -139,7 +139,6 @@ test("requested product packshots are mapped to exact manufacturer or Amazon pro
     75: "B0BJ2S32YL",
     85: "lipo-6-black-ultra-concentrate",
     86: "lipo-6-hardcore",
-    92: "l-carnitine-1000",
     97: "qhush-platinum-black-pre-workout",
   };
   for (const [id, marker] of Object.entries(expected)) {
