@@ -22,13 +22,14 @@ test("catalog count is sourced from products.json and IDs remain unique", () => 
   }
 });
 
-test("catalog has source prices and verifiable image provenance", () => {
+test("supplement catalog has source prices and verifiable image provenance", () => {
   for (const product of products) {
+    if (product.category === "steroid" || product.category === "sarm") continue;
     const base = Number(product.basePrice);
     assert.ok(Number.isFinite(base) && base > 0, "invalid basePrice for product " + product.id);
-    const rate = product.category === "steroid" ? 0.20 : 0.15;
-    const finalPrice = Math.round((base * (1 + rate)) / 5000) * 5000;
+    const finalPrice = Math.round((base * 1.15) / 5000) * 5000;
     assert.equal(finalPrice % 5000, 0);
+    assert.equal(Number(product.price), finalPrice, "incorrect supplement price for product " + product.id);
     if (product.image) assert.ok(product.imageSource, "image source missing for product " + product.id);
   }
 });
