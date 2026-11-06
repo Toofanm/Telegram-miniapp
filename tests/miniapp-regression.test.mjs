@@ -222,3 +222,30 @@ test("order receipt is static and does not run printer or paper animations", () 
   assert.ok(html.includes(".receipt-paper{"));
   assert.ok(html.includes(".receipt-check{animation:none!important"));
 });
+
+
+test("all 69 steroid and SARM products are visible as separate catalog categories", () => {
+  const steroids = products.filter((product) => product.category === "steroid");
+  const sarms = products.filter((product) => product.category === "sarm");
+  assert.equal(steroids.length, 65);
+  assert.equal(sarms.length, 4);
+  assert.ok(html.includes('sarm:"سارم‌ها"'));
+  assert.ok(html.includes('"steroid","sarm","testbooster"'));
+  assert.ok(appScript.includes('category==="sarm"'));
+});
+
+test("steroid and SARM prices are stored and displayed in full toman", () => {
+  for (const product of products.filter((item) => item.category === "steroid" || item.category === "sarm")) {
+    assert.ok(Number(product.basePrice) >= 1000000, "base price is not full toman for product " + product.id);
+    assert.ok(Number(product.price) >= 1000000, "display price is not full toman for product " + product.id);
+    assert.equal(Number(product.price), Math.round((Number(product.basePrice) * 1.20) / 5000) * 5000);
+  }
+});
+
+test("live product suggestions are rendered while typing without a search button", () => {
+  assert.ok(html.includes('id="search-suggestions"'));
+  assert.ok(appScript.includes("function renderSearchSuggestions()"));
+  assert.ok(appScript.includes('addEventListener("input"'));
+  assert.ok(appScript.includes('data-search-suggestion'));
+  assert.ok(appScript.includes("slice(0,6)"));
+});
