@@ -248,3 +248,11 @@ test("live product suggestions are rendered while typing without a search button
   assert.ok(appScript.includes('data-search-suggestion'));
   assert.ok(appScript.includes("slice(0,6)"));
 });
+
+test("runtime pricing applies the approved markup to both steroid and SARM categories", () => {
+  assert.ok(appScript.includes('var rate=(p.category==="steroid"||p.category==="sarm")?0.20:0.15;'));
+  for (const product of products.filter((item) => item.category === "steroid" || item.category === "sarm")) {
+    const expected = Math.round((Number(product.basePrice) * 1.20) / 5000) * 5000;
+    assert.equal(Number(product.price), expected, "stored markup mismatch for product " + product.id);
+  }
+});
