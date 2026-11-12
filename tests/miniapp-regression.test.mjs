@@ -270,3 +270,13 @@ test("viewport allows browser zoom for users with low vision", () => {
   assert.ok(!html.includes("maximum-scale=1"));
   assert.ok(!html.includes("user-scalable=no"));
 });
+
+
+
+test("order receipt exposes a retry action when either Telegram notification is missing", () => {
+  assert.ok(appScript.includes('var retryAvailable=data.customer_notified!==true||data.admin_notified!==true;'));
+  assert.ok(appScript.includes('id="retry-order-notifications"'));
+  assert.ok(appScript.includes('JSON.stringify(retryPayload)'));
+  assert.ok(appScript.includes('renderOrderReceipt(data,receiptItems,receiptCustomer,orderPayload)'));
+  assert.ok(appScript.includes('if(data.customer_notified===true&&data.admin_notified===true)clearCheckoutIdempotencyKey()'));
+});
