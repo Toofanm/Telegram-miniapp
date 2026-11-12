@@ -306,7 +306,8 @@ test("order receipt retries the same idempotent payload and clears the key only 
   assert.match(receiptMarkup, /id="retry-order-notifications"/);
   const retryButton = nodes["retry-order-notifications"];
   assert.equal(typeof retryButton.listener, "function");
-  await retryButton.listener();
+  retryButton.listener();
+  await new Promise((resolve) => setImmediate(resolve));
   assert.equal(request.url, "https://telegram-shop-8hll.onrender.com/miniapp-order");
   assert.deepEqual(JSON.parse(request.options.body), payload);
   assert.equal(clearCount, 1);
@@ -334,7 +335,8 @@ test("failed order-notification retry keeps the idempotency key and restores the
   const payload = { initData: "signed-init-data", idempotency_key: "same-order-key", items: [], customer: {} };
   render({ order_id: "TEST-ORDER-2", customer_notified: false, admin_notified: true }, [], {}, payload);
   const retryButton = nodes["retry-order-notifications"];
-  await retryButton.listener();
+  retryButton.listener();
+  await new Promise((resolve) => setImmediate(resolve));
   assert.equal(clearCount, 0);
   assert.equal(retryButton.disabled, false);
   assert.equal(retryButton.textContent, "تلاش مجدد برای ارسال اعلان‌ها");
