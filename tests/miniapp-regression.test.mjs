@@ -259,4 +259,7 @@ test("weekly inventory file defines stock for every catalog product and defaults
   }
   assert.ok(appScript.includes('fetch("./inventory.json"'));
   assert.ok(appScript.includes('next>Number(p.stock||0)'));
+  assert.ok(appScript.includes('(cart[id]||0)>=Number(p.stock||0)'));
+  assert.ok(appScript.includes('"موجود: "+fmt(p.stock)'));
+  assert.ok(appScript.includes('category==="sarm")?0.20:0.15'));
 });
