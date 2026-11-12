@@ -248,3 +248,15 @@ test("live product suggestions are rendered while typing without a search button
   assert.ok(appScript.includes('data-search-suggestion'));
   assert.ok(appScript.includes("slice(0,6)"));
 });
+
+
+test("weekly inventory file defines stock for every catalog product and defaults to ten", () => {
+  const inventory = JSON.parse(readFileSync(new URL("../inventory.json", import.meta.url), "utf8"));
+  assert.equal(inventory.defaultStock, 10);
+  assert.equal(Object.keys(inventory.stockByProductId).length, products.length);
+  for (const product of products) {
+    assert.equal(inventory.stockByProductId[String(product.id)], 10);
+  }
+  assert.ok(appScript.includes('fetch("./inventory.json"'));
+  assert.ok(appScript.includes('next>Number(p.stock||0)'));
+});
