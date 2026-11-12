@@ -263,3 +263,10 @@ test("weekly inventory file defines stock for every catalog product and defaults
   assert.ok(appScript.includes('"موجود: "+fmt(p.stock)'));
   assert.ok(appScript.includes('category==="sarm")?0.20:0.15'));
 });
+
+
+test("viewport allows browser zoom for users with low vision", () => {
+  assert.ok(html.includes('content="width=device-width,initial-scale=1,viewport-fit=cover"'));
+  assert.ok(!html.includes("maximum-scale=1"));
+  assert.ok(!html.includes("user-scalable=no"));
+});
