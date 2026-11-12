@@ -190,7 +190,7 @@ test("thermal order receipt renders without animated printer effects", () => {
   assert.ok(html.includes(".receipt-machine{animation:none!important"));
   assert.ok(html.includes(".receipt-slot:after{display:none!important"));
   assert.ok(html.includes(".receipt-paper{"));
-  assert.ok(appScript.includes("function renderOrderReceipt(data,fallbackItems,customer)"));
+  assert.ok(appScript.includes("function renderOrderReceipt(data,fallbackItems,customer,retryPayload)"));
 });
 
 
