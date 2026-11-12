@@ -297,9 +297,9 @@ test("order receipt retries the same idempotent payload and clears the key only 
     }) };
   };
   const render = new Function(
-    "openSheet", "safe", "money", "fmt", "document", "fetch", "notify",
+    "openSheet", "safe", "money", "fmt", "document", "fetch", "notify", "closeSheet",
     "clearCheckoutIdempotencyKey", rendererSource + "; return renderOrderReceipt;"
-  )(openSheet, String, String, String, document, fetch, () => {}, () => { clearCount += 1; });
+  )(openSheet, String, String, String, document, fetch, () => {}, () => {}, () => { clearCount += 1; });
 
   const payload = { initData: "signed-init-data", idempotency_key: "same-order-key", items: [], customer: { name: "Test" } };
   render({ order_id: "TEST-ORDER-1", customer_notified: true, admin_notified: false }, [], {}, payload);
@@ -328,9 +328,9 @@ test("failed order-notification retry keeps the idempotency key and restores the
   };
   const fetch = async () => ({ ok: false, json: async () => ({ ok: false, message: "temporary failure" }) });
   const render = new Function(
-    "openSheet", "safe", "money", "fmt", "document", "fetch", "notify",
+    "openSheet", "safe", "money", "fmt", "document", "fetch", "notify", "closeSheet",
     "clearCheckoutIdempotencyKey", rendererSource + "; return renderOrderReceipt;"
-  )(openSheet, String, String, String, document, fetch, (message) => notices.push(message), () => { clearCount += 1; });
+  )(openSheet, String, String, String, document, fetch, (message) => notices.push(message), () => {}, () => { clearCount += 1; });
   const payload = { initData: "signed-init-data", idempotency_key: "same-order-key", items: [], customer: {} };
   render({ order_id: "TEST-ORDER-2", customer_notified: false, admin_notified: true }, [], {}, payload);
   const retryButton = nodes["retry-order-notifications"];
