@@ -273,10 +273,70 @@ test("viewport allows browser zoom for users with low vision", () => {
 
 
 
-test("order receipt exposes a retry action when either Telegram notification is missing", () => {
-  assert.ok(appScript.includes('var retryAvailable=data.customer_notified!==true||data.admin_notified!==true;'));
-  assert.ok(appScript.includes('id="retry-order-notifications"'));
-  assert.ok(appScript.includes('JSON.stringify(retryPayload)'));
-  assert.ok(appScript.includes('renderOrderReceipt(data,receiptItems,receiptCustomer,orderPayload)'));
-  assert.ok(appScript.includes('if(data.customer_notified===true&&data.admin_notified===true)clearCheckoutIdempotencyKey()'));
+test("order receipt retries the same idempotent payload and clears the key only after both notifications succeed", async () => {
+  const start = appScript.indexOf("function renderOrderReceipt(");
+  const end = appScript.indexOf("function normalizeWeightDigits", start);
+  assert.ok(start >= 0 && end > start, "receipt renderer must exist");
+  const rendererSource = appScript.slice(start, end);
+  const nodes = {};
+  let receiptMarkup = "";
+  let clearCount = 0;
+  let request = null;
+  const makeNode = () => ({ disabled: false, textContent: "", listener: null, addEventListener(type, listener) { if (type === "click") this.listener = listener; } });
+  const document = { getElementById(id) { return nodes[id] || null; } };
+  const openSheet = (_title, markup) => {
+    receiptMarkup = markup;
+    nodes["finish-order"] = makeNode();
+    nodes["retry-order-notifications"] = markup.includes('id="retry-order-notifications"') ? makeNode() : null;
+  };
+  const fetch = async (url, options) => {
+    request = { url, options };
+    return { ok: true, json: async () => ({
+      ok: true, order_id: "TEST-ORDER-1", customer_notified: true, admin_notified: true,
+      items: [], subtotal: 1000, shipping_cost: 0, total: 1000,
+    }) };
+  };
+  const render = new Function(
+    "openSheet", "safe", "money", "fmt", "document", "fetch", "notify",
+    "clearCheckoutIdempotencyKey", rendererSource + "; return renderOrderReceipt;"
+  )(openSheet, String, String, String, document, fetch, () => {}, () => { clearCount += 1; });
+
+  const payload = { initData: "signed-init-data", idempotency_key: "same-order-key", items: [], customer: { name: "Test" } };
+  render({ order_id: "TEST-ORDER-1", customer_notified: true, admin_notified: false }, [], {}, payload);
+  assert.match(receiptMarkup, /id="retry-order-notifications"/);
+  const retryButton = nodes["retry-order-notifications"];
+  assert.equal(typeof retryButton.listener, "function");
+  await retryButton.listener();
+  assert.equal(request.url, "https://telegram-shop-8hll.onrender.com/miniapp-order");
+  assert.deepEqual(JSON.parse(request.options.body), payload);
+  assert.equal(clearCount, 1);
+  assert.doesNotMatch(receiptMarkup, /id="retry-order-notifications"/);
+});
+
+test("failed order-notification retry keeps the idempotency key and restores the retry control", async () => {
+  const start = appScript.indexOf("function renderOrderReceipt(");
+  const end = appScript.indexOf("function normalizeWeightDigits", start);
+  const rendererSource = appScript.slice(start, end);
+  const nodes = {};
+  let clearCount = 0;
+  let notices = [];
+  const makeNode = () => ({ disabled: false, textContent: "", listener: null, addEventListener(type, listener) { if (type === "click") this.listener = listener; } });
+  const document = { getElementById(id) { return nodes[id] || null; } };
+  const openSheet = (_title, markup) => {
+    nodes["finish-order"] = makeNode();
+    nodes["retry-order-notifications"] = markup.includes('id="retry-order-notifications"') ? makeNode() : null;
+  };
+  const fetch = async () => ({ ok: false, json: async () => ({ ok: false, message: "temporary failure" }) });
+  const render = new Function(
+    "openSheet", "safe", "money", "fmt", "document", "fetch", "notify",
+    "clearCheckoutIdempotencyKey", rendererSource + "; return renderOrderReceipt;"
+  )(openSheet, String, String, String, document, fetch, (message) => notices.push(message), () => { clearCount += 1; });
+  const payload = { initData: "signed-init-data", idempotency_key: "same-order-key", items: [], customer: {} };
+  render({ order_id: "TEST-ORDER-2", customer_notified: false, admin_notified: true }, [], {}, payload);
+  const retryButton = nodes["retry-order-notifications"];
+  await retryButton.listener();
+  assert.equal(clearCount, 0);
+  assert.equal(retryButton.disabled, false);
+  assert.equal(retryButton.textContent, "تلاش مجدد برای ارسال اعلان‌ها");
+  assert.deepEqual(notices, ["temporary failure"]);
 });
