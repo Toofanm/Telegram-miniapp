@@ -85,7 +85,7 @@ Safeguards:
 - Never commit secrets.
 
 ## Acceptance checklist
-- [ ] `products.json` matches the latest authoritative inventory and stable IDs are preserved; product/category counts are data-driven with no hardcoded target counts.
+- [ ] `products.json` matches the latest user-provided product list and stable IDs are preserved; product/category counts are data-driven with no hardcoded target counts.
 - [ ] Discount products appear only in Discounts.
 - [ ] Images and descriptions match exact variants and manufacturer sources.
 - [ ] Price and shipping rules match Mini App policy.
