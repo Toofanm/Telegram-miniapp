@@ -250,18 +250,15 @@ test("live product suggestions are rendered while typing without a search button
 });
 
 
-test("weekly inventory file defines stock for every catalog product and defaults to ten", () => {
-  const inventory = JSON.parse(readFileSync(new URL("../inventory.json", import.meta.url), "utf8"));
-  assert.equal(inventory.defaultStock, 10);
-  assert.equal(Object.keys(inventory.stockByProductId).length, products.length);
-  for (const product of products) {
-    assert.equal(inventory.stockByProductId[String(product.id)], 10);
-  }
-  assert.ok(appScript.includes('fetch("./inventory.json"'));
-  assert.ok(appScript.includes('next>Number(p.stock||0)'));
-  assert.ok(appScript.includes('(cart[id]||0)>=Number(p.stock||0)'));
-  assert.ok(appScript.includes('"موجود: "+fmt(p.stock)'));
+test("catalog loads from products.json only; numeric stock files and quantity caps are not required", () => {
+  assert.ok(appScript.includes('fetch("./products.json"'));
+  assert.ok(!appScript.includes("inventory.json"));
+  assert.ok(!appScript.includes("p.stock"));
+  assert.ok(!appScript.includes("stockByProductId"));
+  assert.ok(!appScript.includes("defaultStock"));
+  assert.ok(!appScript.includes("Number(p.stock"));
   assert.ok(appScript.includes('category==="sarm")?0.20:0.15'));
+  assert.ok(appScript.includes('"قابل سفارش"'));
 });
 
 
