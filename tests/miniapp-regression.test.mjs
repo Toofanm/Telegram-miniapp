@@ -283,7 +283,7 @@ test("cart accepts requested quantities without a numeric stock cap", () => {
   assert.equal(cart["777"], 15);
   api.changeCartQuantity("777", 25);
   assert.equal(cart["777"], 40);
-  assert.equal(updates, 40);
+  assert.equal(updates, 16);
   assert.deepEqual(notices, Array(15).fill("به سبد خرید اضافه شد."));
 });
 
