@@ -465,6 +465,7 @@ var q=normalizeSearchText(query);
 if(!box)return;
 if(q.length<2){box.classList.remove("open");box.innerHTML="";return;}
 var matches=products.filter(function(p){
+if(!isAvailable(p))return false;
 var haystack=normalizeSearchText((p.name||"")+" "+(p.brand||"")+" "+(p.description||"")+" "+catName(p.category)+" "+catName(p.subcategory));
 return haystack.includes(q);
 }).sort(function(a,b){
@@ -486,12 +487,12 @@ box.classList.remove("open");makeCategoryChips();render();openProduct(p.id);
 });
 }
 function filtered(){
-var q=query.trim().toLocaleLowerCase("fa");
+var q=normalizeSearchText(query);
 var list=products.filter(function(p){
 if(!isAvailable(p))return false;
 if(category!=="all"&&p.category!==category)return false;
  if(category==="steroid"&&subcategory!=="all"&&p.subcategory!==subcategory)return false;
-if(q&&!((p.name||"")+" "+(p.brand||"")+" "+(p.description||"")+" "+catName(p.category)+" "+catName(p.subcategory)).toLocaleLowerCase("fa").includes(q))return false;
+if(q&&!normalizeSearchText((p.name||"")+" "+(p.brand||"")+" "+(p.description||"")+" "+catName(p.category)+" "+catName(p.subcategory)).includes(q))return false;
 return true;
 });
 if(sort==="price-up")list.sort(function(a,b){return (Number(a.price)||0)-(Number(b.price)||0);});
