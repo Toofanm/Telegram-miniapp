@@ -262,6 +262,31 @@ test("catalog loads from products.json only; numeric stock files and quantity ca
 });
 
 
+test("cart accepts requested quantities without a numeric stock cap", () => {
+  const start = appScript.indexOf("function addToCart(");
+  const end = appScript.indexOf("function updateCart()", start);
+  assert.ok(start >= 0 && end > start, "cart quantity helpers must exist");
+  const helpers = appScript.slice(start, end);
+  const cart = {};
+  const product = { id: 777, name: "Test product" };
+  const notices = [];
+  let updates = 0;
+  const api = new Function(
+    "findProduct", "isAvailable", "cart", "updateCart", "notify",
+    "render", "activeSheetProduct", "openProduct",
+    helpers + "; return { addToCart, changeCartQuantity };"
+  )(
+    () => product, () => true, cart, () => { updates += 1; },
+    (message) => notices.push(message), () => {}, null, () => {}
+  );
+  for (let i = 0; i < 15; i += 1) api.addToCart("777");
+  assert.equal(cart["777"], 15);
+  api.changeCartQuantity("777", 25);
+  assert.equal(cart["777"], 40);
+  assert.equal(updates, 40);
+  assert.deepEqual(notices, Array(15).fill("به سبد خرید اضافه شد."));
+});
+
 test("viewport allows browser zoom for users with low vision", () => {
   assert.ok(html.includes('content="width=device-width,initial-scale=1,viewport-fit=cover"'));
   assert.ok(!html.includes("maximum-scale=1"));
