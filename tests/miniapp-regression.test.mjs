@@ -488,6 +488,9 @@ test("responsive layout supports narrow zoomed viewports and target breakpoints"
   assert.ok(html.includes("@media(max-width:600px)"));
   assert.ok(html.includes("@media(max-width:850px)"));
   assert.ok(html.includes("@media(min-width:601px)"));
+  assert.ok(html.includes("@media(min-width:768px) and (max-width:1023px)"));
+  assert.ok(html.includes("@media(min-width:1024px)"));
+  assert.ok(html.includes("@media(min-width:1440px)"));
   assert.ok(html.includes("grid-template-columns:minmax(0,1fr)!important"));
   assert.ok(html.includes(".products{grid-template-columns:minmax(0,1fr)}"));
 });

@@ -354,6 +354,10 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
   .catalog-tools{align-items:stretch;flex-direction:column}
   .sort-select{width:100%;max-width:none}
 }
+
+@media(min-width:768px) and (max-width:1023px){.products{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:1024px){.products{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(min-width:1440px){.shell{width:min(1220px,calc(100% - 48px))}}
 </style>
 </head>
 <body>
@@ -642,7 +646,7 @@ document.getElementById("continue-shopping").addEventListener("click",closeSheet
 }
 document.getElementById("search").addEventListener("input",function(e){query=e.target.value;document.getElementById("clear-search").classList.toggle("show",!!query);render();renderSearchSuggestions();});
 document.getElementById("search").addEventListener("focus",function(){renderSearchSuggestions();});
-document.getElementById("search").addEventListener("keydown",function(e){if(e.key==="Escape"){document.getElementById("search-suggestions").classList.remove("open");e.target.setAttribute("aria-expanded","false");}else if(e.key==="Enter"){document.getElementById("search-suggestions").classList.remove("open");document.getElementById("products").scrollIntoView({behavior:"smooth",block:"start"});}});
+document.getElementById("search").addEventListener("keydown",function(e){if(e.key==="Escape"){document.getElementById("search-suggestions").classList.remove("open");e.target.setAttribute("aria-expanded","false");}else if(e.key==="Enter"){document.getElementById("search-suggestions").classList.remove("open");e.target.setAttribute("aria-expanded","false");document.getElementById("products").scrollIntoView({behavior:"smooth",block:"start"});}});
 document.addEventListener("click",function(e){var wrap=document.querySelector(".header-search");if(wrap&&!wrap.contains(e.target)){document.getElementById("search-suggestions").classList.remove("open");document.getElementById("search").setAttribute("aria-expanded","false");}});
 document.getElementById("clear-search").addEventListener("click",function(){document.getElementById("search").value="";query="";this.classList.remove("show");document.getElementById("search-suggestions").classList.remove("open");document.getElementById("search").setAttribute("aria-expanded","false");render();});
 
