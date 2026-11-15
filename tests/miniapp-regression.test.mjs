@@ -80,6 +80,21 @@ test("Persian and Arabic product weights calculate shipping correctly", () => {
   assert.deepEqual(getShipping(["4"]), { fee: null, free: false, missing: true });
   setCart({ "4": 3 });
   assert.deepEqual(getShipping(["4"]), { fee: 0, free: true, missing: true });
+
+  productsById.set("5", { weight: "۱ کیلو" });
+  productsById.set("6", { weight: "۱.۰۱ کیلو" });
+  productsById.set("7", { weight: "۲ کیلو" });
+  productsById.set("8", { weight: "۲.۰۱ کیلو" });
+  setCart({ "5": 1 });
+  assert.deepEqual(getShipping(["5"]), { fee: 150000, free: false, missing: false });
+  setCart({ "6": 1 });
+  assert.deepEqual(getShipping(["6"]), { fee: 200000, free: false, missing: false });
+  setCart({ "7": 1 });
+  assert.deepEqual(getShipping(["7"]), { fee: 200000, free: false, missing: false });
+  setCart({ "8": 1 });
+  assert.deepEqual(getShipping(["8"]), { fee: 250000, free: false, missing: false });
+  setCart({ "2": 2 });
+  assert.deepEqual(getShipping(["2"]), { fee: 150000, free: false, missing: false });
 });
 
 test("desktop navigation has unique destinations and no duplicate category link", () => {
@@ -290,6 +305,54 @@ test("search uses the same Persian-Arabic normalization in suggestions and resul
   assert.match(box.innerHTML, /data-search-suggestion="2"/);
 });
 
+
+
+test("Iranian phone validation normalizes Persian and Arabic digits and all supported country prefixes", () => {
+  const start = appScript.indexOf("function normalizeIranPhoneNumber");
+  const end = appScript.indexOf("function normalizeWeightDigits", start);
+  assert.ok(start >= 0 && end > start, "phone normalization helpers must exist");
+  const helpers = appScript.slice(start, end);
+  const api = new Function(helpers + "; return { normalizeIranPhoneNumber, isValidIranPhoneNumber };")();
+  const valid = "09123456789";
+  for (const input of [
+    valid,
+    "۰۹۱۲۳۴۵۶۷۸۹",
+    "٠٩١٢٣٤٥٦٧٨٩",
+    "+989123456789",
+    "00989123456789",
+    "989123456789",
+  ]) {
+    const normalized = api.normalizeIranPhoneNumber(input);
+    assert.equal(normalized, valid, "failed to normalize " + input);
+    assert.equal(api.isValidIranPhoneNumber(input), true, "failed to validate " + input);
+  }
+  assert.equal(api.isValidIranPhoneNumber("0912345678"), false);
+  assert.equal(api.isValidIranPhoneNumber("08123456789"), false);
+  assert.equal(api.isValidIranPhoneNumber("not-a-phone"), false);
+});
+
+test("cart quantity badge and mobile cart badge stay synchronized", () => {
+  const start = appScript.indexOf("function updateCart()");
+  const end = appScript.indexOf("function openSheet", start);
+  assert.ok(start >= 0 && end > start, "cart badge updater must exist");
+  const nodes = {
+    "cart-count": { textContent: "" },
+    "mobile-cart-count": { textContent: "", style: {} },
+    "mobile-cart": { label: "", setAttribute(name, value) { if (name === "aria-label") this.label = value; } },
+  };
+  const document = {
+    getElementById(id) { return nodes[id]; },
+    querySelectorAll() { return []; },
+  };
+  const updateCart = new Function("cart", "document", "fmt", appScript.slice(start, end) + "; return updateCart;")(
+    { "12": 2, "14": 3 }, document, String
+  );
+  updateCart();
+  assert.equal(nodes["cart-count"].textContent, "5");
+  assert.equal(nodes["mobile-cart-count"].textContent, "5");
+  assert.equal(nodes["mobile-cart-count"].style.display, "block");
+  assert.equal(nodes["mobile-cart"].label, "سبد خرید، 5 کالا");
+});
 
 test("catalog loads from products.json only; numeric stock files and quantity caps are not required", () => {
   assert.ok(appScript.includes('fetch("./products.json"'));
