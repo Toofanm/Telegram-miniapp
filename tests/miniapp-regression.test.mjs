@@ -249,6 +249,47 @@ test("live product suggestions are rendered while typing without a search button
   assert.ok(appScript.includes("slice(0,6)"));
 });
 
+test("search uses the same Persian-Arabic normalization in suggestions and results", () => {
+  const start = appScript.indexOf("function normalizeSearchText");
+  const end = appScript.indexOf("function render()", start);
+  assert.ok(start >= 0 && end > start, "search helpers must exist");
+  const helpers = appScript.slice(start, end);
+  const products = [
+    { id: 1, name: "وی پروتئین", brand: "مای پروتئین", category: "protein", price: 100000, available: true },
+    { id: 2, name: "پروتئین", brand: "کریم", category: "protein", price: 90000, available: true },
+    { id: 3, name: "وی پروتئین ناموجود", brand: "مای پروتئین", category: "protein", price: 80000, available: false },
+  ];
+  const box = {
+    innerHTML: "",
+    classList: { add() {}, remove() {} },
+    querySelectorAll() { return []; },
+  };
+  const document = { getElementById(id) { return id === "search-suggestions" ? box : null; } };
+  const makeApi = (query) => new Function(
+    "products", "query", "category", "subcategory", "sort", "isAvailable", "catName",
+    "document", "safe", "productImage", "money",
+    helpers + "; return { filtered, renderSearchSuggestions };"
+  )(
+    products, query, "all", "all", "default",
+    (p) => p.available !== false,
+    (category) => category,
+    document, String, () => "", String
+  );
+
+  const arabicYeh = makeApi("وي");
+  assert.equal(arabicYeh.filtered().length, 1);
+  assert.equal(arabicYeh.filtered()[0].id, 1);
+  arabicYeh.renderSearchSuggestions();
+  assert.match(box.innerHTML, /data-search-suggestion="1"/);
+  assert.doesNotMatch(box.innerHTML, /data-search-suggestion="3"/);
+
+  const arabicKaf = makeApi("كريم");
+  assert.equal(arabicKaf.filtered().length, 1);
+  assert.equal(arabicKaf.filtered()[0].id, 2);
+  arabicKaf.renderSearchSuggestions();
+  assert.match(box.innerHTML, /data-search-suggestion="2"/);
+});
+
 
 test("catalog loads from products.json only; numeric stock files and quantity caps are not required", () => {
   assert.ok(appScript.includes('fetch("./products.json"'));
