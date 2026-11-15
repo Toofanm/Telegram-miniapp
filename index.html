@@ -598,7 +598,9 @@ renderOrderReceipt(result,fallbackItems,customer,retryPayload);
 });
 }
 }
-function normalizeIranPhoneNumber(value){var phone=String(value==null?"":value).replace(/[\\s\\-()]/g,"").replace(/[۰-۹]/g,function(x){return "۰۱۲۳۴۵۶۷۸۹".indexOf(x);}).replace(/[٠-٩]/g,function(x){return "٠١٢٣٤٥٦٧٨٩".indexOf(x);});if(phone.startsWith("+98"))phone="0"+phone.slice(3);else if(phone.startsWith("0098"))phone="0"+phone.slice(4);else if(phone.startsWith("98"))phone="0"+phone.slice(2);return phone;}\nfunction isValidIranPhoneNumber(value){return /^09\\d{9}$/.test(normalizeIranPhoneNumber(value));}\nfunction normalizeWeightDigits(value){return String(value==null?"":value).replace(/[۰-۹٠-٩]/g,function(d){var fa="۰۱۲۳۴۵۶۷۸۹",ar="٠١٢٣٤٥٦٧٨٩",n=fa.indexOf(d);return String(n>=0?n:ar.indexOf(d));});}
+function normalizeIranPhoneNumber(value){var phone=String(value==null?"":value).replace(/\s|[-()]/g,"").replace(/[۰-۹]/g,function(x){return "۰۱۲۳۴۵۶۷۸۹".indexOf(x);}).replace(/[٠-٩]/g,function(x){return "٠١٢٣٤٥٦٧٨٩".indexOf(x);});if(phone.startsWith("+98"))phone="0"+phone.slice(3);else if(phone.startsWith("0098"))phone="0"+phone.slice(4);else if(phone.startsWith("98"))phone="0"+phone.slice(2);return phone;}
+function isValidIranPhoneNumber(value){return /^09\d{9}$/.test(normalizeIranPhoneNumber(value));}
+function normalizeWeightDigits(value){return String(value==null?"":value).replace(/[۰-۹٠-٩]/g,function(d){var fa="۰۱۲۳۴۵۶۷۸۹",ar="٠١٢٣٤٥٦٧٨٩",n=fa.indexOf(d);return String(n>=0?n:ar.indexOf(d));});}
 function productWeightKg(p){var s=normalizeWeightDigits(p.weight).toLowerCase().replace(/,/g,".");var m=s.match(/([0-9]+(?:\.[0-9]+)?)\s*(kg|کیلوگرم|کیلو|gr|g|گرم)/i);if(!m)return 0;var n=Number(m[1]);return /^(gr|g|گرم)$/i.test(m[2])?n/1000:n;}
 function getShipping(ids){var count=0,weight=0,missing=false;ids.forEach(function(id){var p=findProduct(id);if(!p)return;count+=cart[id];var w=productWeightKg(p);if(!w)missing=true;weight+=w*cart[id];});if(count>=3)return {fee:0,free:true,missing:missing};if(missing||weight<=0)return {fee:null,free:false,missing:true};return {fee:150000+Math.max(0,Math.ceil(weight)-1)*50000,free:false,missing:false};}
 function openCart(){
