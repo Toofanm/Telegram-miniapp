@@ -468,3 +468,33 @@ test("failed order-notification retry keeps the idempotency key and restores the
   assert.equal(retryButton.textContent, "تلاش مجدد برای ارسال اعلان‌ها");
   assert.deepEqual(notices, ["temporary failure"]);
 });
+
+
+test("search input has an accessible name and exposes suggestion state", () => {
+  assert.match(html, /id="search"[^>]*aria-label="جست‌وجوی محصول یا برند"/);
+  assert.match(html, /id="search"[^>]*aria-expanded="false"/);
+  assert.ok(appScript.includes('setAttribute("aria-expanded","true")'));
+  assert.ok(appScript.includes('setAttribute("aria-expanded","false")'));
+  assert.match(html, /id="search-suggestions"[^>]*role="listbox"/);
+});
+
+test("dynamic catalog and desktop cart counts announce updates to assistive technology", () => {
+  assert.match(html, /id="result-count"[^>]*aria-live="polite"[^>]*aria-atomic="true"/);
+  assert.match(html, /id="cart-count"[^>]*aria-live="polite"[^>]*aria-atomic="true"/);
+});
+
+test("responsive layout supports narrow zoomed viewports and target breakpoints", () => {
+  assert.ok(html.includes("@media(max-width:360px)"));
+  assert.ok(html.includes("@media(max-width:600px)"));
+  assert.ok(html.includes("@media(max-width:850px)"));
+  assert.ok(html.includes("@media(min-width:601px)"));
+  assert.ok(html.includes("grid-template-columns:minmax(0,1fr)!important"));
+  assert.ok(html.includes(".products{grid-template-columns:minmax(0,1fr)}"));
+});
+
+test("interactive controls retain visible keyboard focus and minimum touch sizing", () => {
+  assert.ok(html.includes("outline:3px solid #9bcaff!important"));
+  assert.ok(html.includes(".search-clear.show{display:grid;place-items:center;min-width:44px;min-height:44px}"));
+  assert.ok(html.includes(".btn,.small-link,.subcategory-chip,.sort-select,.cart-btn{min-height:44px}"));
+  assert.ok(html.includes(".add-btn,.inline-qty button,.qty button{min-width:44px;min-height:44px;height:44px}"));
+});
