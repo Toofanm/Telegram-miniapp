@@ -331,6 +331,33 @@ body{padding-bottom:0}
   }
 }
 
+
+/* Responsive and accessibility hardening */
+.searchbox{min-height:44px}
+.searchbox input{min-height:44px}
+.search-clear.show{display:grid;place-items:center;min-width:44px;min-height:44px}
+.btn,.small-link,.subcategory-chip,.sort-select,.cart-btn{min-height:44px}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #9bcaff!important;outline-offset:3px}
+@media(max-width:360px){
+  .promo{flex-wrap:wrap;line-height:1.5}
+  .hero h1{font-size:clamp(20px,7vw,25px);letter-spacing:-.6px;overflow-wrap:anywhere}
+  .hero-visual{height:190px}
+  .hero-product{width:45%;height:155px}
+  .hero-specs{width:43%}
+  .hero-foot b{font-size:8px}
+  .hero-foot small{font-size:6px}
+  .hero-tag{font-size:7px}
+  .category-row{grid-template-columns:minmax(0,1fr)}
+  .products{grid-template-columns:minmax(0,1fr)}
+  .detail{grid-template-columns:minmax(0,1fr)!important}
+  .detail-art{width:min(100%,220px);margin-inline:auto;min-height:0!important}
+  .catalog-tools{align-items:stretch;flex-direction:column}
+  .sort-select{width:100%;max-width:none}
+}
+
+@media(min-width:768px) and (max-width:1023px){.products{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:1024px){.products{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(min-width:1440px){.shell{width:min(1220px,calc(100% - 48px))}}
 </style>
 </head>
 <body>
@@ -341,9 +368,9 @@ body{padding-bottom:0}
       <span class="brand-mark">SE</span><span class="brand-copy"><b>SUPPLEMENT</b><small>ENERGY</small></span>
     </a>
     <nav class="desktop-nav" aria-label="ناوبری اصلی دسکتاپ"><a href="#home">خانه</a><a href="#categories">دسته‌بندی‌ها</a><a href="#products">محصولات</a></nav>
-    <div class="header-actions"><button class="cart-btn" id="open-cart">سبد خرید <span class="count" id="cart-count">۰</span></button></div>
+    <div class="header-actions"><button class="cart-btn" id="open-cart">سبد خرید <span class="count" id="cart-count" aria-live="polite" aria-atomic="true">۰</span></button></div>
   </div>
-  <div class="shell header-search"><label class="searchbox"><span>⌕</span><input id="search" type="search" placeholder="جست‌وجوی نام محصول، برند یا مکمل..." autocomplete="off" aria-controls="search-suggestions" aria-autocomplete="list"><button class="search-clear" id="clear-search" aria-label="پاک کردن جست‌وجو">×</button></label><div id="search-suggestions" class="search-suggestions" role="listbox" aria-label="محصولات مرتبط"></div></div>
+  <div class="shell header-search"><label class="searchbox"><span>⌕</span><input id="search" type="search" aria-label="جست‌وجوی محصول یا برند" aria-expanded="false" placeholder="جست‌وجوی نام محصول، برند یا مکمل..." autocomplete="off" aria-controls="search-suggestions" aria-autocomplete="list"><button class="search-clear" id="clear-search" aria-label="پاک کردن جست‌وجو">×</button></label><div id="search-suggestions" class="search-suggestions" role="listbox" aria-label="محصولات مرتبط"></div></div>
 </header>
 <main id="home" class="shell">
   <section class="hero" aria-label="بنر اصلی فروشگاه">
@@ -372,7 +399,7 @@ body{padding-bottom:0}
   </section>
   <section id="products" class="section">
     <div class="section-head"><div><span class="eyebrow">THE CATALOG</span><h2 id="catalog-title">محصولات</h2></div><button class="small-link" id="reset-filter">نمایش کاتالوگ ×</button></div>
-    <div class="catalog-tools"><span class="result-count" id="result-count">در حال بارگذاری محصولات…</span><select id="sort" class="sort-select" aria-label="مرتب‌سازی محصولات"><option value="default">ترتیب پیش‌فرض</option><option value="price-up">قیمت: کم به زیاد</option><option value="price-down">قیمت: زیاد به کم</option><option value="name">نام محصول</option></select></div>
+    <div class="catalog-tools"><span class="result-count" id="result-count" aria-live="polite" aria-atomic="true">در حال بارگذاری محصولات…</span><select id="sort" class="sort-select" aria-label="مرتب‌سازی محصولات"><option value="default">ترتیب پیش‌فرض</option><option value="price-up">قیمت: کم به زیاد</option><option value="price-down">قیمت: زیاد به کم</option><option value="name">نام محصول</option></select></div>
     <div class="products" id="products-grid"><div class="loading"></div><div class="loading"></div><div class="loading"></div><div class="loading"></div></div>
   </section>
   <footer class="footer"><span><strong>SUPPLEMENT ENERGY</strong> · فروشگاه تخصصی مکمل</span><span>قیمت‌ها به تومان نمایش داده می‌شوند.</span></footer>
@@ -463,7 +490,7 @@ function renderSearchSuggestions(){
 var box=document.getElementById("search-suggestions");
 var q=normalizeSearchText(query);
 if(!box)return;
-if(q.length<2){box.classList.remove("open");box.innerHTML="";return;}
+if(q.length<2){box.classList.remove("open");box.innerHTML="";var searchInput=document.getElementById("search");if(searchInput)searchInput.setAttribute("aria-expanded","false");return;}
 var matches=products.filter(function(p){
 if(!isAvailable(p))return false;
 var haystack=normalizeSearchText((p.name||"")+" "+(p.brand||"")+" "+(p.description||"")+" "+catName(p.category)+" "+catName(p.subcategory));
@@ -476,13 +503,14 @@ box.innerHTML=matches.length?matches.map(function(p){
 return '<button type="button" class="search-suggestion" role="option" data-search-suggestion="'+safe(p.id)+'">'+productImage(p,"")+'<span class="search-suggestion-copy"><b>'+safe(p.name)+'</b><small>'+safe(p.brand||catName(p.category))+' · '+safe(catName(p.category))+'</small></span><span class="search-suggestion-price">'+money(p.price)+'</span></button>';
 }).join(""):'<div class="search-suggestions-empty">محصول مرتبطی پیدا نشد.</div>';
 box.classList.add("open");
+var searchInput=document.getElementById("search");if(searchInput)searchInput.setAttribute("aria-expanded","true");
 box.querySelectorAll("[data-search-suggestion]").forEach(function(el){
 el.addEventListener("click",function(){
 var p=findProduct(el.dataset.searchSuggestion);if(!p)return;
 category="all";subcategory="all";query=p.name;
 document.getElementById("search").value=p.name;
 document.getElementById("clear-search").classList.add("show");
-box.classList.remove("open");makeCategoryChips();render();openProduct(p.id);
+box.classList.remove("open");document.getElementById("search").setAttribute("aria-expanded","false");makeCategoryChips();render();openProduct(p.id);
 });
 });
 }
@@ -618,9 +646,9 @@ document.getElementById("continue-shopping").addEventListener("click",closeSheet
 }
 document.getElementById("search").addEventListener("input",function(e){query=e.target.value;document.getElementById("clear-search").classList.toggle("show",!!query);render();renderSearchSuggestions();});
 document.getElementById("search").addEventListener("focus",function(){renderSearchSuggestions();});
-document.getElementById("search").addEventListener("keydown",function(e){if(e.key==="Escape"){document.getElementById("search-suggestions").classList.remove("open");}else if(e.key==="Enter"){document.getElementById("search-suggestions").classList.remove("open");document.getElementById("products").scrollIntoView({behavior:"smooth",block:"start"});}});
-document.addEventListener("click",function(e){var wrap=document.querySelector(".header-search");if(wrap&&!wrap.contains(e.target))document.getElementById("search-suggestions").classList.remove("open");});
-document.getElementById("clear-search").addEventListener("click",function(){document.getElementById("search").value="";query="";this.classList.remove("show");document.getElementById("search-suggestions").classList.remove("open");render();});
+document.getElementById("search").addEventListener("keydown",function(e){if(e.key==="Escape"){document.getElementById("search-suggestions").classList.remove("open");e.target.setAttribute("aria-expanded","false");}else if(e.key==="Enter"){document.getElementById("search-suggestions").classList.remove("open");e.target.setAttribute("aria-expanded","false");document.getElementById("products").scrollIntoView({behavior:"smooth",block:"start"});}});
+document.addEventListener("click",function(e){var wrap=document.querySelector(".header-search");if(wrap&&!wrap.contains(e.target)){document.getElementById("search-suggestions").classList.remove("open");document.getElementById("search").setAttribute("aria-expanded","false");}});
+document.getElementById("clear-search").addEventListener("click",function(){document.getElementById("search").value="";query="";this.classList.remove("show");document.getElementById("search-suggestions").classList.remove("open");document.getElementById("search").setAttribute("aria-expanded","false");render();});
 
 document.getElementById("sort").addEventListener("change",function(e){sort=e.target.value;render();});
 document.getElementById("reset-filter").addEventListener("click",function(){category="all";subcategory="all";query="";sort="default";document.getElementById("search").value="";document.getElementById("sort").value="default";document.getElementById("clear-search").classList.remove("show");makeCategoryChips();render();});
