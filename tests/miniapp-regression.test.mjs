@@ -501,3 +501,9 @@ test("interactive controls retain visible keyboard focus and minimum touch sizin
   assert.ok(html.includes(".btn,.small-link,.subcategory-chip,.sort-select,.cart-btn{min-height:44px}"));
   assert.ok(html.includes(".add-btn,.inline-qty button,.qty button{min-width:44px;min-height:44px;height:44px}"));
 });
+
+test("Mini App preserves the approved no-motion interaction policy", () => {
+  assert.ok(html.includes("animation:none!important;transition:none!important;scroll-behavior:auto!important"));
+  assert.ok(!appScript.includes('behavior:"smooth"'));
+  assert.ok(!appScript.includes("window.setTimeout"));
+});
