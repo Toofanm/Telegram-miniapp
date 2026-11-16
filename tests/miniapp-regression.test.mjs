@@ -310,7 +310,7 @@ test("search uses the same Persian-Arabic normalization in suggestions and resul
 test("HTML phone input pattern accepts every supported Iranian prefix and numeral system", () => {
   const input = html.match(/<input[^>]*name="phone"[^>]*>/);
   assert.ok(input, "phone input must exist");
-  const pattern = input[0].match(/\\bpattern="([^"]+)"/);
+  const pattern = input[0].match(/pattern="([^"]+)"/);
   assert.ok(pattern, "phone input must keep native validation");
   const browserPattern = new RegExp("^(?:" + pattern[1] + ")$");
   for (const value of [
