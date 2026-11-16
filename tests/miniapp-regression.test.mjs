@@ -581,6 +581,21 @@ test("interactive controls retain visible keyboard focus and minimum touch sizin
   assert.ok(html.includes(".add-btn,.inline-qty button,.qty button{min-width:44px;min-height:44px;height:44px}"));
 });
 
+test("catalog image URLs require HTTPS and image fallback avoids inline event handlers", () => {
+  const start = appScript.indexOf("function safeImageSource(");
+  const end = appScript.indexOf("function productImage(", start);
+  assert.ok(start >= 0 && end > start, "image URL validator must exist");
+  const validator = new Function(appScript.slice(start, end) + "; return safeImageSource;")();
+  assert.equal(validator("https://cdn.example.com/product.jpg"), "https://cdn.example.com/product.jpg");
+  assert.equal(validator("http://cdn.example.com/product.jpg"), "");
+  assert.equal(validator("javascript:alert(1)"), "");
+  assert.equal(validator("data:image/svg+xml,<svg></svg>"), "");
+  assert.equal(validator("//cdn.example.com/product.jpg"), "");
+  assert.ok(appScript.includes('data-image-fallback="true"'));
+  assert.ok(appScript.includes('document.addEventListener("error"'));
+  assert.ok(!appScript.includes("onerror="));
+});
+
 test("Mini App preserves the approved no-motion interaction policy", () => {
   assert.ok(html.includes("animation:none!important;transition:none!important;scroll-behavior:auto!important"));
   assert.ok(!appScript.includes('behavior:"smooth"'));

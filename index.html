@@ -469,7 +469,9 @@ try{window.sessionStorage.removeItem("miniapp.pendingCheckout");}catch(e){}
 function notify(s){var t=document.getElementById("toast");t.textContent=s;t.classList.add("show");window.clearTimeout(notify.timer);notify.timer=window.setTimeout(function(){t.classList.remove("show");},2100);}
 function isAvailable(p){if(!p||p.available===false||p.inStock===false||p.price==="out")return false;var status=String(p.status==null?"":p.status).trim().toLocaleLowerCase("fa");if(["ناموجود","اتمام موجودی","out","out of stock","unavailable"].includes(status))return false;return true;}
 function catName(c){return categoryNames[c]||c||"سایر مکمل‌ها";}
-function productImage(p,cls){var src=p.image||p.image2||p.image3;if(src){return '<img class="'+cls+'" loading="lazy" src="'+safe(src)+'" alt="'+safe(p.name)+'" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'grid\'"><span class="product-fallback" style="display:none">'+categoryIconSvg(p.category)+"</span>";}return '<span class="product-fallback">'+categoryIconSvg(p.category)+"</span>";}
+function safeImageSource(value){try{var url=new URL(String(value||""));if(url.protocol!=="https:"||!url.hostname||url.username||url.password)return "";return url.href;}catch(e){return "";}}
+function productImage(p,cls){var src=safeImageSource(p.image)||safeImageSource(p.image2)||safeImageSource(p.image3);if(src){return '<img class="'+cls+'" loading="lazy" src="'+safe(src)+'" alt="'+safe(p.name)+'" data-image-fallback="true"><span class="product-fallback" style="display:none">'+categoryIconSvg(p.category)+"</span>";}return '<span class="product-fallback">'+categoryIconSvg(p.category)+"</span>";}
+document.addEventListener("error",function(event){var image=event.target;if(!image||image.tagName!=="IMG"||image.dataset.imageFallback!=="true")return;image.style.display="none";var fallback=image.nextElementSibling;if(fallback)fallback.style.display="grid";},true);
 function makeCategoryChips(){
 var row=document.getElementById("category-row");
 var ordered=["gainer","protein","creatine","preworkout","bcaa","amino","glutamine","fatburner","vitamin","steroid","sarm","testbooster","other","discount"];
