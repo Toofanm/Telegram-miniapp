@@ -468,14 +468,16 @@ test("checkout idempotency key persists for retries and changes with checkout pa
 });
 
 test("checkout request delegates prices and shipping totals to the backend", () => {
-  const request = appScript.match(/var orderPayload=\\{[\\s\\S]*?\\};/);
-  assert.ok(request, "checkout request payload must exist");
-  assert.match(request[0], /initData:webApp\\.initData/);
-  assert.match(request[0], /idempotency_key:idempotencyKey/);
-  assert.match(request[0], /product_id:item\\.product_id,name:item\\.name,qty:item\\.qty/);
-  assert.doesNotMatch(request[0], /unit_price|shipping|subtotal|total/);
+  const start = appScript.indexOf("var orderPayload={");
+  const end = appScript.indexOf('fetch("https://telegram-shop-8hll.onrender.com/miniapp-order"', start);
+  assert.ok(start >= 0 && end > start, "checkout request payload must exist");
+  const request = appScript.slice(start, end);
+  assert.ok(request.includes("initData:webApp.initData"));
+  assert.ok(request.includes("idempotency_key:idempotencyKey"));
+  assert.ok(request.includes("product_id:item.product_id,name:item.name,qty:item.qty"));
+  assert.ok(request.includes("customer:receiptCustomer"));
+  assert.doesNotMatch(request, /unit_price|shipping|subtotal|total/);
 });
-
 test("order receipt retries the same idempotent payload and clears the key only after both notifications succeed", async () => {
   const start = appScript.indexOf("function renderOrderReceipt(");
   const end = appScript.indexOf("function normalizeWeightDigits", start);
