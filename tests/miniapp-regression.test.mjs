@@ -307,7 +307,7 @@ test("search uses the same Persian-Arabic normalization in suggestions and resul
 
 
 
-test("HTML phone input pattern accepts every supported Iranian prefix", () => {
+test("HTML phone input pattern accepts every supported Iranian prefix and numeral system", () => {
   const input = html.match(/<input[^>]*name="phone"[^>]*>/);
   assert.ok(input, "phone input must exist");
   const pattern = input[0].match(/\\bpattern="([^"]+)"/);
@@ -320,6 +320,8 @@ test("HTML phone input pattern accepts every supported Iranian prefix", () => {
     "989123456789",
     "۰۹۱۲۳۴۵۶۷۸۹",
     "٠٩١٢٣٤٥٦٧٨٩",
+    "+۹۸۹۱۲۳۴۵۶۷۸۹",
+    "٠٠٩٨٩١٢٣٤٥٦٧٨٩",
   ]) {
     assert.equal(browserPattern.test(value), true, "native pattern rejected " + value);
   }
