@@ -366,6 +366,10 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 /* Keep the fixed bottom navigation exclusive to mobile widths. */
 .bottom-nav{display:none!important}
 @media(max-width:600px){.bottom-nav{display:grid!important}}
+
+/* Override legacy !important navigation display rules outside mobile widths. */
+html body nav.bottom-nav{display:none!important}
+@media(max-width:600px){html body nav.bottom-nav{display:grid!important}}
 </style>
 </head>
 <body>
