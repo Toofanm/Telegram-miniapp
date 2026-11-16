@@ -362,6 +362,10 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 @media(min-width:768px) and (max-width:1023px){.products{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(min-width:1024px){.products{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(min-width:1440px){.shell{width:min(1220px,calc(100% - 48px))}}
+
+/* Keep the fixed bottom navigation exclusive to mobile widths. */
+.bottom-nav{display:none!important}
+@media(max-width:600px){.bottom-nav{display:grid!important}}
 </style>
 </head>
 <body>
