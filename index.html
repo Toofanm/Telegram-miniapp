@@ -492,9 +492,10 @@ function makeSubcategoryChips(){
  row.querySelectorAll("[data-subcategory]").forEach(function(el){el.addEventListener("click",function(){subcategory=el.dataset.subcategory;makeSubcategoryChips();render();document.getElementById("products").scrollIntoView({behavior:"auto",block:"start"});});});
 }
 function normalizeSearchText(value){return String(value==null?"":value).toLocaleLowerCase("fa").replace(/[يى]/g,"ی").replace(/ك/g,"ک").replace(/[\u064B-\u065F\u0670]/g,"").trim();}
+function normalizeSearchQuery(value){var q=normalizeSearchText(value);var aliases={"creatine":"کراتین","creatine monohydrate":"کراتین","protein":"پروتئین","whey":"پروتئین","whey protein":"پروتئین","casein":"پروتئین","gainer":"گینر و افزایش وزن","mass gainer":"گینر و افزایش وزن","pre workout":"پیش‌تمرین و پمپ","pre-workout":"پیش‌تمرین و پمپ","pump":"پیش‌تمرین و پمپ","bcaa":"بی سی ای ای","glutamine":"گلوتامین","amino":"آمینو","amino acid":"آمینو","fat burner":"چربی‌سوز","fatburner":"چربی‌سوز","vitamin":"ویتامین و مینرال","vitamins":"ویتامین و مینرال","mineral":"ویتامین و مینرال","steroid":"استروئیدها","steroids":"استروئیدها","sarm":"سارم‌ها","sarms":"سارم‌ها","test booster":"تست بوستر","testosterone booster":"تست بوستر","discount":"تخفیف‌ها"};return normalizeSearchText(aliases[q]||q);}
 function renderSearchSuggestions(){
 var box=document.getElementById("search-suggestions");
-var q=normalizeSearchText(query);
+var q=normalizeSearchQuery(query);
 if(!box)return;
 if(q.length<2){box.classList.remove("open");box.innerHTML="";var searchInput=document.getElementById("search");if(searchInput)searchInput.setAttribute("aria-expanded","false");return;}
 var matches=products.filter(function(p){
@@ -521,7 +522,7 @@ box.classList.remove("open");document.getElementById("search").setAttribute("ari
 });
 }
 function filtered(){
-var q=normalizeSearchText(query);
+var q=normalizeSearchQuery(query);
 var list=products.filter(function(p){
 if(!isAvailable(p))return false;
 if(category!=="all"&&p.category!==category)return false;
