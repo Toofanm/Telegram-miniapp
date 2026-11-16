@@ -618,3 +618,11 @@ test("bottom navigation is visible only at the mobile breakpoint", () => {
   assert.ok(html.includes(".desktop-nav{display:none}"));
   assert.ok(html.includes("@media(max-width:600px)"));
 });
+
+
+test("mobile navigation visibility overrides legacy important display rules", () => {
+  const hideRule = html.lastIndexOf("html body nav.bottom-nav{display:none!important}");
+  const mobileRule = html.lastIndexOf("@media(max-width:600px){html body nav.bottom-nav{display:grid!important}}");
+  assert.ok(hideRule >= 0, "high-specificity desktop/tablet hide rule must exist");
+  assert.ok(mobileRule > hideRule, "mobile-only high-specificity display rule must follow hide rule");
+});
