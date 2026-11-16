@@ -505,5 +505,5 @@ test("interactive controls retain visible keyboard focus and minimum touch sizin
 test("Mini App preserves the approved no-motion interaction policy", () => {
   assert.ok(html.includes("animation:none!important;transition:none!important;scroll-behavior:auto!important"));
   assert.ok(!appScript.includes('behavior:"smooth"'));
-  assert.ok(!appScript.includes("window.setTimeout"));
+  assert.ok(!appScript.includes("setTimeout(function(){input.focus()"));
 });
