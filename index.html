@@ -522,7 +522,7 @@ box.classList.remove("open");document.getElementById("search").setAttribute("ari
 });
 }
 function filtered(){
-var q=normalizeSearchText(query);
+var q=normalizeSearchQuery(query);
 var list=products.filter(function(p){
 if(!isAvailable(p))return false;
 if(category!=="all"&&p.category!==category)return false;
