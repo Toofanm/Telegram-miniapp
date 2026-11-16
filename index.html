@@ -332,6 +332,10 @@ body{padding-bottom:0}
 }
 
 
+/* Approved Mini App behavior: no motion or animated scrolling. */
+html{scroll-behavior:auto!important}
+*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+
 /* Responsive and accessibility hardening */
 .searchbox{min-height:44px}
 .searchbox input{min-height:44px}
@@ -473,7 +477,7 @@ row.innerHTML=ordered.filter(function(c){return products.some(function(p){return
 var count=products.filter(function(p){return p.category===c;}).length;
 return '<button class="category-card '+(category===c?"active ":"")+(c==="discount"?"discount":"")+'" data-category="'+c+'"><span class="category-card-icon">'+categoryIconSvg(c)+'</span><span class="category-card-copy"><b>'+safe(catName(c))+'</b><small>'+(c==="discount"?"پیشنهادهای ویژه":"مشاهده محصولات این دسته")+'</small><span class="category-card-count">'+fmt(count)+" محصول"+'</span></span></button>';
 }).join("");
-row.querySelectorAll("[data-category]").forEach(function(el){el.addEventListener("click",function(){setCategory(el.dataset.category);document.getElementById("products").scrollIntoView({behavior:"smooth",block:"start"});});});
+row.querySelectorAll("[data-category]").forEach(function(el){el.addEventListener("click",function(){setCategory(el.dataset.category);document.getElementById("products").scrollIntoView({behavior:"auto",block:"start"});});});
 makeSubcategoryChips();
 }
 function makeSubcategoryChips(){
@@ -483,7 +487,7 @@ function makeSubcategoryChips(){
  if(category!=="steroid"){row.innerHTML="";return;}
  var items=["all"].concat(subs);
  row.innerHTML=items.map(function(c){var count=c==="all"?products.filter(function(p){return p.category==="steroid";}).length:products.filter(function(p){return p.category==="steroid"&&p.subcategory===c;}).length;return '<button type="button" class="subcategory-chip '+(subcategory===c?"active":"")+'" data-subcategory="'+safe(c)+'">'+safe(c==="all"?"همه استروئیدها":catName(c))+" · "+fmt(count)+"</button>";}).join("");
- row.querySelectorAll("[data-subcategory]").forEach(function(el){el.addEventListener("click",function(){subcategory=el.dataset.subcategory;makeSubcategoryChips();render();document.getElementById("products").scrollIntoView({behavior:"smooth",block:"start"});});});
+ row.querySelectorAll("[data-subcategory]").forEach(function(el){el.addEventListener("click",function(){subcategory=el.dataset.subcategory;makeSubcategoryChips();render();document.getElementById("products").scrollIntoView({behavior:"auto",block:"start"});});});
 }
 function normalizeSearchText(value){return String(value==null?"":value).toLocaleLowerCase("fa").replace(/[يى]/g,"ی").replace(/ك/g,"ک").replace(/[\u064B-\u065F\u0670]/g,"").trim();}
 function renderSearchSuggestions(){
@@ -633,7 +637,7 @@ function productWeightKg(p){var s=normalizeWeightDigits(p.weight).toLowerCase().
 function getShipping(ids){var count=0,weight=0,missing=false;ids.forEach(function(id){var p=findProduct(id);if(!p)return;count+=cart[id];var w=productWeightKg(p);if(!w)missing=true;weight+=w*cart[id];});if(count>=3)return {fee:0,free:true,missing:missing};if(missing||weight<=0)return {fee:null,free:false,missing:true};return {fee:150000+Math.max(0,Math.ceil(weight)-1)*50000,free:false,missing:false};}
 function openCart(){
 var ids=Object.keys(cart).filter(function(id){return cart[id]>0;});
-if(!ids.length){openSheet("سبد خرید",'<div class="empty">سبد خریدت هنوز خالیه.<br><br><button class="btn primary" id="browse-products">مشاهده محصولات</button></div><div class="notice">برای ثبت سفارش، ابتدا محصولات موردنظرت را به سبد خرید اضافه کن.</div>');document.getElementById("browse-products").addEventListener("click",function(){closeSheet();document.getElementById("products").scrollIntoView({behavior:"smooth"});});return;}
+if(!ids.length){openSheet("سبد خرید",'<div class="empty">سبد خریدت هنوز خالیه.<br><br><button class="btn primary" id="browse-products">مشاهده محصولات</button></div><div class="notice">برای ثبت سفارش، ابتدا محصولات موردنظرت را به سبد خرید اضافه کن.</div>');document.getElementById("browse-products").addEventListener("click",function(){closeSheet();document.getElementById("products").scrollIntoView({behavior:"auto"});});return;}
 var total=0;
 var html=ids.map(function(id){
 var p=findProduct(id);if(!p)return "";var line=(Number(p.price)||0)*cart[id];total+=line;
@@ -646,19 +650,19 @@ document.getElementById("continue-shopping").addEventListener("click",closeSheet
 }
 document.getElementById("search").addEventListener("input",function(e){query=e.target.value;document.getElementById("clear-search").classList.toggle("show",!!query);render();renderSearchSuggestions();});
 document.getElementById("search").addEventListener("focus",function(){renderSearchSuggestions();});
-document.getElementById("search").addEventListener("keydown",function(e){if(e.key==="Escape"){document.getElementById("search-suggestions").classList.remove("open");e.target.setAttribute("aria-expanded","false");}else if(e.key==="Enter"){document.getElementById("search-suggestions").classList.remove("open");e.target.setAttribute("aria-expanded","false");document.getElementById("products").scrollIntoView({behavior:"smooth",block:"start"});}});
+document.getElementById("search").addEventListener("keydown",function(e){if(e.key==="Escape"){document.getElementById("search-suggestions").classList.remove("open");e.target.setAttribute("aria-expanded","false");}else if(e.key==="Enter"){document.getElementById("search-suggestions").classList.remove("open");e.target.setAttribute("aria-expanded","false");document.getElementById("products").scrollIntoView({behavior:"auto",block:"start"});}});
 document.addEventListener("click",function(e){var wrap=document.querySelector(".header-search");if(wrap&&!wrap.contains(e.target)){document.getElementById("search-suggestions").classList.remove("open");document.getElementById("search").setAttribute("aria-expanded","false");}});
 document.getElementById("clear-search").addEventListener("click",function(){document.getElementById("search").value="";query="";this.classList.remove("show");document.getElementById("search-suggestions").classList.remove("open");document.getElementById("search").setAttribute("aria-expanded","false");render();});
 
 document.getElementById("sort").addEventListener("change",function(e){sort=e.target.value;render();});
 document.getElementById("reset-filter").addEventListener("click",function(){category="all";subcategory="all";query="";sort="default";document.getElementById("search").value="";document.getElementById("sort").value="default";document.getElementById("clear-search").classList.remove("show");makeCategoryChips();render();});
-document.querySelectorAll(".quick-cat").forEach(function(el){el.addEventListener("click",function(){setCategory(el.dataset.category);document.getElementById("products").scrollIntoView({behavior:"smooth"});});});
+document.querySelectorAll(".quick-cat").forEach(function(el){el.addEventListener("click",function(){setCategory(el.dataset.category);document.getElementById("products").scrollIntoView({behavior:"auto"});});});
 document.getElementById("open-cart").addEventListener("click",openCart);
 document.getElementById("mobile-cart").addEventListener("click",function(e){e.preventDefault();e.stopPropagation();document.querySelectorAll(".nav-item").forEach(function(n){n.classList.remove("active");});this.classList.add("active");openCart();});
 document.getElementById("close-sheet").addEventListener("click",closeSheet);
 document.getElementById("overlay").addEventListener("click",function(e){if(e.target===this)closeSheet();});
 document.addEventListener("keydown",trapSheetFocus);
-document.querySelectorAll(".nav-item[data-target]").forEach(function(el){el.addEventListener("click",function(){var target=document.getElementById(el.dataset.target);if(el.dataset.action==="search"){var input=document.getElementById("search");if(input){input.scrollIntoView({behavior:"smooth",block:"center"});window.setTimeout(function(){input.focus();},220);}}else if(target){target.scrollIntoView({behavior:"smooth",block:"start"});}document.querySelectorAll(".nav-item").forEach(function(n){n.classList.remove("active");});el.classList.add("active");});});
+document.querySelectorAll(".nav-item[data-target]").forEach(function(el){el.addEventListener("click",function(){var target=document.getElementById(el.dataset.target);if(el.dataset.action==="search"){var input=document.getElementById("search");if(input){input.scrollIntoView({behavior:"auto",block:"center"});input.focus();}}else if(target){target.scrollIntoView({behavior:"auto",block:"start"});}document.querySelectorAll(".nav-item").forEach(function(n){n.classList.remove("active");});el.classList.add("active");});});
 fetch("./products.json",{cache:"no-cache"}).then(function(r){if(!r.ok)throw new Error("products.json HTTP "+r.status);return r.json();}).then(function(data){
 products=Array.isArray(data)?data.map(function(p){var base=Number(p.basePrice)||Number(p.price)||0;var rate=(p.category==="steroid"||p.category==="sarm")?0.20:0.15;var finalPrice=Math.round((base*(1+rate))/5000)*5000;return Object.assign({},p,{basePrice:base,price:finalPrice});}).filter(isAvailable):[];
 makeCategoryChips();render();
