@@ -419,6 +419,63 @@ test("viewport allows browser zoom for users with low vision", () => {
 
 
 
+test("checkout idempotency key persists for retries and changes with checkout payload", () => {
+  const start = appScript.indexOf("function checkoutPayloadFingerprint(");
+  const end = appScript.indexOf("function notify(", start);
+  assert.ok(start >= 0 && end > start, "checkout idempotency helpers must exist");
+  const helpers = appScript.slice(start, end);
+  const values = new Map();
+  let sequence = 0;
+  const window = {
+    sessionStorage: {
+      getItem(key) { return values.get(key) || null; },
+      setItem(key, value) { values.set(key, value); },
+      removeItem(key) { values.delete(key); },
+    },
+    crypto: { randomUUID() { sequence += 1; return "checkout-key-" + sequence; } },
+  };
+  const createApi = () => new Function(
+    "window",
+    "var checkoutKeyCache=null;var checkoutFingerprintCache=null;" +
+      helpers +
+      ";return { checkoutPayloadFingerprint, checkoutIdempotencyKey, clearCheckoutIdempotencyKey };"
+  )(window);
+  const payload = {
+    items: [{ product_id: "p1", qty: 2 }],
+    customer: { name: "Test User", phone: "09123456789", address: "Test address" },
+  };
+  const api = createApi();
+  const fingerprint = api.checkoutPayloadFingerprint(payload);
+  const firstKey = api.checkoutIdempotencyKey(fingerprint);
+  assert.equal(api.checkoutIdempotencyKey(fingerprint), firstKey);
+
+  const stored = JSON.parse(values.get("miniapp.pendingCheckout"));
+  assert.deepEqual(Object.keys(stored).sort(), ["fingerprint", "key"]);
+  assert.equal(stored.key, firstKey);
+  assert.equal(stored.fingerprint, fingerprint);
+
+  const afterReload = createApi();
+  assert.equal(afterReload.checkoutIdempotencyKey(fingerprint), firstKey);
+  const changedFingerprint = afterReload.checkoutPayloadFingerprint({
+    ...payload,
+    customer: { ...payload.customer, address: "A different address" },
+  });
+  assert.notEqual(changedFingerprint, fingerprint);
+  assert.notEqual(afterReload.checkoutIdempotencyKey(changedFingerprint), firstKey);
+
+  afterReload.clearCheckoutIdempotencyKey();
+  assert.equal(values.has("miniapp.pendingCheckout"), false);
+});
+
+test("checkout request delegates prices and shipping totals to the backend", () => {
+  const request = appScript.match(/var orderPayload=\\{[\\s\\S]*?\\};/);
+  assert.ok(request, "checkout request payload must exist");
+  assert.match(request[0], /initData:webApp\\.initData/);
+  assert.match(request[0], /idempotency_key:idempotencyKey/);
+  assert.match(request[0], /product_id:item\\.product_id,name:item\\.name,qty:item\\.qty/);
+  assert.doesNotMatch(request[0], /unit_price|shipping|subtotal|total/);
+});
+
 test("order receipt retries the same idempotent payload and clears the key only after both notifications succeed", async () => {
   const start = appScript.indexOf("function renderOrderReceipt(");
   const end = appScript.indexOf("function normalizeWeightDigits", start);
