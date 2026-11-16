@@ -608,3 +608,13 @@ test("Mini App preserves the approved no-motion interaction policy", () => {
   assert.ok(!appScript.includes('behavior:"smooth"'));
   assert.ok(!appScript.includes("setTimeout(function(){input.focus()"));
 });
+
+
+test("bottom navigation is visible only at the mobile breakpoint", () => {
+  const hideRule = html.lastIndexOf(".bottom-nav{display:none!important}");
+  const mobileRule = html.lastIndexOf("@media(max-width:600px){.bottom-nav{display:grid!important}}");
+  assert.ok(hideRule >= 0, "bottom navigation must be hidden by default");
+  assert.ok(mobileRule > hideRule, "mobile breakpoint must re-enable bottom navigation");
+  assert.ok(html.includes(".desktop-nav{display:none}"));
+  assert.ok(html.includes("@media(max-width:600px)"));
+});
