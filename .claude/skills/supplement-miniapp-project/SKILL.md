@@ -46,6 +46,14 @@ description: Project-specific rules for the Toofanm Telegram supplement-shop Min
   - `مکمل مناسب فقط یک محصول نیست؛ بخشی از مسیر عملکرد، ریکاوری و رسیدن به هدف توست.`
 - Do not reintroduce educational sections or unrelated content removed from Mini App scope.
 
+## Discount-code synchronization
+- The bot repository `Toofanm/telegram-shop` is the single source of truth for discount codes and usage limits. The bot persists codes in `DISCOUNT_CODES_FILE` (default `discount_codes.json`) and exposes admin-only `/discount_add CODE PERCENT [MAX_USES]`, `/discounts`, and `/discount_remove CODE` commands.
+- The Mini App must not maintain a separate coupon list, JSON file, hardcoded code, percentage, usage counter, or local validation result. It collects an optional code and sends `discount_code` to the existing secure `POST /miniapp-order` endpoint in the bot.
+- The bot backend normalizes and validates the code, enforces active state and the 1–90% range and usage cap, calculates the discount from the server-verified product subtotal, persists usage, and returns authoritative `discount_code`, `discount_amount`, and `discounted_subtotal` values. Client-supplied discount amounts or totals must never be trusted.
+- Discount applies only to product subtotal, never shipping. Show the backend-returned discount and discounted subtotal on the receipt; preserve the entered code and show the backend error when validation fails.
+- Include the normalized discount code in the checkout idempotency fingerprint so changing the code cannot replay an order created with a different code. Retries with the same payload must keep the same idempotency key.
+- Keep the same backend-managed codes available to bot checkout and Mini App checkout; do not copy `discount_codes.json` into this repository or sync separate copies.
+
 ## End-to-end order workflow (critical)
 1. Customer adds products and quantities to cart.
 2. Cart shows correct line totals, count, shipping, and payable total.
