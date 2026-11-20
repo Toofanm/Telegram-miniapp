@@ -634,3 +634,22 @@ test("runtime pricing applies the approved markup to both steroid and SARM categ
     assert.equal(Number(product.price), expected, "stored markup mismatch for product " + product.id);
   }
 });
+
+test("checkout accepts the bot-managed discount code and sends it with the idempotent order request", () => {
+  assert.match(html, /name="discount_code"[^>]*maxlength="32"/);
+  assert.ok(appScript.includes("discount_code:discountCode"), "checkout payload must send the optional code to the bot backend");
+  const start = appScript.indexOf("function checkoutPayloadFingerprint(value)");
+  const end = appScript.indexOf("function checkoutIdempotencyKey", start);
+  assert.ok(start >= 0 && end > start, "checkout fingerprint helper must exist");
+  const fingerprint = new Function(appScript.slice(start, end) + "; return checkoutPayloadFingerprint;")();
+  const base = { items: [{ product_id: "p1", qty: 1 }], customer: { name: "Test", phone: "09123456789", address: "Test address" } };
+  assert.notEqual(fingerprint({ ...base, discount_code: "SAVE10" }), fingerprint({ ...base, discount_code: "SAVE20" }));
+});
+
+test("server-calculated discount is shown on the final order receipt and shipping is excluded", () => {
+  assert.ok(appScript.includes("data.discount_code"));
+  assert.ok(appScript.includes("data.discount_amount"));
+  assert.ok(appScript.includes("data.discounted_subtotal"));
+  assert.ok(appScript.includes("var discountRow=discountCode&&discountAmount>0"));
+  assert.ok(html.includes("تخفیف فقط از مبلغ کالاها کسر می‌شود و شامل هزینه ارسال نیست"));
+});
