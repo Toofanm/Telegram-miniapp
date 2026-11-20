@@ -653,3 +653,7 @@ test("server-calculated discount is shown on the final order receipt and shippin
   assert.ok(appScript.includes("var discountRow=discountCode&&discountAmount>0"));
   assert.ok(html.includes("تخفیف فقط از مبلغ کالاها کسر می‌شود و شامل هزینه ارسال نیست"));
 });
+
+test("Latin discount codes use left-to-right input inside the Persian checkout form", () => {
+  assert.match(html, /name="discount_code"[^>]*dir="ltr"[^>]*text-align:left/);
+});
