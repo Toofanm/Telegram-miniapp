@@ -626,3 +626,11 @@ test("mobile navigation visibility overrides legacy important display rules", ()
   assert.ok(hideRule >= 0, "high-specificity desktop/tablet hide rule must exist");
   assert.ok(mobileRule > hideRule, "mobile-only high-specificity display rule must follow hide rule");
 });
+
+test("runtime pricing applies the approved markup to both steroid and SARM categories", () => {
+  assert.ok(appScript.includes('var rate=(p.category==="steroid"||p.category==="sarm")?0.20:0.15;'));
+  for (const product of products.filter((item) => item.category === "steroid" || item.category === "sarm")) {
+    const expected = Math.round((Number(product.basePrice) * 1.20) / 5000) * 5000;
+    assert.equal(Number(product.price), expected, "stored markup mismatch for product " + product.id);
+  }
+});
